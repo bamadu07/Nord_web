@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Nord-Web - Discutons de votre projet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <style>
+        /* COULEURS MIXTES - JAUNE POUR LOGO ET ICÔNES CODE */
+        :root {
+            --primary-color: #2563eb; /* Bleu principal */
+            --primary-dark: #1d4ed8; /* Bleu plus foncé */
+            --primary-light: #93c5fd; /* Bleu clair */
+            --primary-very-light: #eff6ff; /* Bleu très clair */
+            --secondary-color: #10b981; /* Vert pour les accents */
+            --whatsapp-color: #25D366; /* Vert WhatsApp */
+            --accent-color: #3b82f6; /* Bleu comme couleur d'accent */
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --success-color: #10b981; /* Vert pour succès */
+            --yellow-color: #FFD700; /* JAUNE pour logo et icônes code */
+            --yellow-dark: #FFC107; /* JAUNE plus foncé */
+            --transition: all 0.3s ease;
+        }
+        
+        /* FIX DU NAVBAR - Header avec fond fixe */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            color: #212529;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* LOGO AVEC JAUNE - Nord en jaune */
+        .logo {
+            color: #212529;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Icône </> en JAUNE dans le logo */
+        .logo i {
+            color: var(--yellow-color); /* JAUNE pour l'icône code */
+            margin-right: 10px;
+            font-size: 2rem;
+            text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2);
+        }
+        
+        /* Nord en JAUNE dans le logo */
+        .logo span {
+            color: var(--yellow-color); /* JAUNE pour "Nord" */
+            position: relative;
+        }
+        
+        /* Effet spécial pour le logo */
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--yellow-color), var(--yellow-dark));
+            border-radius: 1px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover span::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Navigation avec NOUVELLE COULEUR */
+        #mainNav {
+            display: flex;
+            align-items: center;
+        }
+        
+        #mainNav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+        }
+        
+        #mainNav ul li {
+            margin: 0;
+        }
+        
+        #mainNav ul li a {
+            color: #212529;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 8px 0;
+            display: block;
+        }
+        
+        #mainNav ul li a:hover {
+            color: var(--primary-dark); /* Nouvelle couleur */
+        }
+        
+        #mainNav ul li a.active {
+            color: var(--primary-dark); /* Nouvelle couleur */
+            font-weight: 600;
+        }
+        
+        #mainNav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color); /* Nouvelle couleur */
+            border-radius: 2px;
+        }
+        
+        /* Bouton menu mobile */
+        .mobile-menu-btn {
+            background-color: transparent;
+            border: 2px solid var(--primary-color); /* Nouvelle couleur */
+            color: var(--primary-color); /* Nouvelle couleur */
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: none;
+            z-index: 1001;
+        }
+        
+        .mobile-menu-btn:hover {
+            background-color: var(--primary-color); /* Nouvelle couleur */
+            color: white;
+        }
+        
+        /* Ajustement du contenu pour le navbar fixe */
+        body {
+            padding-top: 80px;
+        }
+        
+        /* Page Header avec NOUVELLE COULEUR */
+        .page-header {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), 
+                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: -80px;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%232563eb" opacity="0.1"/></svg>'); /* Nouvelle couleur */
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .page-header h1::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-color); /* Nouvelle couleur */
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Grille d'infos de contact avec NOUVELLE COULEUR */
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .contact-info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15); /* Ombre nouvelle couleur */
+        }
+        
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); /* Dégradé nouvelle couleur */
+        }
+        
+        /* Icônes de contact - certaines en JAUNE */
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Dégradé nouvelle couleur */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white; /* Texte blanc sur fond */
+            font-size: 24px;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3); /* Ombre nouvelle couleur */
+        }
+        
+        /* Icône code en JAUNE dans certaines cartes */
+        .code-icon {
+            background: linear-gradient(135deg, var(--yellow-color), var(--yellow-dark)); /* Dégradé JAUNE */
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .contact-info-card:hover .code-icon {
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .contact-info-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5); /* Ombre nouvelle couleur */
+        }
+        
+        .contact-info-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-size: 1.4rem;
+        }
+        
+        /* EMAIL, TÉLÉPHONE, ADRESSE, HORAIRES - NOUVELLE COULEUR */
+        .contact-info-card p:first-of-type {
+            font-weight: 600;
+            color: var(--primary-color); /* Nouvelle couleur */
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Texte en JAUNE pour certaines cartes */
+        .yellow-text p:first-of-type {
+            color: var(--yellow-color); /* JAUNE */
+        }
+        
+        .contact-detail {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .btn-small {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background-color: var(--primary-color); /* Nouvelle couleur */
+            color: white; /* Texte blanc sur fond */
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); /* Ombre nouvelle couleur */
+        }
+        
+        /* Bouton WhatsApp */
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            box-shadow: 0 6px 15px rgba(18, 140, 126, 0.4);
+        }
+        
+        /* Bouton avec icône code en JAUNE */
+        .btn-code {
+            background: linear-gradient(to right, var(--yellow-color), var(--yellow-dark));
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .btn-code:hover {
+            background: linear-gradient(to right, var(--yellow-dark), #e6b400);
+            box-shadow: 0 6px 15px rgba(255, 193, 7, 0.4);
+        }
+        
+        .btn-small i {
+            margin-right: 8px;
+        }
+        
+        .btn-small:hover {
+            background-color: var(--primary-dark); /* Nouvelle couleur foncée */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(29, 78, 216, 0.4); /* Ombre nouvelle couleur */
+            color: white;
+        }
+        
+        /* Section "Nous trouver à Saint-Louis" avec NOUVELLE COULEUR */
+        .map-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color); /* Nouvelle couleur */
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Conteneur carte amélioré */
+        .map-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+            align-items: start;
+        }
+        
+        @media (max-width: 992px) {
+            .map-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Carte Saint-Louis améliorée */
+        .map-placeholder {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1573994591087-e8ab7eb6c96c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 30px;
+            border-radius: 0 0 15px 15px;
+            border-top: 4px solid var(--primary-color); /* Nouvelle couleur */
+        }
+        
+        .map-overlay h3 {
+            color: var(--primary-color); /* Nouvelle couleur */
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+        
+        .map-overlay h3 i {
+            margin-right: 10px;
+            color: var(--primary-color); /* Nouvelle couleur */
+            font-size: 1.3rem;
+        }
+        
+        .map-overlay p {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* Détails de localisation améliorés */
+        .location-details {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--primary-color); /* Nouvelle couleur */
+            height: 100%;
+        }
+        
+        .location-details h3 {
+            margin-bottom: 25px;
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .location-details h3::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color); /* Nouvelle couleur */
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .location-details ul {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+        
+        .location-details li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .location-details li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        .location-details li i {
+            color: var(--primary-color); /* Nouvelle couleur */
+            margin-right: 15px;
+            margin-top: 3px;
+            font-size: 1.2rem;
+            background-color: var(--primary-very-light); /* Nouvelle couleur très claire */
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .location-details li strong {
+            color: var(--dark-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .location-details li div {
+            color: var(--gray-color);
+            line-height: 1.6;
+        }
+        
+        /* CTA de rendez-vous amélioré avec NOUVELLE COULEUR */
+        .meeting-cta {
+            background: linear-gradient(135deg, var(--primary-very-light), #dbeafe); /* Dégradé nouvelle couleur */
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color); /* Nouvelle couleur */
+        }
+        
+        .meeting-cta h4 {
+            display: flex;
+            align-items: center;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .meeting-cta h4 i {
+            margin-right: 10px;
+            color: var(--primary-dark); /* Nouvelle couleur foncée */
+        }
+        
+        .meeting-cta p {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .btn-accent {
+            background-color: var(--primary-color); /* Nouvelle couleur */
+            color: white; /* Texte blanc sur fond */
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); /* Ombre nouvelle couleur */
+        }
+        
+        .btn-accent:hover {
+            background-color: var(--primary-dark); /* Nouvelle couleur foncée */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(29, 78, 216, 0.4); /* Ombre nouvelle couleur */
+            color: white;
+        }
+        
+        .btn-accent i {
+            margin-right: 10px;
+        }
+        
+        /* Section formulaire améliorée avec NOUVELLE COULEUR */
+        .contact-form-section {
+            padding: 80px 0;
+        }
+        
+        .contact-form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-form-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-form-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            line-height: 1.2;
+        }
+        
+        .contact-tips {
+            background-color: var(--primary-very-light); /* Nouvelle couleur très claire */
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid var(--primary-color); /* Nouvelle couleur */
+        }
+        
+        .contact-tips h3 {
+            margin-bottom: 15px;
+            color: var(--primary-dark); /* Nouvelle couleur foncée */
+        }
+        
+        .contact-tips ul {
+            list-style: none;
+        }
+        
+        .contact-tips li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-tips i {
+            color: var(--primary-dark); /* Nouvelle couleur foncée */
+            margin-right: 10px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        .response-time {
+            display: flex;
+            align-items: center;
+            background-color: #dbeafe; /* Nouvelle couleur pâle */
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color); /* Nouvelle couleur */
+        }
+        
+        .response-time i {
+            color: var(--primary-dark); /* Nouvelle couleur foncée */
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        /* Formulaire amélioré avec NOUVELLE COULEUR */
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color); /* Nouvelle couleur */
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); /* Ombre nouvelle couleur */
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); /* Dégradé nouvelle couleur */
+            color: white; /* Texte blanc sur fond */
+            border: none;
+            padding: 18px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3); /* Ombre nouvelle couleur */
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(29, 78, 216, 0.4); /* Ombre nouvelle couleur */
+        }
+        
+        .btn-submit i {
+            margin-right: 10px;
+        }
+        
+        /* FAQ améliorée avec NOUVELLE COULEUR */
+        .faq-section {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .faq-grid {
+            max-width: 900px;
+            margin: 50px auto 0;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary-color); /* Nouvelle couleur */
+        }
+        
+        .faq-question {
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background-color: white;
+        }
+        
+        .faq-question h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: var(--dark-color);
+        }
+        
+        .faq-question i {
+            color: var(--primary-color); /* Nouvelle couleur */
+            transition: var(--transition);
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 30px 25px;
+            max-height: 300px;
+        }
+        
+        /* CTA Final amélioré avec NOUVELLE COULEUR */
+        .final-cta {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)),
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V0H0v27.35a600.21 600.21 0 00321.39 29.09z" fill="%232563eb" opacity="0.05"/></svg>'); /* Nouvelle couleur */
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            background-size: 150%;
+        }
+        
+        .final-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .final-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-large {
+            padding: 18px 35px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .btn-large:first-child {
+            background-color: var(--primary-color); /* Nouvelle couleur */
+            color: white; /* Texte blanc sur fond */
+            font-weight: 600;
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3); /* Ombre nouvelle couleur */
+        }
+        
+        .btn-large:first-child:hover {
+            background-color: var(--primary-dark); /* Nouvelle couleur foncée */
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(29, 78, 216, 0.4); /* Ombre nouvelle couleur */
+        }
+        
+        .btn-large i {
+            margin-right: 10px;
+        }
+        
+        /* Bouton WhatsApp flottant */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--whatsapp-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(18, 140, 126, 0.6);
+        }
+        
+        .whatsapp-float i {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Notification de succès avec NOUVELLE COULEUR */
+        .form-success {
+            display: none;
+            background-color: #d1fae5; /* Vert pâle pour succès */
+            color: var(--dark-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--success-color); /* Vert pour succès */
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .form-success.show {
+            display: block;
+        }
+        
+        .form-error {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Animation des cartes au défilement */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animation de chargement */
+        .form-loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .form-loading i {
+            color: var(--primary-color); /* Nouvelle couleur */
+            font-size: 1.5rem;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Footer avec LOGO EN JAUNE */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        /* Footer logo avec Nord en JAUNE */
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-logo span {
+            color: var(--yellow-color); /* JAUNE pour "Nord" dans le footer */
+            position: relative;
+        }
+        
+        /* Effet spécial pour le logo footer */
+        .footer-logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--yellow-color), var(--yellow-dark));
+            border-radius: 1px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-logo:hover span::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color); /* Nouvelle couleur */
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Icône WhatsApp dans le footer */
+        .social-icons a.whatsapp {
+            background-color: rgba(37, 211, 102, 0.1);
+        }
+        
+        .social-icons a.whatsapp:hover {
+            background-color: var(--whatsapp-color);
+        }
+        
+        /* Icône code en JAUNE dans le footer */
+        .social-icons a.code {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        
+        .social-icons a.code:hover {
+            background-color: var(--yellow-color);
+            color: var(--dark-color);
+        }
+        
+        .footer-links h4,
+        .footer-services h4,
+        .footer-contact h4 {
+            color: var(--primary-color); /* Nouvelle couleur */
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul,
+        .footer-services ul {
+            list-style: none;
+        }
+        
+        .footer-links li,
+        .footer-services li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a,
+        .footer-services a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover,
+        .footer-services a:hover {
+            color: var(--primary-color); /* Nouvelle couleur */
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .footer-contact i {
+            color: var(--primary-color); /* Nouvelle couleur */
+            margin-right: 10px;
+            margin-top: 3px;
+            width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .copyright span {
+            color: var(--yellow-color); /* JAUNE pour les noms dans le copyright */
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            #mainNav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 1000;
+                display: block;
+            }
+            
+            #mainNav.show {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            #mainNav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            #mainNav ul li {
+                margin: 0;
+            }
+            
+            #mainNav ul li:last-child {
+                margin-bottom: 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .final-cta h2 {
+                font-size: 2.2rem;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+            
+            header {
+                padding: 10px 0;
+            }
+            
+            .page-header {
+                margin-top: -70px;
+                padding: 80px 0 60px;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+        
+        /* Section spéciale pour les services code */
+        .code-services {
+            background-color: #FFFDE7; /* Jaune très clair en arrière-plan */
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border-left: 4px solid var(--yellow-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .code-services::before {
+            content: '{ }';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 100px;
+            color: rgba(255, 215, 0, 0.1);
+            font-family: monospace;
+            font-weight: bold;
+        }
+        
+        .code-services h3 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .code-services h3 i {
+            color: var(--yellow-color);
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .code-services p {
+            color: var(--dark-color);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* Icône spéciale pour développement web */
+        .dev-icon {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dev-icon::before {
+            content: '</>';
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            font-size: 12px;
+            color: var(--yellow-color);
+            font-weight: bold;
+            font-family: monospace;
+            background-color: rgba(255, 215, 0, 0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header FIXÉ avec fond blanc -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i> Nord<span>Web</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="equipe.html">Équipe</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contactez-nous</h1>
+            <p>Discutons de votre projet et trouvons la meilleure solution ensemble</p>
+        </div>
+    </section>
+
+    <!-- Contact Info - AVEC JAUNE POUR CERTAINS ÉLÉMENTS -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="contact-info-grid">
+                <div class="contact-info-card fade-in yellow-text">
+                    <div class="contact-icon code-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Service Développement</h3>
+                    <p>Expertise Web & Mobile</p>
+                    <p class="contact-detail">Notre équipe spécialisée en développement crée des solutions sur mesure adaptées à vos besoins.</p>
+                    <a href="services.html#web-dev" class="btn-small btn-code">
+                        <i class="fas fa-code"></i> Voir nos services
+                    </a>
+                </div>
+                
+                <div class="contact-info-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>ambarhama07@gmail.com</p>
+                    <p class="contact-detail">Pour toute demande, devis ou question, n'hésitez pas à nous envoyer un email. Nous répondons sous 24h.</p>
+                    <a href="mailto:ambarhama07@gmail.com" class="btn-small">
+                        <i class="fas fa-envelope"></i> Envoyer un email
+                    </a>
+                </div>
+                
+                <div class="contact-info-card fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Téléphone</h3>
+                    <p>+221 78197 08 44</p>
+                    <p class="contact-detail">Appelez-nous du lundi au vendredi, de 9h à 18h. Nous serons ravis de vous répondre.</p>
+                    <a href="tel:+221781970844" class="btn-small">
+                        <i class="fas fa-phone"></i> Appeler maintenant
+                    </a>
+                </div>
+                
+                <!-- NOUVELLE CARTE WHATSAPP -->
+                <div class="contact-info-card fade-in whatsapp-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>78 197 08 44</p>
+                    <p class="contact-detail">Contactez-nous directement sur WhatsApp pour une réponse rapide. Idéal pour les discussions instantanées.</p>
+                    <a href="https://wa.me/221781970844?text=Bonjour%20Nord-Web%2C%20je%20suis%20intéressé(e)%20par%20vos%20services" target="_blank" class="btn-small btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Envoyer un message
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Section spéciale services code -->
+            <div class="code-services fade-in">
+                <h3><i class="fas fa-code"></i> Expertise en Développement <span class="dev-icon">Web</span></h3>
+                <p>Chez <strong>Nord<span style="color: var(--yellow-color);">Web</span></strong>, nous combinons créativité et expertise technique pour créer des solutions digitales innovantes. Notre équipe de développeurs passionnés utilise les dernières technologies pour transformer vos idées en réalité.</p>
+                <p>Que vous ayez besoin d'un site web, d'une application mobile ou d'une solution sur mesure, nous sommes là pour vous accompagner à chaque étape de votre projet.</p>
+                <a href="services.html" class="btn-small btn-code">
+                    <i class="fas fa-laptop-code"></i> Découvrir tous nos services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire de Contact avec envoi d'email -->
+    <section class="contact-form-section" id="contact-form">
+        <div class="container">
+            <div class="contact-form-container">
+                <div class="contact-form-text">
+                    <h2>Envoyez-nous un message</h2>
+                    <p>Vous avez un projet en tête ? Une question sur nos services ? Remplissez le formulaire ci-contre et nous vous répondrons dans les plus brefs délais.</p>
+                    
+                    <div class="contact-tips">
+                        <h3>Pour une réponse plus rapide :</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Décrivez brièvement votre projet</li>
+                            <li><i class="fas fa-check-circle"></i> Indiquez votre budget approximatif</li>
+                            <li><i class="fas fa-check-circle"></i> Précisez vos délais souhaités</li>
+                            <li><i class="fas fa-check-circle"></i> Joignez des documents si nécessaire</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="response-time">
+                        <i class="fas fa-bolt"></i>
+                        <p><strong>Temps de réponse moyen :</strong> Moins de 24 heures durant les jours ouvrables.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <!-- Message de succès -->
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-check-circle"></i> Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+                    </div>
+                    
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xdoqjqgy" method="POST">
+                        <!-- Champ caché pour rediriger les emails -->
+                        <input type="hidden" name="_replyto" value="ambarhama07@gmail.com">
+                        <input type="hidden" name="_subject" value="Nouveau message de contact - Nord-Web">
+                        
+                        <div class="form-group">
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="form-error" id="nameError">Veuillez entrer votre nom complet</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="form-error" id="emailError">Veuillez entrer une adresse email valide</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Entreprise/Organisation</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service intéressé</label>
+                            <select id="service" name="service">
+                                <option value="">Sélectionnez un service</option>
+                                <option value="web">Développement Web</option>
+                                <option value="data">Data Science & IA</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="mobile">Applications Mobile</option>
+                                <option value="seo">SEO & Marketing Digital</option>
+                                <option value="design">Design UI/UX</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Votre message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <div class="form-error" id="messageError">Veuillez entrer votre message</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Budget approximatif (en FCFA)</label>
+                            <select id="budget" name="budget">
+                                <option value="">Sélectionnez une fourchette</option>
+                                <option value="100000-300000">100 000 - 300 000 FCFA</option>
+                                <option value="300000-500000">300 000 - 500 000 FCFA</option>
+                                <option value="500000-1000000">500 000 - 1 000 000 FCFA</option>
+                                <option value="1000000+">Plus de 1 000 000 FCFA</option>
+                                <option value="undecided">À déterminer</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Je souhaite m'abonner à la newsletter Nord-Web pour recevoir des conseils et actualités</label>
+                        </div>
+                        
+                        <!-- Animation de chargement -->
+                        <div class="form-loading" id="formLoading">
+                            <i class="fas fa-spinner"></i> Envoi en cours...
+                        </div>
+                        
+                        <button type="submit" class="btn btn-submit">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carte & Localisation - Section améliorée -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nous trouver à Saint-Louis</h2>
+                <p>Notre bureau est situé au cœur de la ville historique, facilement accessible</p>
+            </div>
+            
+            <div class="map-container">
+                <!-- Carte Saint-Louis -->
+                <div class="map-placeholder">
+                    <div class="map-overlay">
+                        <h3><i class="fas fa-map-marker-alt"></i> Nord<span style="color: var(--yellow-color);">Web</span> - Saint-Louis</h3>
+                        <p>Nous sommes situés au cœur de Saint-Louis, prêts à vous accueillir pour discuter de votre projet digital.</p>
+                        <a href="https://maps.google.com/?q=Saint-Louis,Senegal" target="_blank" class="btn-small">
+                            <i class="fas fa-directions"></i> Voir sur Google Maps
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="location-details">
+                    <h3>Comment nous rendre ?</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-bus"></i>
+                            <div>
+                                <strong>En transport en commun</strong>
+                                Plusieurs lignes de bus desservent le centre-ville de Saint-Louis. Arrêt principal à 5 minutes à pied de notre bureau.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-car"></i>
+                            <div>
+                                <strong>En voiture</strong>
+                                Parking sécurisé disponible à proximité immédiate de notre local. Navigation GPS directe vers notre adresse.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-walking"></i>
+                            <div>
+                                <strong>À pied</strong>
+                                Situé dans le centre historique, accessible à pied depuis la plupart des hôtels et points d'intérêt touristiques.
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="meeting-cta">
+                        <h4><i class="fas fa-calendar-check"></i> Prendre rendez-vous</h4>
+                        <p>Préférez-vous une rencontre en personne ? Contactez-nous pour fixer un rendez-vous à notre bureau ou en visioconférence.</p>
+                        <div class="contact-options">
+                            <a href="tel:+221781970844" class="btn-accent" style="margin-right: 10px; margin-bottom: 10px;">
+                                <i class="fas fa-phone"></i> Appeler
+                            </a>
+                            <a href="https://wa.me/221781970844?text=Bonjour%20Nord-Web%2C%20je%20souhaite%20prendre%20rendez-vous%20pour%20discuter%20de%20mon%20projet" target="_blank" class="btn-accent" style="background-color: var(--whatsapp-color); margin-bottom: 10px;">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Questions Fréquentes</h2>
+                <p>Les réponses aux questions que vous nous posez souvent</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-code" style="color: var(--yellow-color); margin-right: 10px;"></i> Combien de temps pour développer un site web ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Le délai dépend de la complexité du projet. Un site vitrine simple peut prendre 2-3 semaines, tandis qu'une application web complexe peut nécessiter 2-4 mois. Nous établissons un planning détaillé lors de la phase de consultation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-code" style="color: var(--yellow-color); margin-right: 10px;"></i> Coût moyen d'un projet de développement web ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Les prix varient selon la complexité, les fonctionnalités et le design. Nous proposons des solutions adaptées à différents budgets, à partir de 300 000 FCFA pour un site vitrine basique. Contactez-nous pour un devis personnalisé.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-code" style="color: var(--yellow-color); margin-right: 10px;"></i> Services de maintenance après livraison ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, nous proposons différents forfaits de maintenance incluant mises à jour, corrections de bugs, sauvegardes et support technique. Nous croyons en un partenariat durable avec nos clients.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-code" style="color: var(--yellow-color); margin-right: 10px;"></i> Travaillez-vous hors de Saint-Louis ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument ! Bien que basés à Saint-Louis, nous travaillons avec des clients partout au Sénégal et à l'international. Nous utilisons des outils de collaboration à distance pour assurer une communication efficace.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bouton WhatsApp flottant -->
+    <a href="https://wa.me/221781970844?text=Bonjour%20Nord-Web%2C%20je%20suis%20intéressé(e)%20par%20vos%20services" target="_blank" class="whatsapp-float" title="Contactez-nous sur WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Nord<span>Web</span></div>
+                    <p>Solutions digitales innovantes créées à Saint-Louis par une équipe passionnée de développeurs et data scientists.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/221781970844?text=Bonjour%20Nord-Web" target="_blank" class="whatsapp" title="Contactez-nous sur WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="services.html#web-dev" class="code" title="Nos services de développement">
+                            <i class="fas fa-code"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="apropos.html">À propos</a></li>
+                        <li><a href="equipe.html">Équipe</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#web-dev">Développement Web</a></li>
+                        <li><a href="services.html#data-science">Data Science</a></li>
+                        <li><a href="services.html#ecommerce">E-commerce</a></li>
+                        <li><a href="services.html#mobile">Applications Mobile</a></li>
+                        <li><a href="services.html#seo">SEO & Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
+                    <p><i class="fas fa-envelope"></i> ambarhama07@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +221 78197 08 44</p>
+                    <p><i class="fab fa-whatsapp"></i> 78 197 08 44</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 <strong>Nord<span style="color: var(--yellow-color);">Web</span></strong>. Tous droits réservés. Fondé par <span>Amadou BA</span> & <span>Al Housseynou BA</span>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript pour les améliorations interactives
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du formulaire avec envoi réel via Formspree
+            const contactForm = document.getElementById('contactForm');
+            const formSuccess = document.getElementById('formSuccess');
+            const formLoading = document.getElementById('formLoading');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validation du formulaire
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+                    
+                    let isValid = true;
+                    
+                    // Réinitialiser les erreurs
+                    document.querySelectorAll('.form-error').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    
+                    // Validation du nom
+                    if (name === '') {
+                        document.getElementById('nameError').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // Validation de l'email
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        document.getElementById('emailError').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    // Validation du message
+                    if (message === '') {
+                        document.getElementById('messageError').style.display = 'block';
+                        isValid = false;
+                    }
+                    
+                    if (isValid) {
+                        // Afficher l'animation de chargement
+                        formLoading.style.display = 'block';
+                        document.querySelector('.btn-submit').style.display = 'none';
+                        
+                        // Envoi réel du formulaire via Formspree
+                        const formData = new FormData(contactForm);
+                        
+                        fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                // Succès
+                                formLoading.style.display = 'none';
+                                formSuccess.classList.add('show');
+                                contactForm.reset();
+                                document.querySelector('.btn-submit').style.display = 'flex';
+                                
+                                // Faire défiler jusqu'au message de succès
+                                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                
+                                // Masquer le message de succès après 8 secondes
+                                setTimeout(function() {
+                                    formSuccess.classList.remove('show');
+                                }, 8000);
+                            } else {
+                                // Erreur
+                                formLoading.style.display = 'none';
+                                document.querySelector('.btn-submit').style.display = 'flex';
+                                alert('Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.');
+                            }
+                        })
+                        .catch(error => {
+                            // Erreur réseau
+                            formLoading.style.display = 'none';
+                            document.querySelector('.btn-submit').style.display = 'flex';
+                            alert('Erreur de connexion. Veuillez vérifier votre connexion internet et réessayer.');
+                        });
+                    }
+                });
+            }
+            
+            // FAQ interactif
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    
+                    // Fermer tous les autres éléments FAQ
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        if (item !== faqItem) {
+                            item.classList.remove('active');
+                        }
+                    });
+                    
+                    // Basculer l'état actif de l'élément cliqué
+                    faqItem.classList.toggle('active');
+                });
+            });
+            
+            // Animation au défilement
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const appearOnScroll = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                appearOnScroll.observe(element);
+            });
+            
+            // Menu mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuBtn && mainNav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainNav.classList.toggle('show');
+                    const icon = this.querySelector('i');
+                    if (mainNav.classList.contains('show')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                
+                // Fermer le menu mobile en cliquant sur un lien
+                document.querySelectorAll('#mainNav a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mainNav.classList.remove('show');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    });
+                });
+            }
+            
+            // Smooth scroll pour les ancres internes
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    // Ignorer les ancres vides
+                    if (href === '#') return;
+                    
+                    const targetElement = document.querySelector(href);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        // Fermer le menu mobile si ouvert
+                        if (mainNav && mainNav.classList.contains('show')) {
+                            mainNav.classList.remove('show');
+                            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        }
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Navbar fixe - changement d'apparence au scroll
+            let lastScrollTop = 0;
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 100) {
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                    header.style.backdropFilter = 'blur(10px)';
+                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                    header.style.backdropFilter = 'blur(5px)';
+                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+            
+            // Animation spéciale pour les icônes code
+            const codeIcons = document.querySelectorAll('.fa-code, .code-icon');
+            codeIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'rotate(10deg) scale(1.1)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'rotate(0deg) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

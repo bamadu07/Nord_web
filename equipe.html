@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Équipe | Nord-Web - Développeurs & Data Scientists</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES CSS ===== */
+        :root {
+            /* Couleurs principales */
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #7c3aed;
+            --accent-color: #f59e0b;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --gray-light: #e2e8f0;
+            
+            /* Typographie */
+            --heading-font: 'Montserrat', sans-serif;
+            --body-font: 'Poppins', sans-serif;
+            
+            /* Espacements */
+            --section-padding: 80px 0;
+            --container-padding: 0 20px;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+            
+            /* Ombres */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        /* ===== RESET ET STYLES GÉNÉRAUX ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background image avec overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.03;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+
+        section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        /* Ajout d'un fond blanc léger pour les sections */
+        section:not(.page-header):not(.cta) {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            font-family: var(--heading-font);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+
+        .btn-accent:hover {
+            background-color: #e68a00;
+        }
+
+        /* ===== HEADER SIMPLE ===== */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Icône </> en jaune */
+        .logo i {
+            color: var(--accent-color);
+            font-size: 2rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* ===== EN-TÊTE DE PAGE ===== */
+        .page-header {
+            background: linear-gradient(rgba(37, 99, 235, 0.85), rgba(124, 58, 237, 0.85)), 
+                        url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+            padding: 120px 0 80px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: var(--heading-font);
+            animation: fadeInUp 0.8s ease;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+        }
+
+        /* ===== SECTION TITRE ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+        }
+
+        /* ===== FONDATEURS ===== */
+        .founders {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: var(--border-radius);
+            margin: 0 auto 40px;
+            max-width: 1200px;
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .founder-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            position: relative;
+        }
+
+        .founder-card.featured {
+            border: 2px solid var(--primary-color);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* STYLE DES IMAGES RONDES */
+        .founder-img {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .founder-img-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid var(--light-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .founder-card:hover .founder-img-container {
+            transform: scale(1.05);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .founder-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .founder-card:hover .founder-img-container img {
+            transform: scale(1.1);
+        }
+
+        /* Effet de halo autour de l'image */
+        .founder-img-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .founder-card:hover .founder-img-container::before {
+            opacity: 0.2;
+            animation: pulse 2s infinite;
+        }
+
+        .founder-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .founder-card:hover .founder-badge {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Pour les mobiles, positionner le badge différemment */
+        @media (max-width: 768px) {
+            .founder-badge {
+                top: 20px;
+                right: 20px;
+            }
+        }
+
+        .founder-info {
+            padding: 40px;
+        }
+
+        .founder-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .founder-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .founder-contact {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .founder-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: var(--gray-color);
+        }
+
+        .founder-contact i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
+        .founder-desc {
+            color: var(--gray-color);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .expertise {
+            margin-bottom: 25px;
+        }
+
+        .expertise h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .skill:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .founder-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .founder-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .founder-social a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===== PHILOSOPHIE ===== */
+        .philosophy {
+            background-color: rgba(248, 250, 252, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: var(--border-radius);
+            margin: 0 auto 40px;
+            max-width: 1200px;
+        }
+
+        .philosophy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .philosophy-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .philosophy-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .philosophy-text p {
+            color: var(--gray-color);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .philosophy-points {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .point {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .point i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .point h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .point p {
+            color: var(--gray-color);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .philosophy-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            transform: perspective(1000px) rotateY(5deg);
+            transition: var(--transition);
+        }
+
+        .philosophy-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .philosophy-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            z-index: 1;
+        }
+
+        .philosophy-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .philosophy-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ===== PROCESSUS DE TRAVAIL ===== */
+        .work-process {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: var(--border-radius);
+            margin: 0 auto 40px;
+            max-width: 1200px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .step {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            font-family: var(--heading-font);
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .step p {
+            color: var(--gray-color);
+            line-height: 1.6;
+        }
+
+        /* ===== VALEURS ===== */
+        .values {
+            background-color: rgba(248, 250, 252, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: var(--border-radius);
+            margin: 0 auto 40px;
+            max-width: 1200px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            transition: var(--transition);
+        }
+
+        .value-card:hover::before {
+            height: 100%;
+            opacity: 0.05;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .value-card p {
+            color: var(--gray-color);
+            line-height: 1.6;
+        }
+
+        /* ===== SECTION CTA ===== */
+        .cta {
+            background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.9)), 
+                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            margin: 0 auto 40px;
+            max-width: 1200px;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: var(--heading-font);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+        }
+
+        .cta .btn {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .cta .btn:hover {
+            background-color: var(--gray-light);
+        }
+
+        /* ===== FOOTER RÉDUIT ===== */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 15px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--accent-color);
+        }
+
+        .footer-about p {
+            color: #94a3b8;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4,
+        .footer-services h4,
+        .footer-contact h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-family: var(--heading-font);
+            color: white;
+        }
+
+        .footer-links ul,
+        .footer-services ul {
+            list-style: none;
+        }
+
+        .footer-links li,
+        .footer-services li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a,
+        .footer-services a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover,
+        .footer-services a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: #94a3b8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .footer-contact i {
+            color: var(--accent-color);
+            width: 16px;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.05); }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Animation de l'icône du logo */
+        .logo i {
+            animation: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .founder-card {
+                grid-template-columns: 250px 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .philosophy-content {
+                gap: 40px;
+            }
+            
+            .founder-img-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .page-header {
+                background-attachment: scroll;
+            }
+            
+            .cta {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 60px 0;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: var(--shadow-lg);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .founder-card {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            .founder-img {
+                height: auto;
+                padding: 40px 40px 20px;
+            }
+            
+            .founder-img-container {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .founder-badge {
+                top: 20px;
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .page-header {
+                padding: 100px 0 60px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .philosophy-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .philosophy-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 25px;
+            }
+            
+            section:not(.page-header):not(.cta) {
+                margin: 0 15px 30px;
+            }
+            
+            .founders, .philosophy, .values, .work-process, .cta {
+                margin: 0 15px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .founder-info {
+                padding: 25px;
+            }
+            
+            .founder-info h3 {
+                font-size: 1.5rem;
+            }
+            
+            .founder-img-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .philosophy-text h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+            
+            .skills {
+                gap: 8px;
+                justify-content: center;
+            }
+            
+            .skill {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .founder-contact {
+                text-align: left;
+            }
+            
+            .founder-contact p {
+                justify-content: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            footer {
+                padding: 30px 0 10px;
+            }
+        }
+
+        /* ===== ÉLÉMENTS ANIMÉS ===== */
+        .founder-card,
+        .philosophy-content,
+        .step,
+        .value-card {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Effet de dégradé animé pour les icônes */
+        .point i {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        .step-number {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header simple sans image de fond -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i> Nord<span>Web</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="equipe.html" class="active">Équipe</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Notre Équipe</h1>
+            <p>Les experts passionnés derrière Nord-Web - Développeurs & Data Scientists à Saint-Louis</p>
+        </div>
+    </section>
+
+    <!-- Fondateurs -->
+    <section class="founders">
+        <div class="container">
+            <div class="section-title">
+                <h2>Les Fondateurs</h2>
+                <p>La vision et l'expertise qui ont donné naissance à Nord-Web</p>
+            </div>
+            
+            <div class="founders-grid">
+                <!-- Amadou BA -->
+                <div class="founder-card featured">
+                    <div class="founder-img">
+                        <div class="founder-img-container">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Amadou BA">
+                        </div>
+                        <div class="founder-badge">
+                            <i class="fas fa-crown"></i> Fondateur Principal
+                        </div>
+                    </div>
+                    <div class="founder-info">
+                        <h3>Amadou BA</h3>
+                        <p class="founder-role">Développeur Web Fullstack & Fondateur</p>
+                        <div class="founder-contact">
+                            <p><i class="fas fa-envelope"></i> ambarhama07@gmail.com</p>
+                            <p><i class="fas fa-phone"></i> +221 78197 08 44</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
+                        </div>
+                        <p class="founder-desc">Avec plus de 3 ans d'expérience dans le développement web, Amadou est spécialisé dans la création d'applications web performantes et évolutives. Passionné par les nouvelles technologies, il maîtrise React, Node.js, Python et les architectures cloud. Il dirige la stratégie technique de Nord-Web et supervise la qualité de tous nos projets.</p>
+                        
+                        <div class="expertise">
+                            <h4>Domaines d'Expertise</h4>
+                            <div class="skills">
+                                <span class="skill">Frontend (HTML, CSS, JavaScript, json)</span>
+                                <span class="skill">Backend (PHP, Python)</span>
+                                <span class="skill">Bases de données</span>
+                                <span class="skill">Architecture Cloud</span>
+                                <span class="skill">UI/UX Design</span>
+                                <span class="skill">DevOps</span>
+                                <span class="skill">API Design</span>
+                                <span class="skill">E-commerce</span>
+                            </div>
+                        </div>
+                        
+                        <div class="founder-social">
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" title="Portfolio"><i class="fas fa-briefcase"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Al Housseynou BA -->
+                <div class="founder-card">
+                    <div class="founder-img">
+                        <div class="founder-img-container">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Al Housseynou BA">
+                        </div>
+                        <div class="founder-badge">
+                            <i class="fas fa-lightbulb"></i> Collaborateur
+                        </div>
+                    </div>
+                    <div class="founder-info">
+                        <h3>Al Housseynou BA</h3>
+                        <p class="founder-role">Data Scientist & Collaborateur</p>
+                        <div class="founder-contact">
+                            <p><i class="fas fa-envelope"></i> alhousseynou@nordweb.sn</p>
+                            <p><i class="fas fa-phone"></i> +221 78 162 94 19</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
+                        </div>
+                        <p class="founder-desc">Spécialiste en science des données et intelligence artificielle, Al Housseynou transforme les données brutes en insights stratégiques. Il conçoit des modèles prédictifs et des algorithmes d'IA qui optimisent les processus décisionnels et créent de la valeur pour nos clients. Titulaire d'un master en Data Science, il apporte une expertise académique et pratique à chaque projet.</p>
+                        
+                        <div class="expertise">
+                            <h4>Domaines d'Expertise</h4>
+                            <div class="skills">
+                                <span class="skill">Machine Learning</span>
+                                <span class="skill">Analyse de données</span>
+                                <span class="skill">Intelligence Artificielle</span>
+                                <span class="skill">Visualisation de données</span>
+                                <span class="skill">Big Data</span>
+                                <span class="skill">Python (Pandas, NumPy)</span>
+                                <span class="skill">SQL & NoSQL</span>
+                                <span class="skill">Statistiques</span>
+                            </div>
+                        </div>
+                        
+                        <div class="founder-social">
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" title="Publications"><i class="fas fa-graduation-cap"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notre Philosophie -->
+    <section class="philosophy">
+        <div class="container">
+            <div class="philosophy-content">
+                <div class="philosophy-text">
+                    <h2>Notre Philosophie de Travail</h2>
+                    <p>Chez Nord-Web, nous croyons en une approche collaborative où chaque membre de l'équipe contribue avec ses compétences uniques. La combinaison du développement web et de la data science nous permet d'offrir des solutions complètes et intégrées qui transforment réellement les entreprises.</p>
+                    
+                    <div class="philosophy-points">
+                        <div class="point">
+                            <i class="fas fa-comments"></i>
+                            <div>
+                                <h4>Communication Transparente</h4>
+                                <p>Nous maintenons une communication ouverte et régulière avec nos clients à chaque étape du projet, des réunions de cadrage aux revues techniques.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="point">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <h4>Innovation Continue</h4>
+                                <p>Nous restons à jour avec les dernières technologies et tendances pour offrir des solutions modernes, performantes et adaptées aux besoins actuels.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="point">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h4>Partenaire, Pas Prestataire</h4>
+                                <p>Nous nous impliquons dans la réussite de votre projet comme s'il était le nôtre, en partageant nos connaissances et notre expertise pour maximiser votre succès.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="philosophy-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Équipe au travail">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nos Valeurs -->
+    <section class="values">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Valeurs Fondamentales</h2>
+                <p>Les principes qui guident notre travail au quotidien</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>Nous croyons que les meilleures solutions naissent de l'intelligence collective et de la diversité des perspectives.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>Nous visons l'excellence dans chaque projet, avec un souci du détail et une quête constante d'amélioration.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Passion</h3>
+                    <p>Notre passion pour la technologie et l'innovation nous pousse à toujours dépasser les attentes de nos clients.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Engagement Local</h3>
+                    <p>Nous nous engageons à contribuer au développement économique et numérique de la région de Saint-Louis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processus de Travail -->
+    <section class="work-process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notre Processus de Travail</h2>
+                <p>Comment nous collaborons pour transformer vos idées en réalité numérique</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Découverte & Analyse</h3>
+                    <p>Nous écoutons vos besoins, objectifs et contraintes pour bien comprendre votre projet et définir une stratégie claire.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Conception & Planification</h3>
+                    <p>Nous créons des maquettes, planifions l'architecture technique et établissons un calendrier détaillé du projet.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Développement & Test</h3>
+                    <p>Notre équipe code, teste et implémente la solution avec les meilleures pratiques et une rigueur technique exceptionnelle.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Livraison & Support Continu</h3>
+                    <p>Nous déployons votre solution, formons votre équipe et assurons un support technique pour garantir son succès à long terme.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Travaillons ensemble sur votre prochain projet</h2>
+            <p>Rencontrez notre équipe et découvrez comment notre expertise combinée en développement web et data science peut transformer votre vision en succès numérique.</p>
+            <a href="contact.html" class="btn">Prendre rendez-vous</a>
+            <a href="portfolio.html" class="btn btn-accent" style="margin-left: 15px;">Voir nos réalisations</a>
+        </div>
+    </section>
+
+    <!-- Footer réduit -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Nord<span>Web</span></div>
+                    <p>Solutions digitales innovantes créées à Saint-Louis par une équipe passionnée de développeurs et data scientists.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="apropos.html">À propos</a></li>
+                        <li><a href="equipe.html">Équipe</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#web-dev">Développement Web</a></li>
+                        <li><a href="services.html#data-science">Data Science</a></li>
+                        <li><a href="services.html#ecommerce">E-commerce</a></li>
+                        <li><a href="services.html#mobile">Applications Mobile</a></li>
+                        <li><a href="services.html#seo">SEO & Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
+                    <p><i class="fas fa-envelope"></i> ambarhama07@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +221 78 197 08 44</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Nord-Web. Tous droits réservés. Fondé par Amadou BA .</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // script.js - Améliorations pour la page Équipe
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // Fermer le menu mobile en cliquant sur un lien
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+            
+            // Header qui devient opaque au scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+                    header.style.backgroundColor = 'white';
+                }
+            });
+            
+            // Animation au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer les éléments à animer
+            const animatedElements = document.querySelectorAll('.founder-card, .philosophy-content, .step, .value-card, .section-title');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Animation des compétences au survol
+            const skills = document.querySelectorAll('.skill');
+            skills.forEach(skill => {
+                skill.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.05)';
+                });
+                
+                skill.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Effet de parallaxe sur le background image
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                if (window.innerWidth > 768) {
+                    const rate = scrolled * 0.5;
+                    document.body.style.backgroundPosition = `center ${rate}px`;
+                }
+            });
+            
+            // Animation progressive des étapes
+            const steps = document.querySelectorAll('.step');
+            const stepsObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 200);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            steps.forEach(step => stepsObserver.observe(step));
+            
+            // Smooth scroll pour les ancres
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animation des badges des fondateurs
+            const badges = document.querySelectorAll('.founder-badge');
+            badges.forEach(badge => {
+                badge.addEventListener('mouseenter', function() {
+                    this.style.transform = 'rotate(5deg) scale(1.1)';
+                });
+                
+                badge.addEventListener('mouseleave', function() {
+                    this.style.transform = 'rotate(0) scale(1)';
+                });
+            });
+            
+            // Animation des icônes de valeur
+            const valueIcons = document.querySelectorAll('.value-icon');
+            valueIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'rotateY(180deg)';
+                    setTimeout(() => {
+                        this.style.transform = 'rotateY(0)';
+                    }, 300);
+                });
+            });
+            
+            // Animation des images rondes au survol
+            const founderImages = document.querySelectorAll('.founder-img-container');
+            founderImages.forEach(imgContainer => {
+                imgContainer.addEventListener('mouseenter', function() {
+                    this.style.borderColor = 'var(--accent-color)';
+                    this.style.boxShadow = '0 15px 40px rgba(245, 158, 11, 0.3)';
+                });
+                
+                imgContainer.addEventListener('mouseleave', function() {
+                    this.style.borderColor = 'var(--light-color)';
+                    this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nord-Web | Accueil - Solutions Digitales Innovantes à Saint-Louis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== VARIABLES CSS ===== */
+        :root {
+            /* Couleurs principales */
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #7c3aed;
+            --accent-color: #f59e0b;
+            --accent-light: #fbbf24;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --gray-light: #e2e8f0;
+            
+            /* Typographie */
+            --heading-font: 'Montserrat', sans-serif;
+            --body-font: 'Poppins', sans-serif;
+            
+            /* Espacements */
+            --section-padding: 80px 0;
+            --container-padding: 0 20px;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+            
+            /* Ombres */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        /* ===== RESET ET STYLES GÉNÉRAUX ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--container-padding);
+        }
+
+        section {
+            padding: var(--section-padding);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            font-family: var(--heading-font);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+
+        .btn-accent:hover {
+            background-color: #e68a00;
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: white;
+            background-image: url('https://images.unsplash.com/photo-1517697471339-4aa32003c11a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        /* Overlay pour le header seulement */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: -1;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Icône </> en jaune avec dégradé animé */
+        .logo i {
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-light), var(--accent-color));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* ===== SECTION HERO ===== */
+        .hero {
+            padding-top: 120px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            clip-path: polygon(100% 0, 100% 100%, 0 0);
+            opacity: 0.05;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            margin-bottom: 30px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--transition);
+        }
+
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ===== SECTION STATISTIQUES ===== */
+        .stats {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: var(--heading-font);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ===== SERVICES PRÉVISUALISATION ===== */
+        .services-preview {
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid var(--gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .service-card p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            color: var(--primary-dark);
+            gap: 12px;
+        }
+
+        /* ===== À PROPOS PRÉVISUALISATION ===== */
+        .about-preview {
+            background-color: var(--light-color);
+        }
+
+        .about-preview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-preview-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+            line-height: 1.2;
+        }
+
+        .about-preview-text p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-preview-text strong {
+            color: var(--primary-color);
+        }
+
+        .about-preview-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .about-preview-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            z-index: 1;
+        }
+
+        .about-preview-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-preview-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ===== POURQUOI NOUS CHOISIR ===== */
+        .why-choose {
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .feature-content p {
+            color: var(--gray-color);
+        }
+
+        /* ===== PROJETS RÉCENTS ===== */
+        .recent-projects {
+            background-color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            background-color: white;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image::after {
+            opacity: 0.5;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+        }
+
+        .project-info p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+
+        /* ===== TÉMOIGNAGES ===== */
+        .testimonials {
+            background-color: var(--light-color);
+        }
+
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            margin: 0 20px;
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--gray-color);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        /* ===== SECTION CTA ===== */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: var(--heading-font);
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta .btn {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .cta .btn:hover {
+            background-color: var(--gray-light);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--accent-color);
+        }
+
+        .footer-about p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4,
+        .footer-services h4,
+        .footer-contact h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-family: var(--heading-font);
+            color: white;
+        }
+
+        .footer-links ul,
+        .footer-services ul {
+            list-style: none;
+        }
+
+        .footer-links li,
+        .footer-services li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a,
+        .footer-services a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover,
+        .footer-services a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: #94a3b8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero .container {
+                gap: 40px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-preview-content {
+                gap: 40px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 60px 0;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: var(--shadow-lg);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero .container,
+            .about-preview-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero {
+                padding-top: 100px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-slide {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-info {
+                padding: 20px;
+            }
+        }
+
+        /* ===== ÉLÉMENTS ANIMÉS ===== */
+        .hero-content, 
+        .service-card, 
+        .about-preview-text, 
+        .project-card,
+        .feature-item,
+        .testimonial-slide {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Effet de dégradé animé pour les icônes */
+        .service-card i {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i> Nord<span>Web</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="apropos.html">À propos</a></li>
+                    <li><a href="equipe.html">Équipe</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Solutions Digitales Innovantes à Saint-Louis</h1>
+                <p>Nord-Web transforme vos idées en réalité numérique avec des solutions web et applications sur mesure créées par une équipe passionnée basée à Saint-Louis. Nous combinons expertise technique et créativité pour propulser votre entreprise à l'ère digitale.</p>
+                <div class="hero-btns">
+                    <a href="services.html" class="btn">Découvrir nos services</a>
+                    <a href="contact.html" class="btn btn-accent">Commencer un projet</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Développement web">
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistiques 
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number" id="projects-count">0</span>
+                    <span class="stat-label">Projets Réalisés</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="clients-count">0</span>
+                    <span class="stat-label">Clients Satisfaits</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="experience-count">0</span>
+                    <span class="stat-label">Années d'Expérience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="team-count">0</span>
+                    <span class="stat-label">Experts dans l'Équipe</span>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Services Prévisualisation -->
+    <section class="services-preview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Services Phares</h2>
+                <p>Découvrez nos solutions digitales complètes adaptées à vos besoins</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Développement Web</h3>
+                    <p>Sites vitrines, applications web sur mesure avec les dernières technologies. Solutions performantes et optimisées pour tous vos projets digitaux.</p>
+                    <a href="services.html#web-dev" class="service-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data Science</h3>
+                    <p>Analyse de données, IA et solutions intelligentes pour votre entreprise. Transformez vos données en avantages concurrentiels.</p>
+                    <a href="services.html#data-science" class="service-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>E-commerce</h3>
+                    <p>Plateformes de vente en ligne sécurisées et optimisées pour la conversion. Augmentez vos ventes avec nos solutions e-commerce sur mesure.</p>
+                    <a href="services.html#ecommerce" class="service-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="services.html" class="btn">Voir tous nos services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos Prévisualisation -->
+    <section class="about-preview">
+        <div class="container">
+            <div class="about-preview-content">
+                <div class="about-preview-text">
+                    <h2>Une Équipe Passionnée Basée à Saint-Louis</h2>
+                    <p>Nord-Web a été fondé par <strong>Amadou BA</strong>, développeur web fullstack, en collaboration avec <strong>Al Housseynou BA</strong>, data scientist. Ensemble, nous combinons expertise technique et vision stratégique pour créer des solutions digitales qui transforment votre entreprise.</p>
+                    <p>Notre approche est centrée sur l'innovation, la qualité et l'adaptation aux besoins spécifiques de chaque client, tout en restant profondément enracinés dans notre communauté saint-louisienne. Nous croyons au potentiel numérique de notre région.</p>
+                    <a href="apropos.html" class="btn">Notre histoire</a>
+                </div>
+                <div class="about-preview-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Équipe Nord-Web">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pourquoi nous choisir -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pourquoi Choisir Nord-Web ?</h2>
+                <p>Notre différence fait votre succès</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Ancrés à Saint-Louis</h3>
+                        <p>Nous comprenons les besoins spécifiques des entreprises locales et nous engageons à développer l'écosystème numérique de notre région.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Solutions Innovantes</h3>
+                        <p>Nous intégrons les dernières technologies comme l'IA et le développement web moderne pour vous donner un avantage concurrentiel.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Accompagnement Personnalisé</h3>
+                        <p>De l'idée à la réalisation, nous vous accompagnons à chaque étape avec un suivi personnalisé et une communication transparente.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Expertise Combinée</h3>
+                        <p>Notre équipe réunit développeurs fullstack et data scientists pour des solutions complètes et intégrées.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets Récents -->
+    <section class="recent-projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projets Récents</h2>
+                <p>Découvrez quelques-unes de nos réalisations qui ont fait la différence</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plateforme E-commerce">
+                    </div>
+                    <div class="project-info">
+                        <h3>Boutique en ligne Saint-Louis</h3>
+                        <p>Plateforme e-commerce complète pour une entreprise locale avec gestion des stocks, paiements sécurisés et interface utilisateur optimisée.</p>
+                        <a href="portfolio.html#projet1" class="btn btn-small">Voir le projet</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Application Mobile">
+                    </div>
+                    <div class="project-info">
+                        <h3>Appli Tourisme Saint-Louis</h3>
+                        <p>Application mobile de guidage touristique avec réalité augmentée pour découvrir le riche patrimoine historique et culturel de la ville.</p>
+                        <a href="portfolio.html#projet2" class="btn btn-small">Voir le projet</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="portfolio.html" class="btn">Voir tout notre portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Témoignages</h2>
+                <p>Ce que nos clients disent de nous</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            "Nord-Web a transformé notre présence en ligne. Leur équipe professionnelle a créé une plateforme e-commerce qui a augmenté nos ventes de 40% en seulement 3 mois."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="" alt="Client">
+                            </div>
+                            <div class="author-info">
+                                <h4>Mamadou Ndiaye</h4>
+                                <p>Directeur, Saint-Louis Boutique</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Prêt à transformer votre idée en réalité numérique ?</h2>
+            <p>Contactez-nous pour discuter de votre projet et obtenir un devis personnalisé. Notre équipe est prête à vous accompagner vers le succès digital.</p>
+            <a href="contact.html" class="btn btn-accent">Démarrer un projet</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Nord<span>Web</span></div>
+                    <p>Solutions digitales innovantes créées à Saint-Louis par une équipe passionnée de développeurs et data scientifiques. Nous transformons vos idées en succès numériques.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="apropos.html">À propos</a></li>
+                        <li><a href="equipe.html">Équipe</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#web-dev">Développement Web</a></li>
+                        <li><a href="services.html#data-science">Data Science</a></li>
+                        <li><a href="services.html#ecommerce">E-commerce</a></li>
+                        <li><a href="services.html#mobile">Applications Mobile</a></li>
+                        <li><a href="services.html#seo">SEO & Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
+                    <p><i class="fas fa-envelope"></i> ambarhama07@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +221 78197 08 44</p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 9h-18h</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Nord-Web. Tous droits réservés. Fondé par Amadou BA </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // script.js - Améliorations pour Nord-Web
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // Fermer le menu mobile en cliquant sur un lien
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+            
+            // Header qui devient opaque au scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+                    header.style.backgroundColor = 'white';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+            
+            // Animation au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer les éléments à animer
+            const animatedElements = document.querySelectorAll('.hero-content, .service-card, .about-preview-text, .project-card, .section-title, .feature-item, .testimonial-slide');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Effet de parallaxe sur l'image hero
+            window.addEventListener('scroll', function() {
+                const heroImage = document.querySelector('.hero-image');
+                const scrolled = window.pageYOffset;
+                if (heroImage && window.innerWidth > 768) {
+                    const rate = scrolled * -0.2;
+                    heroImage.style.transform = `perspective(1000px) rotateY(-10deg) translateY(${rate}px)`;
+                }
+            });
+            
+            // Compteur de statistiques
+            const stats = [
+                { id: 'projects-count', target: 24, duration: 2000 },
+                { id: 'clients-count', target: 18, duration: 2000 },
+                { id: 'experience-count', target: 3, duration: 2000 },
+                { id: 'team-count', target: 2, duration: 2000 }
+            ];
+            
+            // Observer la section statistiques
+            const statsSection = document.querySelector('.stats');
+            if (statsSection) {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            stats.forEach(stat => {
+                                const element = document.getElementById(stat.id);
+                                if (element) {
+                                    animateCounter(element, stat.target, stat.duration);
+                                }
+                            });
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                statsObserver.observe(statsSection);
+            }
+            
+            function animateCounter(element, target, duration) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        element.textContent = target + '+';
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(start) + '+';
+                    }
+                }, 16);
+            }
+            
+            // Smooth scroll pour les ancres
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Ajout d'une notification de cookie simple
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    const cookieBanner = document.createElement('div');
+                    cookieBanner.className = 'cookie-banner';
+                    cookieBanner.innerHTML = `
+                        <p>Ce site utilise des cookies pour améliorer votre expérience. 
+                        <a href="politique-cookies.html">En savoir plus</a></p>
+                        <button class="btn btn-small" id="acceptCookies">Accepter</button>
+                    `;
+                    document.body.appendChild(cookieBanner);
+                    
+                    // Style pour la bannière de cookies
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        .cookie-banner {
+                            position: fixed;
+                            bottom: 20px;
+                            left: 20px;
+                            right: 20px;
+                            background: var(--dark-color);
+                            color: white;
+                            padding: 20px;
+                            border-radius: var(--border-radius);
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            box-shadow: var(--shadow-lg);
+                            z-index: 1001;
+                            max-width: 1200px;
+                            margin: 0 auto;
+                        }
+                        .cookie-banner p {
+                            margin: 0;
+                            flex: 1;
+                        }
+                        .cookie-banner a {
+                            color: var(--accent-color);
+                        }
+                        @media (max-width: 768px) {
+                            .cookie-banner {
+                                flex-direction: column;
+                                gap: 15px;
+                                text-align: center;
+                            }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    document.getElementById('acceptCookies').addEventListener('click', function() {
+                        localStorage.setItem('cookiesAccepted', 'true');
+                        cookieBanner.style.display = 'none';
+                    });
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
