@@ -288,7 +288,7 @@
             font-weight: 300;
         }
 
-        /* ===== NOTRE HISTOIRE - NOUVELLE SECTION ===== */
+        /* ===== NOTRE HISTOIRE - SECTION OPTIMISÉE MOBILE ===== */
         .our-history {
             background-color: var(--background-light);
             position: relative;
@@ -314,7 +314,7 @@
 
         .history-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
 
         .history-header h2 {
@@ -347,95 +347,83 @@
             line-height: 1.6;
         }
 
+        /* TIMELINE MOBILE-FIRST */
         .history-timeline {
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
+            padding-left: 40px; /* Espace pour la ligne sur mobile */
         }
 
+        /* Ligne verticale pour tous les écrans */
         .history-timeline::before {
             content: '';
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
+            left: 20px; /* Position pour mobile */
+            width: 3px;
             height: 100%;
             background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
         .history-item {
-            margin-bottom: 80px;
+            margin-bottom: 50px;
             position: relative;
-            width: 45%;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .history-item:nth-child(odd) {
-            margin-left: 0;
-            margin-right: auto;
-        }
-
-        .history-item:nth-child(even) {
-            margin-left: auto;
-            margin-right: 0;
-        }
-
+        /* Points sur la ligne */
         .history-item::before {
             content: '';
             position: absolute;
-            top: 20px;
-            width: 20px;
-            height: 20px;
+            top: 25px;
+            left: -33px; /* Ajustement pour mobile */
+            width: 18px;
+            height: 18px;
             background-color: white;
             border: 3px solid var(--primary-color);
             border-radius: 50%;
             z-index: 2;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.15);
         }
 
-        .history-item:nth-child(odd)::before {
-            right: -36px;
+        /* Année stylisée */
+        .history-year {
+            display: inline-block;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding: 8px 18px;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 25px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            font-family: var(--heading-font);
         }
 
-        .history-item:nth-child(even)::before {
-            left: -36px;
-        }
-
+        /* Contenu de la carte */
         .history-content {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 40px;
+            padding: 30px;
             box-shadow: var(--shadow-md);
             position: relative;
             border: 1px solid var(--gray-lighter);
             transition: var(--transition);
+            margin-left: 10px; /* Décallage pour mobile */
         }
 
         .history-content:hover {
             box-shadow: var(--shadow-lg);
             border-color: var(--primary-lighter);
-            transform: translateY(-10px);
-        }
-
-        .history-year {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-family: var(--heading-font);
-            display: inline-block;
-            padding: 8px 20px;
-            background-color: rgba(59, 130, 246, 0.1);
-            border-radius: 25px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            transform: translateY(-5px);
         }
 
         .history-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
             color: var(--dark-color);
             font-family: var(--heading-font);
             font-weight: 700;
@@ -445,7 +433,7 @@
         .history-content p {
             color: var(--gray-color);
             line-height: 1.7;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             margin-bottom: 15px;
         }
 
@@ -454,6 +442,7 @@
             font-weight: 600;
         }
 
+        /* Listes d'accomplissements */
         .history-content .achievements {
             margin-top: 20px;
             padding-left: 20px;
@@ -464,6 +453,7 @@
             margin-bottom: 10px;
             position: relative;
             padding-left: 25px;
+            line-height: 1.6;
         }
 
         .history-content .achievements li::before {
@@ -474,10 +464,11 @@
             font-weight: bold;
         }
 
+        /* Note des fondateurs */
         .founders-note {
             margin-top: 50px;
             text-align: center;
-            padding: 40px;
+            padding: 35px;
             background-color: white;
             border-radius: var(--border-radius);
             border: 1px solid var(--gray-lighter);
@@ -497,7 +488,7 @@
         }
 
         .founders-note p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--dark-color);
             line-height: 1.8;
             font-style: italic;
@@ -512,7 +503,7 @@
             font-size: 1.1rem;
         }
 
-        /* ===== MISSION & VISION ===== */
+        /* ===== MISSION & VISION - AMÉLIORÉ AVEC LOGOS ===== */
         .mission-vision {
             background-color: white;
             position: relative;
@@ -571,27 +562,88 @@
             border-color: var(--primary-lighter);
         }
 
-        .mv-card i {
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            margin-bottom: 25px;
-            display: inline-block;
+        /* Nouveau design pour les logos */
+        .mv-logo-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mv-logo-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
             background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            
-            -webkit-text-fill-color: transparent;
+            opacity: 0.1;
             transition: var(--transition);
         }
 
-        .mv-card:hover i {
+        .mv-card:hover .mv-logo-circle {
+            opacity: 0.15;
             transform: scale(1.1);
         }
 
+        .mv-logo-icon {
+            position: relative;
+            z-index: 2;
+            font-size: 3rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .mv-card:hover .mv-logo-icon {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        /* Logo pour Notre Mission */
+        .logo-mission {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Logo pour Notre Vision */
+        .logo-vision {
+            background: linear-gradient(135deg, var(--accent-color), #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Logo pour Nos Valeurs */
+        .logo-values {
+            background: linear-gradient(135deg, #0ea5e9, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .mv-card h3 {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             color: var(--dark-color);
             font-family: var(--heading-font);
             font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .mv-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
         }
 
         .mv-card p, .mv-card ul {
@@ -614,13 +666,29 @@
         }
 
         .mv-card li::before {
-            content: '✓';
+            content: '';
             position: absolute;
             left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
             color: var(--primary-color);
             font-weight: bold;
-            font-size: 1.1rem;
         }
+
+        .mv-card li:nth-child(1)::before { content: '1'; }
+        .mv-card li:nth-child(2)::before { content: '2'; }
+        .mv-card li:nth-child(3)::before { content: '3'; }
+        .mv-card li:nth-child(4)::before { content: '4'; }
+        .mv-card li:nth-child(5)::before { content: '5'; }
+        .mv-card li:nth-child(6)::before { content: '6'; }
 
         .mv-card li strong {
             color: var(--dark-color);
@@ -1076,7 +1144,7 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE - OPTIMISATION MOBILE ===== */
         @media (max-width: 1024px) {
             .page-header h1 {
                 font-size: 3.2rem;
@@ -1098,19 +1166,50 @@
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
             
+            /* Timeline version desktop */
+            .history-timeline {
+                padding-left: 0;
+            }
+            
             .history-timeline::before {
-                left: 30px;
+                left: 50%;
+                transform: translateX(-50%);
             }
             
             .history-item {
-                width: 100%;
-                margin-left: 60px !important;
-                margin-right: 0 !important;
+                width: 45%;
+            }
+            
+            .history-item:nth-child(odd) {
+                margin-left: 0;
+                margin-right: auto;
+                text-align: right;
+            }
+            
+            .history-item:nth-child(even) {
+                margin-left: auto;
+                margin-right: 0;
+                text-align: left;
             }
             
             .history-item::before {
-                left: -43px !important;
-                right: auto !important;
+                top: 25px;
+                width: 20px;
+                height: 20px;
+            }
+            
+            .history-item:nth-child(odd)::before {
+                left: auto;
+                right: -41px;
+            }
+            
+            .history-item:nth-child(even)::before {
+                left: -41px;
+                right: auto;
+            }
+            
+            .history-content {
+                margin-left: 0;
             }
             
             .page-header {
@@ -1120,7 +1219,7 @@
 
         @media (max-width: 768px) {
             :root {
-                --section-padding: 70px 0;
+                --section-padding: 60px 0;
             }
             
             nav {
@@ -1146,7 +1245,7 @@
             
             nav ul {
                 flex-direction: column;
-                gap: 25px;
+                gap: 20px;
             }
             
             .mobile-menu-btn {
@@ -1154,12 +1253,13 @@
             }
             
             .page-header {
-                padding: 150px 0 90px;
+                padding: 140px 0 80px;
                 background-attachment: scroll;
             }
             
             .page-header h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
+                padding: 0 15px;
             }
             
             .page-header p {
@@ -1167,11 +1267,123 @@
                 padding: 0 15px;
             }
             
-            .section-title h2 {
-                font-size: 2.2rem;
+            /* SECTION HISTOIRE OPTIMISÉE MOBILE */
+            .history-header {
+                margin-bottom: 40px;
             }
             
             .history-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .history-header p {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+            
+            .history-timeline {
+                padding-left: 35px;
+            }
+            
+            .history-timeline::before {
+                left: 17px;
+                width: 3px;
+            }
+            
+            .history-item {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            
+            .history-item::before {
+                left: -28px;
+                width: 16px;
+                height: 16px;
+                border-width: 3px;
+            }
+            
+            .history-year {
+                font-size: 1.2rem;
+                padding: 7px 16px;
+            }
+            
+            .history-content {
+                padding: 25px 20px;
+                margin-left: 5px;
+            }
+            
+            .history-content h3 {
+                font-size: 1.4rem;
+                margin-bottom: 12px;
+            }
+            
+            .history-content p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            .history-content .achievements {
+                margin-top: 15px;
+                padding-left: 18px;
+            }
+            
+            .history-content .achievements li {
+                font-size: 1rem;
+                margin-bottom: 8px;
+                padding-left: 22px;
+            }
+            
+            .founders-note {
+                padding: 25px 20px;
+                margin-top: 40px;
+            }
+            
+            .founders-note p {
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
+            
+            .founders-note .author {
+                font-size: 1rem;
+            }
+            
+            /* SECTION MISSION VISION OPTIMISÉE MOBILE */
+            .mv-logo-container {
+                width: 85px;
+                height: 85px;
+                margin-bottom: 25px;
+            }
+            
+            .mv-logo-icon {
+                font-size: 2.5rem;
+            }
+            
+            .mv-card {
+                padding: 35px 25px;
+            }
+            
+            .mv-card h3 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+            
+            .mv-card p, .mv-card ul {
+                font-size: 1rem;
+            }
+            
+            .mv-card li {
+                padding-left: 28px;
+                font-size: 0.95rem;
+            }
+            
+            .mv-card li::before {
+                width: 18px;
+                height: 18px;
+                font-size: 0.75rem;
+            }
+            
+            /* AUTRES SECTIONS */
+            .section-title h2 {
                 font-size: 2.2rem;
             }
             
@@ -1192,13 +1404,40 @@
                 grid-template-columns: 1fr;
             }
             
+            .why-card {
+                padding: 30px 25px;
+            }
+            
+            .why-card h3 {
+                font-size: 1.3rem;
+            }
+            
             .founders-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .founder-card {
+                padding: 30px 25px;
+            }
+            
+            .founder-card h3 {
+                font-size: 1.6rem;
+            }
+            
+            .founder-icon {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .founder-icon i {
+                font-size: 2.2rem;
             }
             
             .cta-btns {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
             }
             
             .cta-btns .btn {
@@ -1209,48 +1448,160 @@
         }
 
         @media (max-width: 480px) {
+            .page-header {
+                padding: 120px 0 60px;
+            }
+            
             .page-header h1 {
-                font-size: 2.3rem;
+                font-size: 2rem;
             }
             
             .page-header p {
                 font-size: 1rem;
+                line-height: 1.6;
             }
             
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
+            /* SECTION HISTOIRE - SMALL MOBILE */
             .history-header h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .history-header p {
+                font-size: 1rem;
+            }
+            
+            .history-timeline {
+                padding-left: 30px;
+            }
+            
+            .history-timeline::before {
+                left: 15px;
+            }
+            
+            .history-item::before {
+                left: -25px;
+                width: 14px;
+                height: 14px;
+            }
+            
+            .history-year {
+                font-size: 1.1rem;
+                padding: 6px 14px;
+            }
+            
+            .history-content {
+                padding: 20px 18px;
+            }
+            
+            .history-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            /* SECTION MISSION VISION - SMALL MOBILE */
+            .mv-logo-container {
+                width: 75px;
+                height: 75px;
+                margin-bottom: 20px;
+            }
+            
+            .mv-logo-icon {
+                font-size: 2.2rem;
+            }
+            
+            .mv-card {
+                padding: 30px 20px;
+            }
+            
+            .mv-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .founders-note {
+                padding: 20px 18px;
+            }
+            
+            /* AUTRES SECTIONS */
+            .section-title h2 {
+                font-size: 1.8rem;
             }
             
             .section-title p {
                 font-size: 1.1rem;
+                padding: 0 10px;
             }
             
             .cta h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .cta p {
                 font-size: 1.1rem;
-            }
-            
-            .mv-card {
-                padding: 35px 25px;
+                padding: 0 15px;
             }
             
             .why-card {
-                padding: 30px 25px;
+                padding: 25px 20px;
             }
             
-            .history-content {
-                padding: 30px 20px;
+            .why-card h3 {
+                font-size: 1.2rem;
             }
             
             .founder-card {
-                padding: 30px 20px;
+                padding: 25px 20px;
+            }
+            
+            .founder-card h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            /* SECTION HISTOIRE - VERY SMALL MOBILE */
+            .history-timeline {
+                padding-left: 25px;
+            }
+            
+            .history-timeline::before {
+                left: 12px;
+            }
+            
+            .history-item::before {
+                left: -22px;
+            }
+            
+            .history-content {
+                padding: 18px 16px;
+            }
+            
+            .history-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .history-content p {
+                font-size: 0.95rem;
+            }
+            
+            .history-content .achievements li {
+                font-size: 0.95rem;
+            }
+            
+            /* SECTION MISSION VISION - VERY SMALL MOBILE */
+            .mv-logo-container {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .mv-logo-icon {
+                font-size: 2rem;
+            }
+            
+            .mv-card {
+                padding: 25px 18px;
+            }
+            
+            .mv-card h3 {
+                font-size: 1.3rem;
             }
         }
 
@@ -1264,12 +1615,8 @@
             transform: translateY(20px);
         }
 
-        /* Effet de dégradé animé pour les icônes */
-        .mv-card i {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color), var(--primary-light));
-            background-size: 200% 200%;
-            
-            -webkit-text-fill-color: transparent;
+        /* Animation pour les logos */
+        .mv-logo-circle {
             animation: gradientShift 5s ease infinite;
         }
     </style>
@@ -1307,7 +1654,7 @@
         </div>
     </section>
 
-    <!-- Notre Histoire - NOUVELLE SECTION -->
+    <!-- Notre Histoire - SECTION OPTIMISÉE MOBILE -->
     <section class="our-history">
         <div class="container">
             <div class="history-section">
@@ -1373,24 +1720,36 @@
         </div>
     </section>
 
-    <!-- Notre Mission & Vision -->
+    <!-- Notre Mission & Vision - AVEC LOGOS -->
     <section class="mission-vision">
         <div class="container">
             <div class="mv-grid">
+                <!-- Notre Mission -->
                 <div class="mv-card">
-                    <i class="fas fa-bullseye"></i>
+                    <div class="mv-logo-container">
+                        <div class="mv-logo-circle"></div>
+                        <i class="mv-logo-icon fas fa-bullseye logo-mission"></i>
+                    </div>
                     <h3>Notre Mission</h3>
                     <p>Fournir des solutions digitales innovantes, accessibles et de haute qualité qui répondent aux besoins spécifiques des entreprises et particuliers de Saint-Louis et au-delà, en favorisant la transformation numérique de notre région. Nous croyons que la technologie peut être un puissant levier de développement économique et social.</p>
                 </div>
                 
+                <!-- Notre Vision -->
                 <div class="mv-card">
-                    <i class="fas fa-eye"></i>
+                    <div class="mv-logo-container">
+                        <div class="mv-logo-circle"></div>
+                        <i class="mv-logo-icon fas fa-eye logo-vision"></i>
+                    </div>
                     <h3>Notre Vision</h3>
                     <p>Devenir le partenaire digital privilégié en Afrique de l'Ouest, reconnu pour notre excellence technique, notre innovation et notre impact positif sur le développement économique et social de notre communauté. Nous aspirons à inspirer la prochaine génération de talents numériques à Saint-Louis.</p>
                 </div>
                 
+                <!-- Nos Valeurs Fondamentales -->
                 <div class="mv-card">
-                    <i class="fas fa-handshake"></i>
+                    <div class="mv-logo-container">
+                        <div class="mv-logo-circle"></div>
+                        <i class="mv-logo-icon fas fa-handshake logo-values"></i>
+                    </div>
                     <h3>Nos Valeurs Fondamentales</h3>
                     <ul>
                         <li><strong>Innovation</strong> : Toujours à la recherche des meilleures solutions technologiques</li>
@@ -1610,7 +1969,7 @@
                         entry.target.style.transform = 'translateY(0)';
                     }
                 });
-            }, { threshold: 0.2 });
+            }, { threshold: 0.15 }); // Seuil réduit pour mobile
             
             historyItems.forEach(item => historyObserver.observe(item));
             
@@ -1631,32 +1990,71 @@
                 });
             });
             
+            // Désactiver le parallaxe sur mobile
+            let parallaxEnabled = window.innerWidth > 768;
+            window.addEventListener('resize', function() {
+                parallaxEnabled = window.innerWidth > 768;
+            });
+            
             // Effet de parallaxe sur l'en-tête de page
             window.addEventListener('scroll', function() {
                 const pageHeader = document.querySelector('.page-header');
                 const scrolled = window.pageYOffset;
-                if (pageHeader && window.innerWidth > 768) {
+                if (pageHeader && parallaxEnabled) {
                     const rate = scrolled * 0.5;
                     pageHeader.style.backgroundPosition = `center ${rate}px`;
                 }
             });
             
-            // Animation des cartes au survol
-            const cards = document.querySelectorAll('.mv-card, .why-card, .founder-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.zIndex = '10';
+            // Animation des cartes au survol (désactivé sur mobile)
+            if (window.innerWidth > 768) {
+                const cards = document.querySelectorAll('.mv-card, .why-card, .founder-card, .history-content');
+                cards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.zIndex = '10';
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        this.style.zIndex = '1';
+                    });
                 });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.zIndex = '1';
-                });
-            });
+            }
             
             // Animation au chargement de la page
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
+            
+            // Amélioration pour le tactile sur mobile
+            if ('ontouchstart' in window) {
+                // Ajouter un effet de tap sur mobile
+                const touchElements = document.querySelectorAll('.btn, .history-content, .mv-card, .why-card, .founder-card');
+                touchElements.forEach(el => {
+                    el.addEventListener('touchstart', function() {
+                        this.style.transform = 'scale(0.98)';
+                    });
+                    
+                    el.addEventListener('touchend', function() {
+                        this.style.transform = '';
+                    });
+                    
+                    el.addEventListener('touchcancel', function() {
+                        this.style.transform = '';
+                    });
+                });
+            }
+            
+            // Animation supplémentaire pour les logos
+            const logoCircles = document.querySelectorAll('.mv-logo-circle');
+            logoCircles.forEach(circle => {
+                circle.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1) rotate(5deg)';
+                });
+                
+                circle.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
         });
     </script>
 </body>
