@@ -121,7 +121,7 @@
 
         .btn-outline:hover {
             background: var(--primary);
-            color: rgb(20, 20, 20);
+            color: white;
         }
 
         /* ===== HEADER ===== */
@@ -1033,12 +1033,14 @@
             }
         }
 
+        /* CORRECTION DU MENU MOBILE */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
             }
             
-            nav {
+            /* CORRIGÉ : Utilisation de #mainNav au lieu de nav */
+            #mainNav {
                 position: fixed;
                 top: 80px;
                 left: 0;
@@ -1048,13 +1050,15 @@
                 box-shadow: 0 10px 20px rgba(0,0,0,0.1);
                 display: none;
                 border-top: 1px solid var(--gray-soft);
+                z-index: 999;
             }
             
-            nav.show {
+            /* CORRIGÉ : Utilisation de #mainNav.show */
+            #mainNav.show {
                 display: block;
             }
             
-            nav ul {
+            #mainNav ul {
                 flex-direction: column;
                 gap: 20px;
             }
@@ -1199,8 +1203,6 @@
         </div>
     </section>
 
-    
-
     <!-- Projets Portfolio -->
     <section class="portfolio-projects">
         <div class="container">
@@ -1250,7 +1252,6 @@
                             </div>
                         </div>
                         
-                       
                     </div>
                     <div class="project-detail-image">
                         <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
@@ -1310,8 +1311,6 @@
                                 <span class="tech-tag">Redux</span>
                             </div>
                         </div>
-                        
-                        
                     </div>
                 </div>
             </div>
@@ -1372,8 +1371,6 @@
                                 <span class="tech-tag">LoRaWAN</span>
                             </div>
                         </div>
-                        
-                      
                     </div>
                     <!-- Section images multiple pour AgriSmart -->
                     <div class="project-detail-image">
@@ -1483,8 +1480,6 @@
                                 <span class="tech-tag">Réseaux sécurisés</span>
                             </div>
                         </div>
-                        
-                     
                     </div>
                 </div>
             </div>
@@ -1715,9 +1710,9 @@
     </footer>
 
     <script>
-        // JavaScript simplifié pour le Portfolio
+        // JavaScript pour le Portfolio avec correction du menu mobile
         document.addEventListener('DOMContentLoaded', function() {
-            // Menu mobile
+            // Menu mobile - CORRIGÉ
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mainNav = document.getElementById('mainNav');
             
@@ -1781,7 +1776,7 @@
                 observer.observe(project);
             });
 
-            // Fermer menu mobile en cliquant à l'extérieur
+            // Fermer menu mobile en cliquant à l'extérieur - CORRIGÉ
             document.addEventListener('click', function(event) {
                 if (mainNav && mainNav.classList.contains('show') && 
                     !mainNav.contains(event.target) && 
@@ -1807,6 +1802,12 @@
                                 top: targetPosition,
                                 behavior: 'smooth'
                             });
+                            
+                            // Fermer le menu mobile s'il est ouvert
+                            if (mainNav && mainNav.classList.contains('show')) {
+                                mainNav.classList.remove('show');
+                                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                            }
                         }
                     }
                 });
