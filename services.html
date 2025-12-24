@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nos Services | Nord Web - Solutions Digitales Complètes</title>
-    <meta name="description" content="Découvrez nos services de développement web, data science, e-commerce, applications mobiles, SEO et design UI/UX. Solutions sur mesure pour votre transformation numérique.">
+    <meta name="description" content="Découvrez nos services de développement web, data science, e-commerce, applications mobiles, SEO, design UI/UX et sécurité électronique. Solutions sur mesure pour votre transformation numérique.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES CSS UNIFIÉES ===== */
+        /* ===== VARIABLES CSS UNIFIÉES - PALETTE BLEU CLAIR ET BLANC ===== */
         :root {
-            /* Couleurs principales */
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary-color: #7c3aed;
-            --accent-color: #f59e0b;
-            --yellow-color: #ffd700;
-            --yellow-dark: #e6c300;
-            --dark-color: #1e293b;
-            --light-color: #f8fafc;
-            --gray-color: #64748b;
-            --gray-light: #e2e8f0;
+            /* Couleurs principales - Palette bleu clair */
+            --primary-color: #3b82f6; /* Bleu vif */
+            --primary-light: #60a5fa; /* Bleu clair */
+            --primary-soft: #dbeafe; /* Bleu très clair */
+            --primary-dark: #2563eb; /* Bleu foncé pour contrastes */
+            
+            --secondary-color: #38bdf8; /* Bleu cyan */
+            --accent-color: #0ea5e9; /* Bleu accent */
+            --accent-light: #7dd3fc; /* Bleu très clair */
+            
+            /* Couleurs neutres */
+            --dark-color: #1e293b; /* Gris foncé */
+            --dark-light: #334155; /* Gris moyen */
+            --light-color: #f8fafc; /* Blanc cassé */
+            --white-color: #ffffff; /* Blanc pur */
+            --gray-color: #64748b; /* Gris */
+            --gray-light: #e2e8f0; /* Gris très clair */
+            --gray-soft: #f1f5f9; /* Gris ultra clair */
             
             /* Typographie */
             --heading-font: 'Montserrat', sans-serif;
@@ -33,9 +40,10 @@
             --transition: all 0.3s ease;
             
             /* Ombres */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-sm: 0 2px 4px rgba(59, 130, 246, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
+            --shadow-blue: 0 10px 25px rgba(59, 130, 246, 0.15);
         }
 
         /* ===== RÉINITIALISATION ===== */
@@ -53,7 +61,7 @@
             font-family: var(--body-font);
             line-height: 1.6;
             color: var(--dark-color);
-            background-color: white;
+            background-color: var(--white-color);
             overflow-x: hidden;
         }
 
@@ -109,7 +117,7 @@
         .btn:hover {
             background-color: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-blue);
         }
 
         .btn-accent {
@@ -117,7 +125,17 @@
         }
 
         .btn-accent:hover {
-            background-color: #e68a00;
+            background-color: #0284c7;
+        }
+
+        .btn-light {
+            background-color: var(--primary-soft);
+            color: var(--primary-color);
+        }
+
+        .btn-light:hover {
+            background-color: var(--primary-light);
+            color: white;
         }
 
         .btn-small {
@@ -136,29 +154,44 @@
             color: white;
         }
 
-        /* ===== HEADER UNIFIÉ EN BLANC ===== */
+        /* ===== HEADER UNIFIÉ AVEC IMAGE DE FOND AMÉLIORÉE ===== */
         header {
-            background-color: white; /* NAVBAR EN BLANC */
+            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.99)),
+                        url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 20px 0;
+            padding: 18px 0;
             transition: var(--transition);
-            box-shadow: var(--shadow-md); /* Ombre pour bien voir la navbar */
+            box-shadow: var(--shadow-md);
+            border-bottom: 1px solid var(--primary-soft);
+        }
+
+        header.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15);
+            background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 1)),
+                        url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--dark-color); /* Texte en couleur sombre */
+            color: var(--primary-color);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -167,15 +200,14 @@
         }
 
         .logo i {
-            color: var(--yellow-color); /* LOGO EN JAUNE */
+            color: var(--primary-color);
             font-size: 2rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
 
         .logo:hover i {
             transform: rotate(15deg) scale(1.1);
-            color: #ffed4a;
+            color: var(--primary-light);
         }
 
         .logo span {
@@ -184,7 +216,7 @@
         }
 
         .logo:hover span {
-            color: var(--yellow-color);
+            color: var(--primary-color);
         }
 
         nav ul {
@@ -195,11 +227,17 @@
 
         nav a {
             text-decoration: none;
-            color: var(--dark-color); /* Liens en couleur sombre */
+            color: var(--dark-color);
             font-weight: 500;
             position: relative;
             padding: 5px 0;
             transition: var(--transition);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         nav a::after {
@@ -209,7 +247,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-color); /* Soulignement en bleu */
+            background-color: var(--primary-color);
             transition: var(--transition);
         }
 
@@ -218,9 +256,8 @@
             width: 100%;
         }
 
-        nav a:hover,
-        nav a.active {
-            color: var(--primary-color); /* Texte en bleu au hover/actif */
+        nav a:hover {
+            color: var(--primary-color);
         }
 
         .mobile-menu-btn {
@@ -228,20 +265,20 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--dark-color); /* Icône en couleur sombre */
+            color: var(--primary-color);
             cursor: pointer;
             padding: 5px;
             transition: var(--transition);
         }
 
         .mobile-menu-btn:hover {
-            color: var(--primary-color); /* Bleu au hover */
+            color: var(--primary-light);
             transform: rotate(90deg);
         }
 
         /* ===== PAGE HEADER ===== */
         .page-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%),
+            background: 
                         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -251,7 +288,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin-top: 80px; /* Marge pour compenser le header fixe */
+            margin-top: 80px;
         }
 
         .page-header::before {
@@ -261,7 +298,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.85), rgba(124, 58, 237, 0.75));
+            
         }
 
         .page-header::after {
@@ -287,7 +324,7 @@
             font-family: var(--heading-font);
             font-weight: 700;
             line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .page-header p {
@@ -296,35 +333,34 @@
             margin: 0 auto 40px;
             opacity: 0.95;
             line-height: 1.6;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .page-header .btn {
-            background-color: var(--yellow-color);
-            color: var(--dark-color);
+            background-color: var(--white-color);
+            color: var(--primary-color);
             font-weight: 600;
             padding: 15px 35px;
             font-size: 1.1rem;
         }
 
         .page-header .btn:hover {
-            background-color: var(--yellow-dark);
+            background-color: var(--primary-soft);
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
         }
 
         /* ===== NAVIGATION SERVICES ===== */
         .service-navigation {
             position: sticky;
             top: 80px;
-            background: white;
+            background: var(--white-color);
             padding: 20px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-lg);
             margin: -60px auto 40px;
             z-index: 100;
-            max-width: 1000px;
-            border: 2px solid rgba(37, 99, 235, 0.1);
+            max-width: 1200px;
+            border: 2px solid var(--primary-soft);
         }
 
         .service-nav-list {
@@ -336,7 +372,7 @@
 
         .service-nav-link {
             padding: 12px 24px;
-            background: rgba(37, 99, 235, 0.1);
+            background: var(--primary-soft);
             color: var(--primary-color);
             border-radius: 50px;
             font-weight: 600;
@@ -344,7 +380,7 @@
             text-decoration: none;
             display: block;
             font-size: 0.95rem;
-            border: 2px solid rgba(37, 99, 235, 0.2);
+            border: 2px solid var(--primary-soft);
             font-family: var(--body-font);
             display: flex;
             align-items: center;
@@ -360,14 +396,14 @@
             background: var(--primary-color);
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+            box-shadow: var(--shadow-blue);
             border-color: var(--primary-color);
         }
 
         /* ===== SERVICES DÉTAILLÉS ===== */
         .main-services {
             padding: 60px 0;
-            background-color: white;
+            background-color: var(--white-color);
         }
 
         .service-detail {
@@ -413,12 +449,11 @@
         }
 
         .service-detail-text h2 i {
-            color: var(--yellow-color);
+            color: var(--primary-color);
             font-size: 2rem;
-            background: linear-gradient(45deg, var(--yellow-color), #ffed4a);
-            -webkit-background-clip: text;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .service-detail-text > p {
@@ -430,12 +465,12 @@
 
         .service-features {
             margin: 30px 0;
-            background: var(--light-color);
+            background: var(--primary-soft);
             padding: 25px;
             border-radius: var(--border-radius);
-            border-left: 4px solid var(--yellow-color);
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+            border-top: 1px solid var(--accent-light);
+            border-bottom: 1px solid var(--accent-light);
         }
 
         .service-features h3 {
@@ -450,7 +485,7 @@
         }
 
         .service-features h3 i {
-            color: var(--yellow-color);
+            color: var(--primary-color);
         }
 
         .service-features ul {
@@ -461,7 +496,7 @@
             margin-bottom: 10px;
             padding-left: 25px;
             position: relative;
-            color: var(--gray-color);
+            color: var(--dark-light);
             line-height: 1.5;
         }
 
@@ -470,7 +505,7 @@
         }
 
         .service-features li i {
-            color: var(--yellow-color);
+            color: var(--primary-color);
             position: absolute;
             left: 0;
             top: 2px;
@@ -483,13 +518,13 @@
             box-shadow: var(--shadow-lg);
             transition: var(--transition);
             position: relative;
-            border: 3px solid white;
-            outline: 2px solid var(--yellow-color);
+            border: 3px solid var(--white-color);
+            outline: 2px solid var(--primary-soft);
         }
 
         .service-detail-image:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 50px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 30px 50px rgba(59, 130, 246, 0.15);
         }
 
         .service-detail-image::before {
@@ -499,7 +534,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), transparent);
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), transparent);
             z-index: 1;
         }
 
@@ -534,29 +569,29 @@
         }
 
         .tech-tag {
-            background: rgba(255, 215, 0, 0.1);
-            color: #b38f00;
+            background: var(--primary-soft);
+            color: var(--primary-color);
             padding: 8px 16px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid var(--accent-light);
             cursor: default;
         }
 
         .tech-tag:hover {
-            background: var(--yellow-color);
-            color: var(--dark-color);
+            background: var(--primary-color);
+            color: white;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
-            border-color: var(--yellow-color);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+            border-color: var(--primary-color);
         }
 
         /* ===== SECTION STATISTIQUES ===== */
         .stats-section {
             padding: 80px 0;
-            background: linear-gradient(135deg, var(--light-color), var(--gray-light)),
+            background: 
                         url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -571,7 +606,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(22, 22, 22, 0.85);
         }
 
         .stats-section .container {
@@ -586,19 +621,19 @@
         }
 
         .stat-card {
-            background: white;
+            background: var(--white-color);
             padding: 30px;
             border-radius: var(--border-radius);
             text-align: center;
             box-shadow: var(--shadow-lg);
             transition: var(--transition);
-            border: 2px solid rgba(255, 215, 0, 0.1);
+            border: 2px solid var(--primary-soft);
         }
 
         .stat-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
-            border-color: var(--yellow-color);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+            border-color: var(--primary-light);
         }
 
         .stat-number {
@@ -618,7 +653,7 @@
         /* ===== AUTRES SERVICES ===== */
         .other-services {
             padding: 80px 0;
-            background: white;
+            background: var(--white-color);
         }
 
         .section-title {
@@ -649,7 +684,7 @@
         }
 
         .other-service-card {
-            background: white;
+            background: var(--white-color);
             padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-md);
@@ -657,7 +692,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--gray-light);
+            border: 1px solid var(--primary-soft);
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -675,21 +710,20 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--yellow-color), var(--accent-color));
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
 
         .other-service-card:hover {
             transform: translateY(-15px);
             box-shadow: var(--shadow-lg);
-            border-color: rgba(255, 215, 0, 0.1);
+            border-color: var(--primary-light);
         }
 
         .other-service-card i {
             font-size: 2.5rem;
             margin-bottom: 20px;
             display: block;
-            color: var(--yellow-color);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: var(--primary-color);
         }
 
         .other-service-card h3 {
@@ -713,19 +747,19 @@
         }
 
         .tech-tags-small span {
-            background: rgba(255, 215, 0, 0.1);
-            color: #b38f00;
+            background: var(--primary-soft);
+            color: var(--primary-color);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid var(--accent-light);
         }
 
         /* ===== PROCESSUS DE SERVICE ===== */
         .service-process {
             padding: 80px 0;
-            background: var(--light-color);
+            background: var(--gray-soft);
         }
 
         .process-timeline {
@@ -743,12 +777,12 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--yellow-color), var(--accent-color));
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             z-index: 1;
         }
 
         .process-step {
-            background: white;
+            background: var(--white-color);
             padding: 30px;
             border-radius: var(--border-radius);
             text-align: center;
@@ -774,7 +808,7 @@
         .step-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--yellow-color), var(--accent-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             border-radius: 50%;
             display: flex;
@@ -783,8 +817,8 @@
             font-size: 2rem;
             font-weight: 700;
             margin: 0 auto 20px;
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-            border: 3px solid white;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            border: 3px solid var(--white-color);
         }
 
         .process-step h3 {
@@ -801,12 +835,12 @@
 
         /* ===== SECTION CTA ===== */
         .cta {
-            background: linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.85)),
+            background: 
                         url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: white;
+            color: rgb(14, 13, 13);
             padding: 100px 0;
             text-align: center;
             position: relative;
@@ -820,7 +854,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.4), rgba(255, 215, 0, 0.3));
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.7), rgba(14, 165, 233, 0.6));
         }
 
         .cta .container {
@@ -835,7 +869,6 @@
             z-index: 2;
             font-family: var(--heading-font);
             font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .cta p {
@@ -846,25 +879,24 @@
             position: relative;
             z-index: 2;
             line-height: 1.6;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .cta .btn {
-            background-color: var(--yellow-color);
-            color: var(--dark-color);
+            background-color: var(--white-color);
+            color: var(--primary-color);
             margin: 0 10px;
             font-weight: 600;
             padding: 15px 35px;
         }
 
         .cta .btn:hover {
-            background-color: var(--yellow-dark);
+            background-color: var(--primary-soft);
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
         }
 
         .cta .btn-accent {
-            background-color: var(--primary-color);
+            background-color: var(--accent-color);
             color: white;
         }
 
@@ -887,7 +919,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--yellow-color), var(--accent-color));
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
 
         .footer-content {
@@ -908,7 +940,7 @@
         }
 
         .footer-logo i {
-            color: var(--yellow-color);
+            color: var(--primary-light);
             font-size: 2rem;
         }
 
@@ -941,8 +973,8 @@
         }
 
         .social-icons a:hover {
-            background-color: var(--yellow-color);
-            color: var(--dark-color);
+            background-color: var(--primary-color);
+            color: var(--white-color);
             transform: translateY(-3px);
         }
 
@@ -961,7 +993,7 @@
         .footer-links h4 i,
         .footer-services h4 i,
         .footer-contact h4 i {
-            color: var(--yellow-color);
+            color: var(--primary-light);
         }
 
         .footer-links ul,
@@ -983,7 +1015,7 @@
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: var(--yellow-color);
+            color: var(--primary-light);
             padding-left: 5px;
         }
 
@@ -996,7 +1028,7 @@
         }
 
         .footer-contact i {
-            color: var(--yellow-color);
+            color: var(--primary-light);
             width: 20px;
         }
 
@@ -1009,7 +1041,7 @@
         }
 
         .copyright i {
-            color: var(--yellow-color);
+            color: var(--primary-light);
             margin: 0 5px;
         }
 
@@ -1034,11 +1066,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        @keyframes float {
-            from { transform: rotate(0deg) translateX(10px) rotate(0deg); }
-            to { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
         }
 
         /* ===== OVERLAY POUR MENU MOBILE ===== */
@@ -1079,7 +1106,7 @@
             visibility: hidden;
             transition: var(--transition);
             z-index: 99;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
         }
         
         .scroll-top.visible {
@@ -1136,7 +1163,7 @@
                 right: -100%;
                 width: 280px;
                 height: 100vh;
-                background: white;
+                background: var(--white-color);
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
                 flex-direction: column;
                 padding: 80px 30px 30px;
@@ -1288,8 +1315,8 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Nos Services Digitaux</h1>
-            <p>Nous transformons vos idées en solutions numériques performantes. De la conception au déploiement, nous accompagnons votre projet à chaque étape pour garantir succès et innovation.</p>
+            <h3>Nous transformons vos idées en solutions numériques performantes. Du développement web à la sécurité électronique, nous accompagnons votre projet à chaque étape pour garantir succès et innovation.</h3>
+            <p></p>
             <a href="contact.html" class="btn">Demander un Devis Gratuit</a>
         </div>
     </section>
@@ -1300,6 +1327,7 @@
             <a href="#web-dev" class="service-nav-link active"><i class="fas fa-laptop-code"></i> Développement Web</a>
             <a href="#ecommerce" class="service-nav-link"><i class="fas fa-shopping-cart"></i> E-commerce</a>
             <a href="#mobile" class="service-nav-link"><i class="fas fa-mobile-alt"></i> Applications Mobiles</a>
+            <a href="#security" class="service-nav-link"><i class="fas fa-shield-alt"></i> Caméras & Alarmes</a>
             <a href="#seo" class="service-nav-link"><i class="fas fa-chart-line"></i> SEO & Marketing</a>
             <a href="#ui-ux" class="service-nav-link"><i class="fas fa-palette"></i> Design UI/UX</a>
             <a href="#data" class="service-nav-link"><i class="fas fa-database"></i> Data Science</a>
@@ -1414,6 +1442,42 @@
                 </div>
             </div>
 
+            <!-- Caméras et Alarmes - NOUVELLE IMAGE -->
+            <div class="service-detail" id="security">
+                <div class="service-detail-content reverse">
+                    <div class="service-detail-text">
+                        <h2><i class="fas fa-shield-alt"></i> Installation de Caméras & Alarmes</h2>
+                        <p>Protégez vos biens et vos proches avec nos solutions de sécurité électronique sur mesure. Installation professionnelle de systèmes de surveillance et d'alarme haute technologie.</p>
+                        
+                        <div class="service-features">
+                            <h3><i class="fas fa-check-circle"></i> Nos Services Sécurité</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Caméras HD 4K</strong> : Vision nocturne, détection mouvement</li>
+                                <li><i class="fas fa-check"></i> <strong>Systèmes d'alarme</strong> : Détection intrusion, incendie, inondation</li>
+                                <li><i class="fas fa-check"></i> <strong>Contrôle d'accès</strong> : Badges, biométrie, vidéophone intelligent</li>
+                                <li><i class="fas fa-check"></i> <strong>Surveillance à distance</strong> : Application mobile dédiée 24/7</li>
+                                <li><i class="fas fa-check"></i> <strong>Maintenance & dépannage</strong> : Service technique réactif</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="technologies">
+                            <h3>Équipements & Technologies</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Hikvision</span>
+                                <span class="tech-tag">Dahua</span>
+                                <span class="tech-tag">Bosch</span>
+                                <span class="tech-tag">Vérification</span>
+                                <span class="tech-tag">Smart Home</span>
+                                <span class="tech-tag">IoT Sécurité</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Système de sécurité avec caméras">
+                    </div>
+                </div>
+            </div>
+
             <!-- SEO & Marketing -->
             <div class="service-detail" id="seo">
                 <div class="service-detail-content reverse">
@@ -1521,30 +1585,7 @@
         </div>
     </section>
 
-    <!-- Statistiques -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" data-count="150">0</div>
-                    <div class="stat-label">Projets Livrés</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="50">0</div>
-                    <div class="stat-label">Clients Satisfaits</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="99">0</div>
-                    <div class="stat-label">% Satisfaction</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-count="24">0</div>
-                    <div class="stat-label">Support 24/7</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Autres Services -->
     <section class="other-services">
         <div class="container">
@@ -1555,35 +1596,46 @@
             
             <div class="other-services-grid">
                 <div class="other-service-card visible">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>SEO & Marketing Digital</h3>
-                    <p>Optimisation pour les moteurs de recherche et stratégies marketing pour augmenter votre visibilité en ligne.</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Sécurité Électronique</h3>
+                    <p>Installation professionnelle de systèmes de surveillance, alarmes et contrôle d'accès pour votre sécurité.</p>
                     <div class="tech-tags-small">
-                        <span>SEO Technique</span>
-                        <span>Content Marketing</span>
-                        <span>Google Ads</span>
+                        <span>Caméras IP</span>
+                        <span>Alarmes</span>
+                        <span>Contrôle d'accès</span>
                     </div>
                 </div>
                 
                 <div class="other-service-card">
-                    <i class="fas fa-palette"></i>
-                    <h3>Design UI/UX</h3>
-                    <p>Création d'interfaces utilisateur intuitives et d'expériences digitales mémorables pour vos clients.</p>
+                    <i class="fas fa-home"></i>
+                    <h3>Domotique</h3>
+                    <p>Solutions intelligentes pour automatiser votre maison : éclairage, chauffage, sécurité connectée.</p>
                     <div class="tech-tags-small">
-                        <span>Figma</span>
-                        <span>Adobe XD</span>
-                        <span>Prototypage</span>
+                        <span>Smart Home</span>
+                        <span>IoT</span>
+                        <span>Automatisation</span>
                     </div>
                 </div>
                 
                 <div class="other-service-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Data Science & Analytics</h3>
-                    <p>Analyse de données et intelligence artificielle pour des insights actionnables et des prédictions précises.</p>
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Réseaux & Infrastructure</h3>
+                    <p>Installation et maintenance de réseaux informatiques, serveurs et infrastructure IT pour entreprises.</p>
                     <div class="tech-tags-small">
-                        <span>Python</span>
-                        <span>Machine Learning</span>
-                        <span>Tableau</span>
+                        <span>WiFi Pro</span>
+                        <span>Serveurs</span>
+                        <span>Maintenance</span>
+                    </div>
+                </div>
+                
+                <div class="other-service-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Support Technique</h3>
+                    <p>Assistance technique à distance et sur site pour tous vos équipements informatiques et électroniques.</p>
+                    <div class="tech-tags-small">
+                        <span>24/7</span>
+                        <span>Dépannage</span>
+                        <span>Formation</span>
                     </div>
                 </div>
             </div>
@@ -1595,32 +1647,32 @@
         <div class="container">
             <div class="section-title">
                 <h2>Notre Processus</h2>
-                <p>Une méthodologie éprouvée pour garantir la réussite de votre projet digital</p>
+                <p>Une méthodologie éprouvée pour garantir la réussite de votre projet digital ou de sécurité</p>
             </div>
             
             <div class="process-timeline">
                 <div class="process-step visible">
                     <div class="step-icon">1</div>
-                    <h3>Analyse & Conception</h3>
-                    <p>Étude approfondie de vos besoins et conception de la solution la plus adaptée à vos objectifs.</p>
+                    <h3>Analyse & Audit</h3>
+                    <p>Étude approfondie de vos besoins et audit de votre environnement existant pour proposer la solution optimale.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-icon">2</div>
-                    <h3>Développement</h3>
-                    <p>Création de votre solution avec les technologies les plus modernes et les meilleures pratiques.</p>
+                    <h3>Conception & Devis</h3>
+                    <p>Élaboration d'un plan détaillé et proposition sur mesure avec devis transparent et garanties.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-icon">3</div>
-                    <h3>Tests & Validation</h3>
-                    <p>Tests rigoureux et validation fonctionnelle pour assurer la qualité et la performance.</p>
+                    <h3>Installation & Développement</h3>
+                    <p>Mise en œuvre professionnelle par nos experts certifiés, dans les délais convenus.</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-icon">4</div>
-                    <h3>Déploiement & Support</h3>
-                    <p>Mise en production et accompagnement continu pour garantir le succès à long terme.</p>
+                    <h3>Formation & Support</h3>
+                    <p>Formation complète et accompagnement continu avec support technique réactif.</p>
                 </div>
             </div>
         </div>
@@ -1629,8 +1681,8 @@
     <!-- Section CTA -->
     <section class="cta">
         <div class="container">
-            <h2>Prêt à Transformer Votre Projet Digital ?</h2>
-            <p>Contactez-nous dès aujourd'hui pour discuter de vos besoins et obtenir un devis personnalisé gratuit.</p>
+            <h2>Prêt à Sécuriser et Digitaliser Votre Projet ?</h2>
+            <p>Contactez-nous dès aujourd'hui pour un audit gratuit et un devis personnalisé adapté à vos besoins.</p>
             <a href="contact.html" class="btn">Nous Contacter</a>
             <a href="portfolio.html" class="btn btn-accent">Voir nos Réalisations</a>
         </div>
@@ -1645,13 +1697,13 @@
                         <i class="fas fa-code"></i>
                         Nord-<span>Web</span>
                     </div>
-                    <p>Nous créons des solutions digitales innovantes qui transforment vos idées en réalité. Votre succès est notre priorité.</p>
+                    <p>Solutions digitales complètes et sécurité électronique. Nous créons et sécurisons votre environnement numérique pour votre succès.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -1663,7 +1715,7 @@
                         <li><a href="services.html">Services</a></li>
                         <li><a href="equipe.html">Notre Équipe</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="contact.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 
@@ -1673,6 +1725,7 @@
                         <li><a href="#web-dev">Développement Web</a></li>
                         <li><a href="#ecommerce">E-commerce</a></li>
                         <li><a href="#mobile">Applications Mobiles</a></li>
+                        <li><a href="#security">Caméras & Alarmes</a></li>
                         <li><a href="#seo">SEO & Marketing</a></li>
                         <li><a href="#ui-ux">Design UI/UX</a></li>
                     </ul>
@@ -1680,15 +1733,17 @@
                 
                 <div class="footer-contact">
                     <h4><i class="fas fa-envelope"></i> Contact</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Senegal/p>
+                    <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
                     <p><i class="fas fa-phone"></i> 78 197 08 44</p>
-                    <p><i class="fas fa-envelope"></i> contact@nord-web.fr</p>
-                    <p><i class="fas fa-clock"></i> Lun-Ven: 9h-18h</p>
+                    <p><i class="fas fa-envelope"></i> contact@nord-web.sn</p>
+                    <p><i class="fas fa-clock"></i> Lun-Sam: 8h-20h</p>
+                    <p><i class="fas fa-phone-alt"></i> Urgences: 24h/24</p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; <span id="current-year">2025</span> Nord-Web. Tous droits réservés. <i class="fas fa-heart"></i> Conçu avec passion.</p>
+                <p>&copy; <span id="current-year">2025</span> Nord-Web. Tous droits réservés. <i class="fas fa-heart"></i> Solutions Digitales & Sécurité</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Certifications: Hikvision Certified Partner | Google Partner | Microsoft Certified</p>
             </div>
         </div>
     </footer>
@@ -1717,7 +1772,7 @@
             document.body.style.overflow = '';
         });
         
-        // Header scroll effect (simplifié car fond reste blanc)
+        // Header scroll effect
         function updateHeader() {
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1809,8 +1864,8 @@
             const statNumbers = document.querySelectorAll('.stat-number');
             statNumbers.forEach(stat => {
                 const target = parseInt(stat.getAttribute('data-count'));
-                const duration = 2000; // 2 secondes
-                const step = target / (duration / 16); // 60fps
+                const duration = 2000;
+                const step = target / (duration / 16);
                 let current = 0;
                 
                 const timer = setInterval(() => {

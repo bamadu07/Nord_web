@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nord-Web | Accueil - Solutions Digitales Innovantes à Saint-Louis</title>
+    <title>Nord-Web | Accueil - Solutions Digitales & Sécurité à Saint-Louis</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <style>
         /* ===== VARIABLES CSS ===== */
         :root {
-            /* Couleurs principales */
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary-color: #7c3aed;
-            --accent-color: #f59e0b;
-            --accent-light: #fbbf24;
-            --dark-color: #1e293b;
-            --light-color: #f8fafc;
-            --gray-color: #64748b;
-            --gray-light: #e2e8f0;
+            /* Couleurs principales - Bleu clair et blanc */
+            --primary-color: #3a86ff; /* Bleu clair vif */
+            --primary-dark: #2667cc; /* Bleu plus foncé */
+            --primary-light: #5d9cff; /* Bleu plus clair */
+            --secondary-color: #6c8eff; /* Bleu secondaire */
+            --security-color: #10b981; /* Vert pour sécurité */
+            --security-dark: #0d9c6a; /* Vert foncé pour sécurité */
+            --accent-color: #3a86ff; /* Accent en bleu clair */
+            --accent-light: #4d94ff; /* Accent bleu clair pour contrastes */
+            --dark-color: #1a1a2e; /* Texte foncé */
+            --light-color: #ffffff; /* Fond principal blanc */
+            --gray-color: #6b7280; /* Gris */
+            --gray-light: #f3f4f6; /* Gris très clair */
+            --gray-dark: #4b5563; /* Gris foncé */
             
             /* Typographie */
             --heading-font: 'Montserrat', sans-serif;
@@ -32,9 +35,9 @@
             --transition: all 0.3s ease;
             
             /* Ombres */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-sm: 0 2px 4px rgba(58, 134, 255, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(58, 134, 255, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(58, 134, 255, 0.1);
         }
 
         /* ===== RESET ET STYLES GÉNÉRAUX ===== */
@@ -112,11 +115,34 @@
         }
 
         .btn-accent {
-            background-color: var(--accent-color);
+            background-color: var(--primary-color);
+            color: white;
         }
 
         .btn-accent:hover {
-            background-color: #e68a00;
+            background-color: var(--primary-dark);
+        }
+
+        .btn-security {
+            background-color: var(--security-color);
+            color: white;
+        }
+
+        .btn-security:hover {
+            background-color: var(--security-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
         }
 
         .btn-small {
@@ -127,10 +153,6 @@
         /* ===== HEADER ===== */
         header {
             background-color: white;
-            background-image: url('https://images.unsplash.com/photo-1517697471339-4aa32003c11a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             box-shadow: var(--shadow-sm);
             position: fixed;
             top: 0;
@@ -139,18 +161,6 @@
             z-index: 1000;
             padding: 15px 0;
             transition: var(--transition);
-        }
-
-        /* Overlay pour le header seulement */
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.95);
-            z-index: -1;
         }
 
         .header-container {
@@ -163,25 +173,20 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--dark-color);
+            color: var(--primary-color);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* Icône </> en jaune avec dégradé animé */
         .logo i {
-            background: linear-gradient(45deg, var(--accent-color), var(--accent-light), var(--accent-color));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 3s ease infinite;
+            color: var(--primary-color);
             font-weight: bold;
         }
 
         .logo span {
-            color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         nav ul {
@@ -205,7 +210,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent-color);
+            background-color: var(--primary-color);
             transition: var(--transition);
         }
 
@@ -216,7 +221,7 @@
 
         nav a:hover,
         nav a.active {
-            color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         .mobile-menu-btn {
@@ -229,76 +234,89 @@
             padding: 5px;
         }
 
-        /* ===== SECTION HERO ===== */
+        /* ===== SECTION HERO AVEC BACKGROUND IMAGE ===== */
         .hero {
             padding-top: 120px;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
         }
 
         .hero::before {
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            width: 50%;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            clip-path: polygon(100% 0, 100% 100%, 0 0);
-            opacity: 0.05;
+            background: linear-gradient(45deg, rgba(58, 134, 255, 0.1), rgba(108, 142, 255, 0.1));
+            z-index: 1;
         }
 
         .hero .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
             line-height: 1.2;
-            color: var(--dark-color);
+            color: white;
             font-family: var(--heading-font);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero-content p {
-            font-size: 1.1rem;
-            color: var(--gray-color);
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 35px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-btns {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .hero-image {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: var(--transition);
+        .hero .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
         }
 
-        .hero-image:hover {
-            transform: perspective(1000px) rotateY(0deg);
+        .hero .btn:hover {
+            background-color: transparent;
+            color: white;
+            border-color: white;
         }
 
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
+        .hero .btn-accent {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
         }
 
-        .hero-image:hover img {
-            transform: scale(1.05);
+        .hero .btn-accent:hover {
+            background-color: white;
+            color: var(--primary-color);
         }
 
         /* ===== SECTION STATISTIQUES ===== */
@@ -325,6 +343,7 @@
             font-family: var(--heading-font);
             margin-bottom: 10px;
             display: block;
+            color: white;
         }
 
         .stat-label {
@@ -346,7 +365,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 10px;
-            color: var(--dark-color);
+            color: var(--primary-color);
             font-family: var(--heading-font);
         }
 
@@ -374,6 +393,22 @@
             overflow: hidden;
         }
 
+        .service-card.security-service {
+            border-top: 4px solid var(--security-color);
+        }
+
+        .service-card.security-service .service-link {
+            color: var(--security-color);
+        }
+
+        .service-card.security-service .service-link:hover {
+            color: var(--security-dark);
+        }
+
+        .service-card.security-service i {
+            color: var(--security-color);
+        }
+
         .service-card::before {
             content: '';
             position: absolute;
@@ -383,6 +418,10 @@
             height: 0;
             background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
             transition: var(--transition);
+        }
+
+        .service-card.security-service::before {
+            background: linear-gradient(to bottom, var(--security-color), var(--security-dark));
         }
 
         .service-card:hover::before {
@@ -398,16 +437,17 @@
             font-size: 3rem;
             color: var(--primary-color);
             margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--dark-color);
+            color: var(--primary-color);
             font-family: var(--heading-font);
+        }
+
+        .service-card.security-service h3 {
+            color: var(--security-color);
         }
 
         .service-card p {
@@ -430,9 +470,103 @@
             gap: 12px;
         }
 
+        /* ===== SÉCURITÉ SPÉCIALISÉE ===== */
+        .security-section {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .security-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .security-section .section-title h2 {
+            color: var(--security-color);
+        }
+
+        .security-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .security-feature {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border-left: 4px solid var(--security-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .security-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);
+        }
+
+        .security-feature-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .security-feature-header i {
+            font-size: 2.5rem;
+            color: var(--security-color);
+            background-color: rgba(16, 185, 129, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .security-feature-header h3 {
+            font-size: 1.4rem;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+            margin: 0;
+        }
+
+        .security-feature ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .security-feature li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--gray-color);
+        }
+
+        .security-feature li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--security-color);
+            font-weight: bold;
+        }
+
+        .security-feature li strong {
+            color: var(--dark-color);
+        }
+
         /* ===== À PROPOS PRÉVISUALISATION ===== */
         .about-preview {
-            background-color: var(--light-color);
+            background-color: #f8fafc;
         }
 
         .about-preview-content {
@@ -446,7 +580,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 20px;
-            color: var(--dark-color);
+            color: var(--primary-color);
             font-family: var(--heading-font);
             line-height: 1.2;
         }
@@ -466,6 +600,8 @@
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             position: relative;
+            border: 5px solid white;
+            height: 350px;
         }
 
         .about-preview-image::before {
@@ -475,13 +611,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            background: linear-gradient(45deg, rgba(58, 134, 255, 0.1), rgba(108, 142, 255, 0.1));
             z-index: 1;
         }
 
         .about-preview-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
             transition: var(--transition);
         }
@@ -520,10 +657,14 @@
             font-size: 1.5rem;
         }
 
+        .feature-item.security-feature .feature-icon {
+            background: linear-gradient(45deg, var(--security-color), var(--security-dark));
+        }
+
         .feature-content h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
-            color: var(--dark-color);
+            color: var(--primary-color);
             font-family: var(--heading-font);
         }
 
@@ -533,7 +674,7 @@
 
         /* ===== PROJETS RÉCENTS ===== */
         .recent-projects {
-            background-color: white;
+            background-color: #f8fafc;
         }
 
         .projects-grid {
@@ -557,7 +698,7 @@
         }
 
         .project-image {
-            height: 250px;
+            height: 280px;
             overflow: hidden;
             position: relative;
         }
@@ -569,9 +710,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            background: linear-gradient(to top, rgba(58, 134, 255, 0.7), transparent);
             opacity: 0;
             transition: var(--transition);
+        }
+
+        .project-card.security-project .project-image::after {
+            background: linear-gradient(to top, rgba(16, 185, 129, 0.7), transparent);
         }
 
         .project-card:hover .project-image::after {
@@ -596,8 +741,12 @@
         .project-info h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: var(--dark-color);
+            color: var(--primary-color);
             font-family: var(--heading-font);
+        }
+
+        .project-card.security-project .project-info h3 {
+            color: var(--security-color);
         }
 
         .project-info p {
@@ -607,7 +756,7 @@
 
         /* ===== TÉMOIGNAGES ===== */
         .testimonials {
-            background-color: var(--light-color);
+            background-color: white;
         }
 
         .testimonials-container {
@@ -627,6 +776,7 @@
             box-shadow: var(--shadow-md);
             text-align: center;
             margin: 0 20px;
+            border: 1px solid var(--gray-light);
         }
 
         .testimonial-content {
@@ -649,6 +799,7 @@
             height: 60px;
             border-radius: 50%;
             overflow: hidden;
+            border: 3px solid var(--gray-light);
         }
 
         .author-avatar img {
@@ -659,7 +810,7 @@
 
         .author-info h4 {
             font-size: 1.1rem;
-            color: var(--dark-color);
+            color: var(--primary-color);
             margin-bottom: 5px;
         }
 
@@ -675,6 +826,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 70px 0;
         }
 
         .cta::before {
@@ -693,87 +845,95 @@
         }
 
         .cta h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-family: var(--heading-font);
         }
 
         .cta p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 35px;
             opacity: 0.9;
         }
 
         .cta .btn {
             background-color: white;
             color: var(--primary-color);
+            font-size: 1.1rem;
+            padding: 15px 35px;
         }
 
         .cta .btn:hover {
-            background-color: var(--gray-light);
+            background-color: #f0f0f0;
+            color: var(--primary-dark);
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--primary-color);
             color: white;
-            padding: 60px 0 20px;
+            padding: 40px 0 15px;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
         .footer-logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: inline-block;
+            color: white;
         }
 
         .footer-logo span {
-            color: var(--accent-color);
+            color: white;
+            opacity: 0.9;
         }
 
         .footer-about p {
-            color: #94a3b8;
-            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .social-icons {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
 
         .social-icons a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
             text-decoration: none;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .social-icons a:hover {
-            background-color: var(--primary-color);
+            background-color: white;
+            color: var(--primary-color);
             transform: translateY(-3px);
         }
 
         .footer-links h4,
         .footer-services h4,
         .footer-contact h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
             font-family: var(--heading-font);
             color: white;
         }
@@ -785,14 +945,15 @@
 
         .footer-links li,
         .footer-services li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .footer-links a,
         .footer-services a {
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover,
@@ -802,24 +963,26 @@
         }
 
         .footer-contact p {
-            color: #94a3b8;
-            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: 0.9rem;
         }
 
         .footer-contact i {
-            color: var(--primary-color);
-            width: 20px;
+            color: white;
+            width: 18px;
+            font-size: 0.9rem;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #94a3b8;
-            font-size: 0.9rem;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -838,20 +1001,14 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .hero .container {
-                gap: 40px;
+            .hero {
+                background-attachment: scroll;
             }
             
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.7rem;
             }
             
             .about-preview-content {
@@ -864,6 +1021,18 @@
             
             .stat-number {
                 font-size: 2.2rem;
+            }
+            
+            .cta h2 {
+                font-size: 2.4rem;
+            }
+            
+            .cta p {
+                font-size: 1.1rem;
+            }
+            
+            .security-features {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
         }
 
@@ -909,10 +1078,16 @@
             
             .hero {
                 padding-top: 100px;
+                min-height: auto;
+                background-attachment: scroll;
             }
             
             .hero-content h1 {
-                font-size: 2.2rem;
+                font-size: 2.3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
             }
             
             .hero-btns {
@@ -927,9 +1102,13 @@
                 grid-template-columns: 1fr;
             }
             
+            .project-image {
+                height: 250px;
+            }
+            
             .footer-content {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 30px;
+                gap: 25px;
             }
             
             .stats-container {
@@ -943,16 +1122,33 @@
             .testimonial-slide {
                 padding: 30px 20px;
             }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .cta p {
+                font-size: 1rem;
+            }
+            
+            .security-features {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
             .hero-content h1 {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
             }
             
             .hero-btns {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
             }
             
             .services-grid {
@@ -964,7 +1160,7 @@
             }
             
             .cta h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .stats-container {
@@ -978,6 +1174,19 @@
             .project-info {
                 padding: 20px;
             }
+            
+            .project-image {
+                height: 200px;
+            }
+            
+            .about-preview-image {
+                height: 250px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
 
         /* ===== ÉLÉMENTS ANIMÉS ===== */
@@ -986,18 +1195,10 @@
         .about-preview-text, 
         .project-card,
         .feature-item,
-        .testimonial-slide {
+        .testimonial-slide,
+        .security-feature {
             opacity: 0;
             transform: translateY(20px);
-        }
-
-        /* Effet de dégradé animé pour les icônes */
-        .service-card i {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 5s ease infinite;
         }
     </style>
 </head>
@@ -1026,46 +1227,20 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section AVEC BACKGROUND IMAGE -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Solutions Digitales Innovantes à Saint-Louis</h1>
-                <p>Nord-Web transforme vos idées en réalité numérique avec des solutions web et applications sur mesure créées par une équipe passionnée basée à Saint-Louis. Nous combinons expertise technique et créativité pour propulser votre entreprise à l'ère digitale.</p>
+                <h1>Solutions Digitales & Sécurité à Saint-Louis</h1>
+                <p>Nord-Web transforme vos idées en réalité numérique et protège vos espaces avec des solutions web innovantes et des systèmes de sécurité sur mesure. Une équipe passionnée basée à Saint-Louis au service de votre réussite digitale et de votre tranquillité d'esprit.</p>
                 <div class="hero-btns">
                     <a href="services.html" class="btn">Découvrir nos services</a>
                     <a href="contact.html" class="btn btn-accent">Commencer un projet</a>
+                    <a href="#security" class="btn btn-security">Sécurité & Surveillance</a>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Développement web">
             </div>
         </div>
     </section>
-
-    <!-- Statistiques 
-    <section class="stats">
-        <div class="container">
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span class="stat-number" id="projects-count">0</span>
-                    <span class="stat-label">Projets Réalisés</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="clients-count">0</span>
-                    <span class="stat-label">Clients Satisfaits</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="experience-count">0</span>
-                    <span class="stat-label">Années d'Expérience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="team-count">0</span>
-                    <span class="stat-label">Experts dans l'Équipe</span>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <!-- Services Prévisualisation -->
     <section class="services-preview">
@@ -1089,15 +1264,59 @@
                     <a href="services.html#data-science" class="service-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <div class="service-card">
-                    <i class="fas fa-shopping-cart"></i>
-                    <h3>E-commerce</h3>
-                    <p>Plateformes de vente en ligne sécurisées et optimisées pour la conversion. Augmentez vos ventes avec nos solutions e-commerce sur mesure.</p>
-                    <a href="services.html#ecommerce" class="service-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                <div class="service-card security-service">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Sécurité & Surveillance</h3>
+                    <p>Installation de caméras de surveillance et systèmes d'alarme pour entreprises et particuliers. Protection 24h/24 avec solutions connectées.</p>
+                    <a href="services.html#security" class="service-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="text-center">
                 <a href="services.html" class="btn">Voir tous nos services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Sécurité Spécialisée -->
+    <section id="security" class="security-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Solutions de Sécurité & Surveillance</h2>
+                <p>Protégez vos espaces avec nos systèmes de sécurité intelligents et connectés</p>
+            </div>
+            
+            <div class="security-features">
+                <div class="security-feature">
+                    <div class="security-feature-header">
+                        <i class="fas fa-video"></i>
+                        <h3>Installation de Caméras</h3>
+                    </div>
+                    <ul>
+                        <li><strong>Caméras HD</strong> : Haute définition pour une surveillance précise</li>
+                        <li><strong>Vision nocturne</strong> : Surveillance 24h/24</li>
+                        <li><strong>Cloud sécurisé</strong> : Stockage et accès à distance</li>
+                        <li><strong>Installation professionnelle</strong> : Discrète et optimale</li>
+                        <li><strong>Applications mobiles</strong> : Surveillance depuis votre smartphone</li>
+                    </ul>
+                </div>
+                
+                <div class="security-feature">
+                    <div class="security-feature-header">
+                        <i class="fas fa-bell"></i>
+                        <h3>Systèmes d'Alarme</h3>
+                    </div>
+                    <ul>
+                        <li><strong>Alarmes intrusion</strong> : Détection de mouvement et ouverture</li>
+                        <li><strong>Alarmes incendie</strong> : Détection précoce de fumée</li>
+                        <li><strong>Centrale connectée</strong> : Gestion intelligente</li>
+                        <li><strong>Télécommande</strong> : Activation/désactivation à distance</li>
+                        <li><strong>Monitoring 24h/24</strong> : Service de télésurveillance optionnel</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="contact.html" class="btn btn-security">Demander un devis sécurité</a>
             </div>
         </div>
     </section>
@@ -1107,13 +1326,13 @@
         <div class="container">
             <div class="about-preview-content">
                 <div class="about-preview-text">
-                    <h2>Une Équipe Passionnée Basée à Saint-Louis</h2>
-                    <p>Nord-Web a été fondé par <strong>Amadou BA</strong>, développeur web fullstack, en collaboration avec <strong>Al Housseynou BA</strong>, data scientist. Ensemble, nous combinons expertise technique et vision stratégique pour créer des solutions digitales qui transforment votre entreprise.</p>
-                    <p>Notre approche est centrée sur l'innovation, la qualité et l'adaptation aux besoins spécifiques de chaque client, tout en restant profondément enracinés dans notre communauté saint-louisienne. Nous croyons au potentiel numérique de notre région.</p>
+                    <h2>Une Équipe Polyvalente à Saint-Louis</h2>
+                    <p>Nord-Web a été fondé par <strong>Amadou BA</strong>, développeur web fullstack, en collaboration avec <strong>Al Housseynou BA</strong>, data scientist. Notre expertise s'étend désormais à la sécurité numérique et physique.</p>
+                    <p>Nous combinons expertise technique et solutions de sécurité pour offrir une protection complète à votre entreprise, tout en restant profondément enracinés dans notre communauté saint-louisienne.</p>
                     <a href="apropos.html" class="btn">Notre histoire</a>
                 </div>
                 <div class="about-preview-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Équipe Nord-Web">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Équipe Nord-Web">
                 </div>
             </div>
         </div>
@@ -1133,25 +1352,25 @@
                     </div>
                     <div class="feature-content">
                         <h3>Ancrés à Saint-Louis</h3>
-                        <p>Nous comprenons les besoins spécifiques des entreprises locales et nous engageons à développer l'écosystème numérique de notre région.</p>
+                        <p>Nous comprenons les besoins spécifiques des entreprises locales et nous engageons à développer l'écosystème numérique et sécuritaire de notre région.</p>
                     </div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
                     <div class="feature-content">
-                        <h3>Solutions Innovantes</h3>
-                        <p>Nous intégrons les dernières technologies comme l'IA et le développement web moderne pour vous donner un avantage concurrentiel.</p>
+                        <h3>Double Expertise</h3>
+                        <p>Compétences uniques en développement web ET en sécurité, pour des solutions intégrées et complètes.</p>
                     </div>
                 </div>
-                <div class="feature-item">
+                <div class="feature-item security-feature">
                     <div class="feature-icon">
-                        <i class="fas fa-hands-helping"></i>
+                        <i class="fas fa-lock"></i>
                     </div>
                     <div class="feature-content">
-                        <h3>Accompagnement Personnalisé</h3>
-                        <p>De l'idée à la réalisation, nous vous accompagnons à chaque étape avec un suivi personnalisé et une communication transparente.</p>
+                        <h3>Sécurité Garantie</h3>
+                        <p>Installations certifiées, matériel de qualité et suivi technique pour une protection optimale de vos espaces.</p>
                     </div>
                 </div>
                 <div class="feature-item">
@@ -1159,8 +1378,8 @@
                         <i class="fas fa-trophy"></i>
                     </div>
                     <div class="feature-content">
-                        <h3>Expertise Combinée</h3>
-                        <p>Notre équipe réunit développeurs fullstack et data scientists pour des solutions complètes et intégrées.</p>
+                        <h3>Support 24/7</h3>
+                        <p>Assistance technique permanente pour tous nos systèmes, garantissant votre tranquillité d'esprit.</p>
                     </div>
                 </div>
             </div>
@@ -1177,7 +1396,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plateforme E-commerce">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Plateforme E-commerce">
                     </div>
                     <div class="project-info">
                         <h3>Boutique en ligne Saint-Louis</h3>
@@ -1186,14 +1405,14 @@
                     </div>
                 </div>
                 
-                <div class="project-card">
+                <div class="project-card security-project">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Application Mobile">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Système de sécurité">
                     </div>
                     <div class="project-info">
-                        <h3>Appli Tourisme Saint-Louis</h3>
-                        <p>Application mobile de guidage touristique avec réalité augmentée pour découvrir le riche patrimoine historique et culturel de la ville.</p>
-                        <a href="portfolio.html#projet2" class="btn btn-small">Voir le projet</a>
+                        <h3>Sécurité Entreprise Saint-Louis</h3>
+                        <p>Installation complète d'un système de caméras HD et alarme connectée pour une entreprise de la région.</p>
+                        <a href="portfolio.html#security-project" class="btn btn-small btn-security">Voir le projet</a>
                     </div>
                 </div>
             </div>
@@ -1214,7 +1433,7 @@
                 <div class="testimonial-slider">
                     <div class="testimonial-slide">
                         <div class="testimonial-content">
-                            "Nord-Web a transformé notre présence en ligne. Leur équipe professionnelle a créé une plateforme e-commerce qui a augmenté nos ventes de 40% en seulement 3 mois."
+                            "Nord-Web a transformé notre présence en ligne et sécurisé nos locaux. Leur équipe professionnelle a créé une plateforme e-commerce qui a augmenté nos ventes de 40% en seulement 3 mois, et leur système de sécurité nous donne une tranquillité d'esprit totale."
                         </div>
                         <div class="testimonial-author">
                             <div class="author-avatar">
@@ -1234,9 +1453,12 @@
     <!-- CTA -->
     <section class="cta">
         <div class="container">
-            <h2>Prêt à transformer votre idée en réalité numérique ?</h2>
-            <p>Contactez-nous pour discuter de votre projet et obtenir un devis personnalisé. Notre équipe est prête à vous accompagner vers le succès digital.</p>
-            <a href="contact.html" class="btn btn-accent">Démarrer un projet</a>
+            <h2>Prêt à sécuriser et digitaliser votre activité ?</h2>
+            <p>Contactez-nous pour discuter de votre projet web ou de sécurité et obtenir un devis personnalisé. Notre équipe est prête à vous accompagner vers le succès digital et la tranquillité.</p>
+            <div class="hero-btns">
+                <a href="contact.html" class="btn">Démarrer un projet web</a>
+                <a href="contact.html" class="btn btn-security">Devis sécurité</a>
+            </div>
         </div>
     </section>
 
@@ -1246,7 +1468,7 @@
             <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-logo">Nord<span>Web</span></div>
-                    <p>Solutions digitales innovantes créées à Saint-Louis par une équipe passionnée de développeurs et data scientifiques. Nous transformons vos idées en succès numériques.</p>
+                    <p>Solutions digitales innovantes et systèmes de sécurité créés à Saint-Louis par une équipe passionnée. Nous transformons vos idées en succès numériques et protégeons vos espaces.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1272,9 +1494,9 @@
                     <ul>
                         <li><a href="services.html#web-dev">Développement Web</a></li>
                         <li><a href="services.html#data-science">Data Science</a></li>
+                        <li><a href="services.html#security">Sécurité & Surveillance</a></li>
                         <li><a href="services.html#ecommerce">E-commerce</a></li>
                         <li><a href="services.html#mobile">Applications Mobile</a></li>
-                        <li><a href="services.html#seo">SEO & Marketing</a></li>
                     </ul>
                 </div>
                 
@@ -1283,12 +1505,12 @@
                     <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
                     <p><i class="fas fa-envelope"></i> ambarhama07@gmail.com</p>
                     <p><i class="fas fa-phone"></i> +221 78197 08 44</p>
-                    <p><i class="fas fa-clock"></i> Lun-Ven: 9h-18h</p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 9h-18h | Urgences: 24h/24</p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Nord-Web. Tous droits réservés. Fondé par Amadou BA </p>
+                <p>&copy; 2025 Nord-Web. Tous droits réservés. Fondé par Amadou BA</p>
             </div>
         </div>
     </footer>
@@ -1331,11 +1553,11 @@
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
-                    header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                    header.style.boxShadow = '0 4px 12px rgba(58, 134, 255, 0.1)';
                     header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
                     header.style.backdropFilter = 'blur(10px)';
                 } else {
-                    header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+                    header.style.boxShadow = '0 2px 4px rgba(58, 134, 255, 0.05)';
                     header.style.backgroundColor = 'white';
                     header.style.backdropFilter = 'none';
                 }
@@ -1356,18 +1578,8 @@
             }, observerOptions);
             
             // Observer les éléments à animer
-            const animatedElements = document.querySelectorAll('.hero-content, .service-card, .about-preview-text, .project-card, .section-title, .feature-item, .testimonial-slide');
+            const animatedElements = document.querySelectorAll('.hero-content, .service-card, .about-preview-text, .project-card, .section-title, .feature-item, .testimonial-slide, .security-feature');
             animatedElements.forEach(el => observer.observe(el));
-            
-            // Effet de parallaxe sur l'image hero
-            window.addEventListener('scroll', function() {
-                const heroImage = document.querySelector('.hero-image');
-                const scrolled = window.pageYOffset;
-                if (heroImage && window.innerWidth > 768) {
-                    const rate = scrolled * -0.2;
-                    heroImage.style.transform = `perspective(1000px) rotateY(-10deg) translateY(${rate}px)`;
-                }
-            });
             
             // Compteur de statistiques
             const stats = [
@@ -1448,7 +1660,7 @@
                             bottom: 20px;
                             left: 20px;
                             right: 20px;
-                            background: var(--dark-color);
+                            background: var(--primary-color);
                             color: white;
                             padding: 20px;
                             border-radius: var(--border-radius);
@@ -1465,7 +1677,8 @@
                             flex: 1;
                         }
                         .cookie-banner a {
-                            color: var(--accent-color);
+                            color: white;
+                            opacity: 0.9;
                         }
                         @media (max-width: 768px) {
                             .cookie-banner {

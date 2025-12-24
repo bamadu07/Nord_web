@@ -7,32 +7,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES CSS ===== */
+        /* ===== VARIABLES CSS - BLEU CLAIR ET BLANC ===== */
         :root {
-            /* Couleurs principales */
-            --primary-color: #2563eb;
+            /* Couleurs principales - BLEU CLAIR */
+            --primary-color: #3b82f6;
+            --primary-light: #93c5fd;
+            --primary-very-light: #dbeafe;
             --primary-dark: #1d4ed8;
-            --secondary-color: #7c3aed;
-            --accent-color: #f59e0b;
+            --accent-color: #3b82f6;
             --dark-color: #1e293b;
             --light-color: #f8fafc;
             --gray-color: #64748b;
             --gray-light: #e2e8f0;
+            --white: #ffffff;
             
             /* Typographie */
             --heading-font: 'Montserrat', sans-serif;
             --body-font: 'Poppins', sans-serif;
             
             /* Espacements */
-            --section-padding: 80px 0;
+            --section-padding: 60px 0;
             --container-padding: 0 20px;
-            --border-radius: 12px;
+            --border-radius: 10px;
             --transition: all 0.3s ease;
             
             /* Ombres */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-sm: 0 2px 4px rgba(59, 130, 246, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
         }
 
         /* ===== RESET ET STYLES GÉNÉRAUX ===== */
@@ -50,26 +52,8 @@
             font-family: var(--body-font);
             line-height: 1.6;
             color: var(--dark-color);
-            background-color: var(--light-color);
+            background-color: var(--white);
             overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Background image avec overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            opacity: 0.03;
-            z-index: -1;
         }
 
         .container {
@@ -80,13 +64,6 @@
 
         section {
             padding: var(--section-padding);
-            position: relative;
-        }
-
-        /* Ajout d'un fond blanc léger pour les sections */
-        section:not(.page-header):not(.cta) {
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(5px);
         }
 
         .text-center {
@@ -107,25 +84,6 @@
             transition: var(--transition);
             font-size: 1rem;
             font-family: var(--heading-font);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            left: 100%;
         }
 
         .btn:hover {
@@ -135,16 +93,19 @@
         }
 
         .btn-accent {
-            background-color: var(--accent-color);
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
         }
 
         .btn-accent:hover {
-            background-color: #e68a00;
+            background-color: var(--primary-color);
+            color: white;
         }
 
         /* ===== HEADER SIMPLE ===== */
         header {
-            background-color: white;
+            background-color: var(--white);
             box-shadow: var(--shadow-sm);
             position: fixed;
             top: 0;
@@ -171,9 +132,9 @@
             gap: 8px;
         }
 
-        /* Icône </> en jaune */
+        /* Icône </> en bleu clair */
         .logo i {
-            color: var(--accent-color);
+            color: var(--primary-color);
             font-size: 2rem;
         }
 
@@ -202,7 +163,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent-color);
+            background-color: var(--primary-color);
             transition: var(--transition);
         }
 
@@ -226,16 +187,16 @@
             padding: 5px;
         }
 
-        /* ===== EN-TÊTE DE PAGE ===== */
+        /* ===== EN-TÊTE DE PAGE AVEC IMAGE DE FOND ===== */
         .page-header {
-            background: linear-gradient(rgba(37, 99, 235, 0.85), rgba(124, 58, 237, 0.85)), 
-                        url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80');
+            background: 
+                
+                url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
             background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: white;
             text-align: center;
-            padding: 120px 0 80px;
+            padding: 150px 0 80px;
             margin-top: 70px;
             position: relative;
             overflow: hidden;
@@ -248,7 +209,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .page-header .container {
@@ -257,31 +218,51 @@
         }
 
         .page-header h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-family: var(--heading-font);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             animation: fadeInUp 0.8s ease;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .page-header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 30px;
             opacity: 0.9;
             animation: fadeInUp 1s ease;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+            line-height: 1.6;
+        }
+
+        .header-cta {
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .header-cta .btn {
+            margin: 0 10px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===== SECTION TITRE ===== */
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 10px;
             color: var(--dark-color);
@@ -295,23 +276,19 @@
 
         /* ===== FONDATEURS ===== */
         .founders {
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
-            border-radius: var(--border-radius);
-            margin: 0 auto 40px;
-            max-width: 1200px;
+            background-color: var(--white);
         }
 
         .founders-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 60px;
+            gap: 40px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .founder-card {
-            background-color: white;
+            background-color: var(--white);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-md);
             overflow: hidden;
@@ -319,15 +296,13 @@
             display: grid;
             grid-template-columns: 300px 1fr;
             position: relative;
-        }
-
-        .founder-card.featured {
-            border: 2px solid var(--primary-color);
+            border: 1px solid var(--gray-light);
         }
 
         .founder-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
         }
 
         /* STYLE DES IMAGES RONDES */
@@ -337,94 +312,54 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 30px;
+            background-color: var(--primary-very-light);
         }
 
         .founder-img-container {
             position: relative;
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             overflow: hidden;
-            border: 6px solid var(--light-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 4px solid var(--white);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
             transition: var(--transition);
         }
 
         .founder-card:hover .founder-img-container {
             transform: scale(1.05);
             border-color: var(--primary-color);
-            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
         }
 
         .founder-img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .founder-card:hover .founder-img-container img {
-            transform: scale(1.1);
-        }
-
-        /* Effet de halo autour de l'image */
-        .founder-img-container::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            opacity: 0;
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .founder-card:hover .founder-img-container::before {
-            opacity: 0.2;
-            animation: pulse 2s infinite;
         }
 
         .founder-badge {
             position: absolute;
-            top: 30px;
-            right: 30px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
             color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
             z-index: 2;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .founder-card:hover .founder-badge {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        /* Pour les mobiles, positionner le badge différemment */
-        @media (max-width: 768px) {
-            .founder-badge {
-                top: 20px;
-                right: 20px;
-            }
         }
 
         .founder-info {
-            padding: 40px;
+            padding: 30px;
         }
 
         .founder-info h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 5px;
             color: var(--dark-color);
@@ -434,43 +369,45 @@
         .founder-role {
             color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-size: 1rem;
         }
 
         .founder-contact {
-            background-color: var(--light-color);
-            padding: 15px;
+            background-color: var(--primary-very-light);
+            padding: 12px;
             border-radius: var(--border-radius);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .founder-contact p {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             color: var(--gray-color);
+            font-size: 0.9rem;
         }
 
         .founder-contact i {
             color: var(--primary-color);
-            width: 20px;
+            width: 16px;
         }
 
         .founder-desc {
             color: var(--gray-color);
-            line-height: 1.7;
-            margin-bottom: 25px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
 
         .expertise {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .expertise h4 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 1rem;
+            margin-bottom: 10px;
             color: var(--dark-color);
             font-family: var(--heading-font);
         }
@@ -478,15 +415,15 @@
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .skill {
-            background-color: var(--light-color);
+            background-color: var(--primary-very-light);
             color: var(--primary-color);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: var(--transition);
         }
@@ -494,26 +431,26 @@
         .skill:hover {
             background-color: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
         }
 
         .founder-social {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .founder-social a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--light-color);
+            width: 36px;
+            height: 36px;
+            background-color: var(--primary-very-light);
             color: var(--primary-color);
             border-radius: 50%;
             text-decoration: none;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .founder-social a:hover {
@@ -524,24 +461,20 @@
 
         /* ===== PHILOSOPHIE ===== */
         .philosophy {
-            background-color: rgba(248, 250, 252, 0.9);
-            backdrop-filter: blur(5px);
-            border-radius: var(--border-radius);
-            margin: 0 auto 40px;
-            max-width: 1200px;
+            background-color: var(--primary-very-light);
         }
 
         .philosophy-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 40px;
             align-items: center;
         }
 
         .philosophy-text h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: var(--dark-color);
             font-family: var(--heading-font);
             position: relative;
@@ -553,76 +486,59 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
             border-radius: 2px;
         }
 
         .philosophy-text p {
             color: var(--gray-color);
-            margin-bottom: 30px;
-            font-size: 1.05rem;
-            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         .philosophy-points {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
         .point {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: flex-start;
         }
 
         .point i {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--primary-color);
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: var(--primary-color);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             flex-shrink: 0;
-            margin-top: 5px;
+            margin-top: 3px;
         }
 
         .point h4 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
             color: var(--dark-color);
             font-family: var(--heading-font);
         }
 
         .point p {
             color: var(--gray-color);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin: 0;
         }
 
         .philosophy-image {
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
             position: relative;
-            transform: perspective(1000px) rotateY(5deg);
-            transition: var(--transition);
-        }
-
-        .philosophy-image:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        .philosophy-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
-            z-index: 1;
         }
 
         .philosophy-image img {
@@ -638,66 +554,50 @@
 
         /* ===== PROCESSUS DE TRAVAIL ===== */
         .work-process {
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
-            border-radius: var(--border-radius);
-            margin: 0 auto 40px;
-            max-width: 1200px;
+            background-color: var(--white);
         }
 
         .process-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            position: relative;
-        }
-
-        .process-steps::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            opacity: 0.2;
-            z-index: 0;
+            gap: 25px;
         }
 
         .step {
-            background-color: white;
+            background-color: var(--white);
             border-radius: var(--border-radius);
-            padding: 30px;
+            padding: 25px;
             text-align: center;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
             position: relative;
-            z-index: 1;
+            border: 1px solid var(--gray-light);
         }
 
         .step:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
         }
 
         .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
             font-family: var(--heading-font);
         }
 
         .step h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             color: var(--dark-color);
             font-family: var(--heading-font);
         }
@@ -705,71 +605,53 @@
         .step p {
             color: var(--gray-color);
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* ===== VALEURS ===== */
         .values {
-            background-color: rgba(248, 250, 252, 0.9);
-            backdrop-filter: blur(5px);
-            border-radius: var(--border-radius);
-            margin: 0 auto 40px;
-            max-width: 1200px;
+            background-color: var(--primary-very-light);
         }
 
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 25px;
         }
 
         .value-card {
-            background-color: white;
+            background-color: var(--white);
             border-radius: var(--border-radius);
-            padding: 40px 30px;
+            padding: 30px 25px;
             text-align: center;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
             position: relative;
-            overflow: hidden;
-        }
-
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            transition: var(--transition);
-        }
-
-        .value-card:hover::before {
-            height: 100%;
-            opacity: 0.05;
+            border: 1px solid var(--gray-light);
         }
 
         .value-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
         }
 
         .value-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            margin: 0 auto 15px;
         }
 
         .value-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             color: var(--dark-color);
             font-family: var(--heading-font);
         }
@@ -777,22 +659,22 @@
         .value-card p {
             color: var(--gray-color);
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
-        /* ===== SECTION CTA ===== */
+        /* ===== SECTION CTA AVEC IMAGE ===== */
         .cta {
-            background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.9)), 
-                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background: 
+                
+                url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
             background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             color: white;
             text-align: center;
+            border-radius: var(--border-radius);
+            margin: 20px auto;
+            max-width: 1000px;
             position: relative;
             overflow: hidden;
-            border-radius: var(--border-radius);
-            margin: 0 auto 40px;
-            max-width: 1200px;
         }
 
         .cta::before {
@@ -802,7 +684,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .cta .container {
@@ -811,19 +693,18 @@
         }
 
         .cta h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-family: var(--heading-font);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .cta p {
             font-size: 1.1rem;
             max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+            margin: 0 auto 25px;
+            opacity: 0.95;
         }
 
         .cta .btn {
@@ -832,73 +713,173 @@
         }
 
         .cta .btn:hover {
-            background-color: var(--gray-light);
+            background-color: var(--primary-dark);
+            color: white;
         }
 
-        /* ===== FOOTER RÉDUIT ===== */
+        /* ===== FOOTER AMÉLIORÉ ===== */
         footer {
-            background-color: var(--dark-color);
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
-            padding: 40px 0 15px;
+            padding: 50px 0 20px;
             margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Effet de dégradé animé en arrière-plan */
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light), var(--primary-color));
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .footer-container {
+            position: relative;
+            z-index: 1;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            padding: 0 15px;
+        }
+
+        /* Logo et description */
+        .footer-logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .footer-logo {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            display: inline-block;
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .footer-logo i {
+            color: var(--primary-light);
+            font-size: 2.2rem;
         }
 
         .footer-logo span {
-            color: var(--accent-color);
+            color: var(--primary-light);
         }
 
         .footer-about p {
             color: #94a3b8;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 12px;
+        /* Newsletter */
+        .newsletter {
+            margin-top: 20px;
         }
 
-        .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .social-icons a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-links h4,
-        .footer-services h4,
-        .footer-contact h4 {
+        .newsletter h4 {
             font-size: 1.1rem;
             margin-bottom: 15px;
+            color: white;
+            font-family: var(--heading-font);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 350px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-family: var(--body-font);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .newsletter-btn {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            font-family: var(--heading-font);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Liens rapides */
+        .footer-links h4,
+        .footer-services h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
             font-family: var(--heading-font);
             color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after,
+        .footer-services h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-light);
         }
 
         .footer-links ul,
@@ -908,7 +889,7 @@
 
         .footer-links li,
         .footer-services li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .footer-links a,
@@ -916,73 +897,200 @@
             color: #94a3b8;
             text-decoration: none;
             transition: var(--transition);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: white;
+            color: var(--primary-light);
             padding-left: 5px;
         }
 
-        .footer-contact p {
-            color: #94a3b8;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
+        .footer-links i,
+        .footer-services i {
+            font-size: 0.8rem;
+            color: var(--primary-light);
+            opacity: 0.7;
         }
 
-        .footer-contact i {
-            color: var(--accent-color);
-            width: 16px;
-            font-size: 0.9rem;
+        /* Contact */
+        .footer-contact h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-family: var(--heading-font);
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-light);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .contact-item i {
+            color: var(--primary-light);
+            font-size: 1.1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+            width: 20px;
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Réseaux sociaux améliorés */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .social-icons a:hover::before {
+            transform: scale(1);
+        }
+
+        .social-icons a:hover {
+            color: white;
+            transform: translateY(-5px);
+            background-color: transparent;
+        }
+
+        /* Ligne de séparation */
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            margin: 30px 0;
+        }
+
+        /* Copyright et liens bas */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .copyright {
-            text-align: center;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
             color: #94a3b8;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .copyright span {
+            color: var(--primary-light);
+            font-weight: 600;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .footer-legal {
+            display: flex;
+            gap: 25px;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .footer-legal a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(1.05); }
+        .footer-legal a:hover {
+            color: var(--primary-light);
         }
 
-        .fade-in {
-            animation: fadeInUp 0.8s ease forwards;
+        /* Bouton retour en haut */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            transition: var(--transition);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
         }
 
-        /* Animation de l'icône du logo */
-        .logo i {
-            animation: none;
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
 
         /* ===== RESPONSIVE ===== */
@@ -992,34 +1100,26 @@
             }
             
             .page-header h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
             
             .section-title h2 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .philosophy-content {
-                gap: 40px;
+                gap: 30px;
             }
             
             .founder-img-container {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .page-header {
-                background-attachment: scroll;
-            }
-            
-            .cta {
-                background-attachment: scroll;
+                width: 180px;
+                height: 180px;
             }
         }
 
         @media (max-width: 768px) {
             :root {
-                --section-padding: 60px 0;
+                --section-padding: 40px 0;
             }
             
             nav {
@@ -1044,11 +1144,25 @@
             
             nav ul {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
             }
             
             .mobile-menu-btn {
                 display: block;
+            }
+            
+            .page-header {
+                background-attachment: scroll;
+                padding: 120px 0 60px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+                padding: 0 15px;
             }
             
             .founder-card {
@@ -1060,35 +1174,27 @@
             
             .founder-img {
                 height: auto;
-                padding: 40px 40px 20px;
+                padding: 30px 30px 15px;
             }
             
             .founder-img-container {
-                width: 180px;
-                height: 180px;
+                width: 160px;
+                height: 160px;
             }
             
             .founder-badge {
-                top: 20px;
+                top: 15px;
                 right: 50%;
                 transform: translateX(50%);
             }
             
-            .page-header {
-                padding: 100px 0 60px;
-            }
-            
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-            
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .philosophy-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 30px;
                 text-align: center;
             }
             
@@ -1097,36 +1203,51 @@
                 transform: translateX(-50%);
             }
             
-            .process-steps::before {
-                display: none;
-            }
-            
             .process-steps {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 15px;
             }
             
             .cta h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .footer-content {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 25px;
+                gap: 30px;
             }
             
-            section:not(.page-header):not(.cta) {
-                margin: 0 15px 30px;
+            .newsletter-form {
+                flex-direction: column;
             }
             
-            .founders, .philosophy, .values, .work-process, .cta {
-                margin: 0 15px 30px;
+            .newsletter-input,
+            .newsletter-btn {
+                width: 100%;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .footer-legal {
+                gap: 15px;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 480px) {
             .page-header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .page-header p {
@@ -1134,83 +1255,63 @@
             }
             
             .founder-info {
-                padding: 25px;
+                padding: 20px;
             }
             
             .founder-info h3 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             
             .founder-img-container {
-                width: 150px;
-                height: 150px;
+                width: 140px;
+                height: 140px;
             }
             
             .philosophy-text h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .section-title h2 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .cta h2 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .skills {
-                gap: 8px;
+                gap: 6px;
                 justify-content: center;
             }
             
             .skill {
-                padding: 6px 12px;
+                padding: 5px 10px;
                 font-size: 0.8rem;
-            }
-            
-            .founder-contact {
-                text-align: left;
-            }
-            
-            .founder-contact p {
-                justify-content: center;
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 25px;
             }
             
             footer {
-                padding: 30px 0 10px;
+                padding: 40px 0 15px;
             }
-        }
-
-        /* ===== ÉLÉMENTS ANIMÉS ===== */
-        .founder-card,
-        .philosophy-content,
-        .step,
-        .value-card {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        /* Effet de dégradé animé pour les icônes */
-        .point i {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 5s ease infinite;
-        }
-
-        .step-number {
-            animation: float 3s ease-in-out infinite;
+            
+            .social-icons {
+                gap: 12px;
+            }
+            
+            .social-icons a {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header simple sans image de fond -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">
@@ -1234,16 +1335,20 @@
         </div>
     </header>
 
-    <!-- Page Header -->
+    <!-- Page Header avec image de fond -->
     <section class="page-header">
         <div class="container">
-            <h1>Notre Équipe</h1>
-            <p>Les experts passionnés derrière Nord-Web - Développeurs & Data Scientists à Saint-Louis</p>
+            <h1>Notre Équipe de Passionnés</h1>
+            <p>Découvrez les esprits créatifs et les experts techniques qui donnent vie à vos projets numériques. Notre équipe combine expertise technique et vision stratégique pour transformer vos idées en succès.</p>
+            <div class="header-cta">
+                <a href="#founders" class="btn">Rencontrer notre équipe</a>
+                <a href="contact.html" class="btn btn-accent">Travailler avec nous</a>
+            </div>
         </div>
     </section>
 
     <!-- Fondateurs -->
-    <section class="founders">
+    <section class="founders" id="founders">
         <div class="container">
             <div class="section-title">
                 <h2>Les Fondateurs</h2>
@@ -1252,10 +1357,10 @@
             
             <div class="founders-grid">
                 <!-- Amadou BA -->
-                <div class="founder-card featured">
+                <div class="founder-card">
                     <div class="founder-img">
                         <div class="founder-img-container">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Amadou BA">
+                            <img src="images/port.jpg" alt="Amadou BA">
                         </div>
                         <div class="founder-badge">
                             <i class="fas fa-crown"></i> Fondateur Principal
@@ -1274,13 +1379,11 @@
                         <div class="expertise">
                             <h4>Domaines d'Expertise</h4>
                             <div class="skills">
-                                <span class="skill">Frontend (HTML, CSS, JavaScript, json)</span>
-                                <span class="skill">Backend (PHP, Python)</span>
+                                <span class="skill">Frontend</span>
+                                <span class="skill">Backend</span>
                                 <span class="skill">Bases de données</span>
-                                <span class="skill">Architecture Cloud</span>
+                                <span class="skill">Cloud</span>
                                 <span class="skill">UI/UX Design</span>
-                                <span class="skill">DevOps</span>
-                                <span class="skill">API Design</span>
                                 <span class="skill">E-commerce</span>
                             </div>
                         </div>
@@ -1288,7 +1391,6 @@
                         <div class="founder-social">
                             <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
                             <a href="#" title="Portfolio"><i class="fas fa-briefcase"></i></a>
                         </div>
                     </div>
@@ -1298,7 +1400,7 @@
                 <div class="founder-card">
                     <div class="founder-img">
                         <div class="founder-img-container">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Al Housseynou BA">
+                            <img src="images/lognord.jpeg" alt="Al Housseynou BA">
                         </div>
                         <div class="founder-badge">
                             <i class="fas fa-lightbulb"></i> Collaborateur
@@ -1312,7 +1414,7 @@
                             <p><i class="fas fa-phone"></i> +221 78 162 94 19</p>
                             <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
                         </div>
-                        <p class="founder-desc">Spécialiste en science des données et intelligence artificielle, Al Housseynou transforme les données brutes en insights stratégiques. Il conçoit des modèles prédictifs et des algorithmes d'IA qui optimisent les processus décisionnels et créent de la valeur pour nos clients. Titulaire d'un master en Data Science, il apporte une expertise académique et pratique à chaque projet.</p>
+                        <p class="founder-desc">Spécialiste en science des données et intelligence artificielle, Al Housseynou transforme les données brutes en insights stratégiques. Il conçoit des modèles prédictifs et des algorithmes d'IA qui optimisent les processus décisionnels et créent de la valeur pour nos clients.</p>
                         
                         <div class="expertise">
                             <h4>Domaines d'Expertise</h4>
@@ -1320,18 +1422,15 @@
                                 <span class="skill">Machine Learning</span>
                                 <span class="skill">Analyse de données</span>
                                 <span class="skill">Intelligence Artificielle</span>
-                                <span class="skill">Visualisation de données</span>
+                                <span class="skill">Visualisation</span>
                                 <span class="skill">Big Data</span>
-                                <span class="skill">Python (Pandas, NumPy)</span>
-                                <span class="skill">SQL & NoSQL</span>
-                                <span class="skill">Statistiques</span>
+                                <span class="skill">Python</span>
                             </div>
                         </div>
                         
                         <div class="founder-social">
                             <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
                             <a href="#" title="Publications"><i class="fas fa-graduation-cap"></i></a>
                         </div>
                     </div>
@@ -1346,14 +1445,14 @@
             <div class="philosophy-content">
                 <div class="philosophy-text">
                     <h2>Notre Philosophie de Travail</h2>
-                    <p>Chez Nord-Web, nous croyons en une approche collaborative où chaque membre de l'équipe contribue avec ses compétences uniques. La combinaison du développement web et de la data science nous permet d'offrir des solutions complètes et intégrées qui transforment réellement les entreprises.</p>
+                    <p>Chez Nord-Web, nous croyons en une approche collaborative où chaque membre de l'équipe contribue avec ses compétences uniques.</p>
                     
                     <div class="philosophy-points">
                         <div class="point">
                             <i class="fas fa-comments"></i>
                             <div>
                                 <h4>Communication Transparente</h4>
-                                <p>Nous maintenons une communication ouverte et régulière avec nos clients à chaque étape du projet, des réunions de cadrage aux revues techniques.</p>
+                                <p>Communication ouverte et régulière avec nos clients à chaque étape du projet.</p>
                             </div>
                         </div>
                         
@@ -1361,7 +1460,7 @@
                             <i class="fas fa-lightbulb"></i>
                             <div>
                                 <h4>Innovation Continue</h4>
-                                <p>Nous restons à jour avec les dernières technologies et tendances pour offrir des solutions modernes, performantes et adaptées aux besoins actuels.</p>
+                                <p>Nous restons à jour avec les dernières technologies pour offrir des solutions modernes.</p>
                             </div>
                         </div>
                         
@@ -1369,7 +1468,7 @@
                             <i class="fas fa-handshake"></i>
                             <div>
                                 <h4>Partenaire, Pas Prestataire</h4>
-                                <p>Nous nous impliquons dans la réussite de votre projet comme s'il était le nôtre, en partageant nos connaissances et notre expertise pour maximiser votre succès.</p>
+                                <p>Nous nous impliquons dans la réussite de votre projet comme s'il était le nôtre.</p>
                             </div>
                         </div>
                     </div>
@@ -1395,7 +1494,7 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>Collaboration</h3>
-                    <p>Nous croyons que les meilleures solutions naissent de l'intelligence collective et de la diversité des perspectives.</p>
+                    <p>Les meilleures solutions naissent de l'intelligence collective et de la diversité des perspectives.</p>
                 </div>
                 
                 <div class="value-card">
@@ -1403,7 +1502,7 @@
                         <i class="fas fa-medal"></i>
                     </div>
                     <h3>Excellence</h3>
-                    <p>Nous visons l'excellence dans chaque projet, avec un souci du détail et une quête constante d'amélioration.</p>
+                    <p>Nous visons l'excellence dans chaque projet, avec un souci du détail constant.</p>
                 </div>
                 
                 <div class="value-card">
@@ -1411,7 +1510,7 @@
                         <i class="fas fa-heart"></i>
                     </div>
                     <h3>Passion</h3>
-                    <p>Notre passion pour la technologie et l'innovation nous pousse à toujours dépasser les attentes de nos clients.</p>
+                    <p>Notre passion pour la technologie nous pousse à toujours dépasser les attentes.</p>
                 </div>
                 
                 <div class="value-card">
@@ -1419,7 +1518,7 @@
                         <i class="fas fa-hand-holding-heart"></i>
                     </div>
                     <h3>Engagement Local</h3>
-                    <p>Nous nous engageons à contribuer au développement économique et numérique de la région de Saint-Louis.</p>
+                    <p>Nous contribuons au développement économique et numérique de la région de Saint-Louis.</p>
                 </div>
             </div>
         </div>
@@ -1437,25 +1536,25 @@
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Découverte & Analyse</h3>
-                    <p>Nous écoutons vos besoins, objectifs et contraintes pour bien comprendre votre projet et définir une stratégie claire.</p>
+                    <p>Nous écoutons vos besoins, objectifs et contraintes pour bien comprendre votre projet.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>Conception & Planification</h3>
-                    <p>Nous créons des maquettes, planifions l'architecture technique et établissons un calendrier détaillé du projet.</p>
+                    <p>Nous créons des maquettes, planifions l'architecture technique et établissons un calendrier.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3>Développement & Test</h3>
-                    <p>Notre équipe code, teste et implémente la solution avec les meilleures pratiques et une rigueur technique exceptionnelle.</p>
+                    <p>Notre équipe code, teste et implémente la solution avec les meilleures pratiques.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>Livraison & Support Continu</h3>
-                    <p>Nous déployons votre solution, formons votre équipe et assurons un support technique pour garantir son succès à long terme.</p>
+                    <h3>Livraison & Support</h3>
+                    <p>Nous déployons votre solution, formons votre équipe et assurons un support technique.</p>
                 </div>
             </div>
         </div>
@@ -1465,66 +1564,129 @@
     <section class="cta">
         <div class="container">
             <h2>Travaillons ensemble sur votre prochain projet</h2>
-            <p>Rencontrez notre équipe et découvrez comment notre expertise combinée en développement web et data science peut transformer votre vision en succès numérique.</p>
+            <p>Rencontrez notre équipe et découvrez comment notre expertise peut transformer votre vision en succès numérique.</p>
             <a href="contact.html" class="btn">Prendre rendez-vous</a>
-            <a href="portfolio.html" class="btn btn-accent" style="margin-left: 15px;">Voir nos réalisations</a>
+            <a href="portfolio.html" class="btn btn-accent" style="margin-left: 10px;">Voir nos réalisations</a>
         </div>
     </section>
 
-    <!-- Footer réduit -->
+    <!-- Footer amélioré -->
     <footer>
-        <div class="container">
+        <div class="container footer-container">
             <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">Nord<span>Web</span></div>
-                    <p>Solutions digitales innovantes créées à Saint-Louis par une équipe passionnée de développeurs et data scientists.</p>
+                <!-- Section logo et description -->
+                <div class="footer-section footer-logo-section">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-code"></i> Nord<span>Web</span>
+                    </a>
+                    <div class="footer-about">
+                        <p>Solutions digitales innovantes créées à Saint-Louis par une équipe passionnée de développeurs et data scientists. Nous transformons vos idées en réalité numérique.</p>
+                    </div>
+                    
+                    <!-- Newsletter -->
+                    <div class="newsletter">
+                        <h4>Restez informé</h4>
+                        <form class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Votre email" required>
+                            <button type="submit" class="newsletter-btn">S'abonner</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Réseaux sociaux -->
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 
-                <div class="footer-links">
+                <!-- Liens rapides -->
+                <div class="footer-section footer-links">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="apropos.html">À propos</a></li>
-                        <li><a href="equipe.html">Équipe</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="apropos.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="equipe.html"><i class="fas fa-chevron-right"></i> Notre équipe</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-services">
-                    <h4>Services</h4>
+                <!-- Services -->
+                <div class="footer-section footer-services">
+                    <h4>Nos Services</h4>
                     <ul>
-                        <li><a href="services.html#web-dev">Développement Web</a></li>
-                        <li><a href="services.html#data-science">Data Science</a></li>
-                        <li><a href="services.html#ecommerce">E-commerce</a></li>
-                        <li><a href="services.html#mobile">Applications Mobile</a></li>
-                        <li><a href="services.html#seo">SEO & Marketing</a></li>
+                        <li><a href="services.html#web-dev"><i class="fas fa-chevron-right"></i> Développement Web</a></li>
+                        <li><a href="services.html#data-science"><i class="fas fa-chevron-right"></i> Data Science & IA</a></li>
+                        <li><a href="services.html#ecommerce"><i class="fas fa-chevron-right"></i> Solutions E-commerce</a></li>
+                        <li><a href="services.html#mobile"><i class="fas fa-chevron-right"></i> Applications Mobile</a></li>
+                        <li><a href="services.html#seo"><i class="fas fa-chevron-right"></i> SEO & Marketing Digital</a></li>
+                        <li><a href="services.html#design"><i class="fas fa-chevron-right"></i> Design UI/UX</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
-                    <p><i class="fas fa-envelope"></i> ambarhama07@gmail.com</p>
-                    <p><i class="fas fa-phone"></i> +221 78 197 08 44</p>
+                <!-- Contact -->
+                <div class="footer-section footer-contact">
+                    <h4>Contactez-nous</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Adresse</strong><br>
+                                Saint-Louis, Sénégal
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong><br>
+                                <a href="mailto:ambarhama07@gmail.com">ambarhama07@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Téléphone</strong><br>
+                                <a href="tel:+221781970844">+221 78 197 08 44</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp</strong><br>
+                                <a href="https://wa.me/221781970844" target="_blank">+221 78 197 08 44</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2025 Nord-Web. Tous droits réservés. Fondé par Amadou BA .</p>
+            <!-- Ligne de séparation -->
+            <div class="footer-divider"></div>
+            
+            <!-- Copyright et mentions légales -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 <span>Nord-Web</span>. Tous droits réservés. Fondé par Amadou BA.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">Conditions d'utilisation</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Bouton retour en haut -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
-        // script.js - Améliorations pour la page Équipe
         document.addEventListener('DOMContentLoaded', function() {
             // Navigation mobile
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1560,121 +1722,84 @@
             // Header qui devient opaque au scroll
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
-                if (window.scrollY > 100) {
-                    header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.1)';
                 } else {
-                    header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
-                    header.style.backgroundColor = 'white';
+                    header.style.boxShadow = '0 2px 4px rgba(59, 130, 246, 0.05)';
                 }
             });
             
-            // Animation au scroll
+            // Bouton retour en haut
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            // Smooth scroll vers le haut
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('.newsletter-input').value;
+                    
+                    // Simuler l'envoi
+                    this.querySelector('.newsletter-btn').textContent = 'Merci !';
+                    this.querySelector('.newsletter-btn').style.backgroundColor = '#10b981';
+                    
+                    setTimeout(() => {
+                        this.querySelector('.newsletter-btn').textContent = 'S\'abonner';
+                        this.querySelector('.newsletter-btn').style.backgroundColor = '';
+                        this.reset();
+                    }, 3000);
+                });
+            }
+            
+            // Animation des éléments au scroll
             const observerOptions = {
                 threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
+                rootMargin: '0px 0px -50px 0px'
             };
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     }
                 });
             }, observerOptions);
             
-            // Observer les éléments à animer
-            const animatedElements = document.querySelectorAll('.founder-card, .philosophy-content, .step, .value-card, .section-title');
-            animatedElements.forEach(el => observer.observe(el));
-            
-            // Animation des compétences au survol
-            const skills = document.querySelectorAll('.skill');
-            skills.forEach(skill => {
-                skill.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.05)';
-                });
-                
-                skill.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
+            // Observer les éléments du footer pour les animer
+            const footerElements = document.querySelectorAll('.footer-section, .footer-divider, .footer-bottom');
+            footerElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
             });
             
-            // Effet de parallaxe sur le background image
+            // Animation parallaxe pour l'en-tête
             window.addEventListener('scroll', function() {
                 const scrolled = window.pageYOffset;
-                if (window.innerWidth > 768) {
+                const pageHeader = document.querySelector('.page-header');
+                if (pageHeader) {
                     const rate = scrolled * 0.5;
-                    document.body.style.backgroundPosition = `center ${rate}px`;
+                    pageHeader.style.backgroundPosition = `center ${rate}px`;
                 }
-            });
-            
-            // Animation progressive des étapes
-            const steps = document.querySelectorAll('.step');
-            const stepsObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        }, index * 200);
-                    }
-                });
-            }, { threshold: 0.3 });
-            
-            steps.forEach(step => stepsObserver.observe(step));
-            
-            // Smooth scroll pour les ancres
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Animation des badges des fondateurs
-            const badges = document.querySelectorAll('.founder-badge');
-            badges.forEach(badge => {
-                badge.addEventListener('mouseenter', function() {
-                    this.style.transform = 'rotate(5deg) scale(1.1)';
-                });
-                
-                badge.addEventListener('mouseleave', function() {
-                    this.style.transform = 'rotate(0) scale(1)';
-                });
-            });
-            
-            // Animation des icônes de valeur
-            const valueIcons = document.querySelectorAll('.value-icon');
-            valueIcons.forEach(icon => {
-                icon.addEventListener('mouseenter', function() {
-                    this.style.transform = 'rotateY(180deg)';
-                    setTimeout(() => {
-                        this.style.transform = 'rotateY(0)';
-                    }, 300);
-                });
-            });
-            
-            // Animation des images rondes au survol
-            const founderImages = document.querySelectorAll('.founder-img-container');
-            founderImages.forEach(imgContainer => {
-                imgContainer.addEventListener('mouseenter', function() {
-                    this.style.borderColor = 'var(--accent-color)';
-                    this.style.boxShadow = '0 15px 40px rgba(245, 158, 11, 0.3)';
-                });
-                
-                imgContainer.addEventListener('mouseleave', function() {
-                    this.style.borderColor = 'var(--light-color)';
-                    this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                });
             });
         });
     </script>

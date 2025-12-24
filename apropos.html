@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À Propos | Nord-Web - Notre Histoire & Vision</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES CSS ===== */
+        /* ===== VARIABLES CSS - BLEU CLAIR & BLANC ===== */
         :root {
-            /* Couleurs principales */
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary-color: #7c3aed;
-            --accent-color: #f59e0b;
-            --dark-color: #1e293b;
-            --light-color: #f8fafc;
-            --gray-color: #64748b;
-            --gray-light: #e2e8f0;
+            /* Couleurs principales - BLEU CLAIR & BLANC */
+            --primary-color: #3b82f6; /* Bleu vif */
+            --primary-light: #60a5fa; /* Bleu clair */
+            --primary-lighter: #93c5fd; /* Bleu très clair */
+            --primary-soft: #dbeafe; /* Bleu très pâle */
+            --secondary-color: #1d4ed8; /* Bleu royal */
+            --accent-color: #2563eb; /* Bleu accent */
+            --accent-light: #3b82f6; /* Bleu accent clair */
+            --dark-color: #1e293b; /* Bleu nuit clair */
+            --light-color: #ffffff; /* Blanc pur */
+            --gray-color: #64748b; /* Gris bleuté */
+            --gray-light: #f8fafc; /* Gris très clair bleuté */
+            --gray-lighter: #f1f5f9; /* Gris plus clair */
+            --background-light: #f0f9ff; /* Fond bleu très clair */
             
             /* Typographie */
             --heading-font: 'Montserrat', sans-serif;
@@ -30,9 +35,10 @@
             --transition: all 0.3s ease;
             
             /* Ombres */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-sm: 0 2px 8px rgba(59, 130, 246, 0.05);
+            --shadow-md: 0 4px 12px rgba(59, 130, 246, 0.08);
+            --shadow-lg: 0 10px 25px rgba(59, 130, 246, 0.1);
+            --shadow-dark: 0 10px 25px rgba(59, 130, 246, 0.15);
         }
 
         /* ===== RESET ET STYLES GÉNÉRAUX ===== */
@@ -71,12 +77,12 @@
         /* ===== BOUTONS ===== */
         .btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 14px 32px;
             background-color: var(--primary-color);
             color: white;
             border-radius: var(--border-radius);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             border: none;
             cursor: pointer;
             transition: var(--transition);
@@ -85,6 +91,8 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
 
         .btn::before {
@@ -104,28 +112,37 @@
         }
 
         .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
 
         .btn-accent {
-            background-color: var(--accent-color);
+            background-color: var(--primary-light);
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
         }
 
         .btn-accent:hover {
-            background-color: #e68a00;
+            background-color: var(--primary-color);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
 
-        .btn-small {
-            padding: 8px 20px;
-            font-size: 0.9rem;
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: none;
         }
 
-        /* ===== HEADER SIMPLE BLANC ===== */
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* ===== HEADER BLANC ===== */
         header {
             background-color: white;
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-md);
             position: fixed;
             top: 0;
             left: 0;
@@ -148,22 +165,23 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        /* Icône </> en jaune avec effet de lueur */
+        /* Icône </> en bleu clair */
         .logo i {
-            color: var(--accent-color);
+            color: var(--primary-color);
             font-size: 2rem;
             transition: var(--transition);
         }
 
         .logo:hover i {
             transform: rotate(15deg);
+            color: var(--primary-light);
         }
 
         .logo span {
-            color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         nav ul {
@@ -178,6 +196,7 @@
             font-weight: 500;
             position: relative;
             padding: 5px 0;
+            transition: var(--transition);
         }
 
         nav a::after {
@@ -187,7 +206,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent-color);
+            background-color: var(--primary-color);
             transition: var(--transition);
         }
 
@@ -198,22 +217,29 @@
 
         nav a:hover,
         nav a.active {
-            color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
-            border: none;
-            font-size: 1.5rem;
+            border: 2px solid var(--primary-lighter);
             color: var(--dark-color);
             cursor: pointer;
-            padding: 5px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: var(--transition);
         }
 
-        /* ===== EN-TÊTE DE PAGE AVEC NOUVEAU BACKGROUND ===== */
+        .mobile-menu-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* ===== EN-TÊTE DE PAGE AVEC BACKGROUND IMAGE ===== */
         .page-header {
-            background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.9)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
@@ -221,7 +247,7 @@
             background-attachment: fixed;
             color: white;
             text-align: center;
-            padding: 160px 0 100px;
+            padding: 180px 0 120px;
             margin-top: 0;
             position: relative;
             overflow: hidden;
@@ -234,7 +260,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .page-header .container {
@@ -243,122 +269,284 @@
         }
 
         .page-header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
             font-family: var(--heading-font);
             animation: fadeInUp 0.8s ease;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            letter-spacing: -0.5px;
         }
 
         .page-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
+            font-size: 1.3rem;
+            max-width: 750px;
             margin: 0 auto;
-            opacity: 0.9;
+            opacity: 0.95;
             animation: fadeInUp 1s ease;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-
-        /* ===== NOTRE HISTOIRE ===== */
-        .our-history {
-            background-color: white;
-        }
-
-        .history-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .history-text h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: var(--dark-color);
-            font-family: var(--heading-font);
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .history-text h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            border-radius: 2px;
-        }
-
-        .history-text p {
-            color: var(--gray-color);
-            margin-bottom: 20px;
-            font-size: 1.05rem;
             line-height: 1.7;
+            font-weight: 300;
         }
 
-        .history-text strong {
-            color: var(--primary-color);
-        }
-
-        .history-image {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
+        /* ===== NOTRE HISTOIRE - NOUVELLE SECTION ===== */
+        .our-history {
+            background-color: var(--background-light);
             position: relative;
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: var(--transition);
+            overflow: hidden;
         }
 
-        .history-image:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        .history-image::before {
+        .our-history::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 50%);
+        }
+
+        .history-section {
+            position: relative;
             z-index: 1;
         }
 
-        .history-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .history-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .history-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-family: var(--heading-font);
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .history-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .history-header p {
+            color: var(--gray-color);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .history-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .history-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .history-item {
+            margin-bottom: 80px;
+            position: relative;
+            width: 45%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .history-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .history-item:nth-child(even) {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .history-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+
+        .history-item:nth-child(odd)::before {
+            right: -36px;
+        }
+
+        .history-item:nth-child(even)::before {
+            left: -36px;
+        }
+
+        .history-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            border: 1px solid var(--gray-lighter);
             transition: var(--transition);
         }
 
-        .history-image:hover img {
-            transform: scale(1.05);
+        .history-content:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-lighter);
+            transform: translateY(-10px);
+        }
+
+        .history-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-family: var(--heading-font);
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 25px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .history-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .history-content p {
+            color: var(--gray-color);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .history-content .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .history-content .achievements {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .history-content .achievements li {
+            color: var(--gray-color);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .history-content .achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .founders-note {
+            margin-top: 50px;
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--gray-lighter);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .founders-note::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+        }
+
+        .founders-note p {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .founders-note .author {
+            margin-top: 20px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         /* ===== MISSION & VISION ===== */
         .mission-vision {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-vision::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
         }
 
         .mv-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            position: relative;
+            z-index: 1;
         }
 
         .mv-card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 40px 30px;
+            padding: 45px 35px;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
             text-align: center;
             position: relative;
             overflow: hidden;
+            border: 1px solid var(--gray-lighter);
         }
 
         .mv-card::before {
@@ -367,52 +555,62 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
             transition: var(--transition);
         }
 
         .mv-card:hover::before {
             height: 100%;
-            opacity: 0.05;
+            opacity: 0.03;
         }
 
         .mv-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary-lighter);
         }
 
         .mv-card i {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: inline-block;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+
+        .mv-card:hover i {
+            transform: scale(1.1);
         }
 
         .mv-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.7rem;
+            margin-bottom: 25px;
             color: var(--dark-color);
             font-family: var(--heading-font);
+            font-weight: 700;
         }
 
         .mv-card p, .mv-card ul {
             color: var(--gray-color);
             line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         .mv-card ul {
             text-align: left;
             list-style: none;
+            margin-top: 20px;
         }
 
         .mv-card li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             position: relative;
-            padding-left: 25px;
+            padding-left: 30px;
+            line-height: 1.6;
         }
 
         .mv-card li::before {
@@ -421,6 +619,7 @@
             left: 0;
             color: var(--primary-color);
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .mv-card li strong {
@@ -429,217 +628,224 @@
 
         /* ===== POURQUOI NOUS CHOISIR ===== */
         .why-choose-us {
-            background-color: white;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--dark-color);
-            font-family: var(--heading-font);
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .why-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid var(--gray-light);
-        }
-
-        .why-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-
-        .why-number {
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-family: var(--heading-font);
-            font-size: 1.2rem;
-        }
-
-        .why-card h3 {
-            font-size: 1.3rem;
-            margin: 20px 0 15px;
-            color: var(--dark-color);
-            font-family: var(--heading-font);
-        }
-
-        .why-card p {
-            color: var(--gray-color);
-            line-height: 1.6;
-        }
-
-        /* ===== CHIFFRES CLÉS ===== */
-        .key-numbers {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 60px 0;
-        }
-
-        .numbers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .number-card {
-            padding: 30px 20px;
+            background-color: var(--background-light);
             position: relative;
             overflow: hidden;
         }
 
-        .number-card::before {
+        .why-choose-us::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: scaleY(0);
-            transform-origin: bottom;
-            transition: transform 0.5s ease;
+            background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 50%);
         }
 
-        .number-card:hover::before {
-            transform: scaleY(1);
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 1;
         }
 
-        .number-card h3 {
+        .section-title h2 {
             font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--dark-color);
             font-family: var(--heading-font);
             position: relative;
-            z-index: 1;
+            display: inline-block;
         }
 
-        .number-card p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ===== TIMELINE DE L'ÉVOLUTION ===== */
-        .evolution-timeline {
-            background-color: var(--light-color);
-            padding: 80px 0;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
+        .section-title h2::after {
             content: '';
             position: absolute;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
         }
 
-        .timeline-item {
-            margin-bottom: 40px;
+        .section-title p {
+            color: var(--gray-color);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
             position: relative;
-            width: 45%;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .timeline-item:nth-child(odd) {
-            margin-left: 0;
-            margin-right: auto;
-        }
-
-        .timeline-item:nth-child(even) {
-            margin-left: auto;
-            margin-right: 0;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 4px solid var(--primary-color);
-            border-radius: 50%;
             z-index: 1;
         }
 
-        .timeline-item:nth-child(odd)::before {
-            right: -52px;
-        }
-
-        .timeline-item:nth-child(even)::before {
-            left: -52px;
-        }
-
-        .timeline-content {
+        .why-card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 25px;
+            padding: 35px 30px;
             box-shadow: var(--shadow-md);
+            transition: var(--transition);
             position: relative;
+            border: 1px solid var(--gray-lighter);
+            overflow: hidden;
         }
 
-        .timeline-year {
-            font-size: 1.2rem;
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .why-card:hover::before {
+            opacity: 0.03;
+        }
+
+        .why-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-lighter);
+        }
+
+        .why-number {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
             font-family: var(--heading-font);
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            z-index: 1;
         }
 
-        .timeline-content h3 {
-            font-size: 1.3rem;
+        .why-card h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 20px;
+            color: var(--dark-color);
+            font-family: var(--heading-font);
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card p {
+            color: var(--gray-color);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            font-size: 1.05rem;
+        }
+
+        /* ===== ÉQUIPE FONDATRICE ===== */
+        .founders-team {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founders-team::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(37, 99, 235, 0.05) 0%, transparent 50%);
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .founder-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--gray-lighter);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-lighter);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .founder-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary-light);
+        }
+
+        .founder-icon i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .founder-card h3 {
+            font-size: 1.8rem;
             margin-bottom: 10px;
             color: var(--dark-color);
             font-family: var(--heading-font);
+            font-weight: 700;
         }
 
-        .timeline-content p {
+        .founder-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .founder-card p {
             color: var(--gray-color);
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         /* ===== SECTION CTA ===== */
         .cta {
-            background-color: white;
+            background-color: var(--background-light);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -652,7 +858,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232563eb' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
         }
 
         .cta .container {
@@ -661,17 +869,33 @@
         }
 
         .cta h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 25px;
             font-family: var(--heading-font);
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .cta h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
         }
 
         .cta p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            max-width: 750px;
+            margin: 0 auto 40px;
             color: var(--gray-color);
+            line-height: 1.7;
         }
 
         .cta-btns {
@@ -681,35 +905,51 @@
             flex-wrap: wrap;
         }
 
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER BLEU CLAIR ===== */
         footer {
-            background-color: var(--dark-color);
+            background: linear-gradient(135deg, var(--dark-color) 0%, #334155 100%);
             color: white;
-            padding: 60px 0 20px;
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: inline-block;
+            letter-spacing: -0.5px;
         }
 
         .footer-logo span {
-            color: var(--accent-color);
+            color: var(--primary-light);
         }
 
         .footer-about p {
-            color: #94a3b8;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         .social-icons {
@@ -721,27 +961,45 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
             text-decoration: none;
             transition: var(--transition);
+            font-size: 1.1rem;
         }
 
         .social-icons a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
+            background-color: var(--primary-light);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(96, 165, 250, 0.3);
         }
 
         .footer-links h4,
         .footer-services h4,
         .footer-contact h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
             font-family: var(--heading-font);
             color: white;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-links h4::after,
+        .footer-services h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-light);
+            border-radius: 3px;
         }
 
         .footer-links ul,
@@ -751,41 +1009,49 @@
 
         .footer-links li,
         .footer-services li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a,
         .footer-services a {
-            color: #94a3b8;
+            color: #cbd5e1;
             text-decoration: none;
             transition: var(--transition);
+            font-size: 1.05rem;
+            display: inline-block;
         }
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: white;
-            padding-left: 5px;
+            color: var(--primary-light);
+            padding-left: 8px;
         }
 
         .footer-contact p {
-            color: #94a3b8;
-            margin-bottom: 15px;
+            color: #cbd5e1;
+            margin-bottom: 18px;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1.05rem;
         }
 
         .footer-contact i {
-            color: var(--accent-color);
+            color: var(--primary-light);
             width: 20px;
+            margin-top: 3px;
+            font-size: 1.1rem;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
+            margin-top: 50px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            color: #94a3b8;
-            font-size: 0.9rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -812,26 +1078,49 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .history-content {
-                gap: 40px;
-            }
-            
             .page-header h1 {
-                font-size: 3rem;
+                font-size: 3.2rem;
             }
             
             .section-title h2 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
-            .number-card h3 {
+            .history-header h2 {
                 font-size: 2.5rem;
+            }
+            
+            .cta h2 {
+                font-size: 2.5rem;
+            }
+            
+            .mv-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .history-timeline::before {
+                left: 30px;
+            }
+            
+            .history-item {
+                width: 100%;
+                margin-left: 60px !important;
+                margin-right: 0 !important;
+            }
+            
+            .history-item::before {
+                left: -43px !important;
+                right: auto !important;
+            }
+            
+            .page-header {
+                background-attachment: scroll;
             }
         }
 
         @media (max-width: 768px) {
             :root {
-                --section-padding: 60px 0;
+                --section-padding: 70px 0;
             }
             
             nav {
@@ -841,11 +1130,12 @@
                 right: 0;
                 background-color: white;
                 box-shadow: var(--shadow-lg);
-                padding: 20px;
+                padding: 25px;
                 transform: translateY(-100%);
                 opacity: 0;
                 visibility: hidden;
                 transition: var(--transition);
+                z-index: 999;
             }
             
             nav.active {
@@ -856,38 +1146,42 @@
             
             nav ul {
                 flex-direction: column;
-                gap: 20px;
+                gap: 25px;
             }
             
             .mobile-menu-btn {
                 display: block;
             }
             
-            .history-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
             .page-header {
-                padding: 140px 0 80px;
+                padding: 150px 0 90px;
                 background-attachment: scroll;
             }
             
             .page-header h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+                padding: 0 15px;
             }
             
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .history-header h2 {
+                font-size: 2.2rem;
             }
             
             .cta h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .footer-content {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 30px;
+                gap: 40px;
             }
             
             .mv-grid {
@@ -898,45 +1192,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .numbers-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                margin-left: 40px !important;
-                margin-right: 0 !important;
-            }
-            
-            .timeline-item::before {
-                left: -36px !important;
-                right: auto !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .page-header p {
-                font-size: 1rem;
-            }
-            
-            .history-text h2 {
-                font-size: 2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .cta h2 {
-                font-size: 1.8rem;
+            .founders-grid {
+                grid-template-columns: 1fr;
             }
             
             .cta-btns {
@@ -944,27 +1201,72 @@
                 align-items: center;
             }
             
-            .numbers-grid {
-                grid-template-columns: 1fr;
+            .cta-btns .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2.3rem;
             }
             
-            .number-card h3 {
-                font-size: 2.5rem;
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .history-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title p {
+                font-size: 1.1rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .cta p {
+                font-size: 1.1rem;
+            }
+            
+            .mv-card {
+                padding: 35px 25px;
+            }
+            
+            .why-card {
+                padding: 30px 25px;
+            }
+            
+            .history-content {
+                padding: 30px 20px;
+            }
+            
+            .founder-card {
+                padding: 30px 20px;
             }
         }
 
         /* ===== ÉLÉMENTS ANIMÉS ===== */
-        .history-content,
+        .history-item,
         .mv-card,
         .why-card,
-        .timeline-item {
+        .founder-card,
+        .section-title {
             opacity: 0;
             transform: translateY(20px);
         }
 
         /* Effet de dégradé animé pour les icônes */
         .mv-card i {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color), var(--primary-light));
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -973,7 +1275,7 @@
     </style>
 </head>
 <body>
-    <!-- Header avec fond blanc simple -->
+    <!-- Header avec fond blanc -->
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">
@@ -997,26 +1299,75 @@
         </div>
     </header>
 
-    <!-- Page Header avec NOUVELLE image background -->
+    <!-- Page Header AVEC BACKGROUND IMAGE -->
     <section class="page-header">
         <div class="container">
-            <h1>À Propos de Nord-Web</h1>
-            <p>Notre histoire, notre mission et notre engagement envers l'excellence numérique à Saint-Louis et au-delà</p>
+            <h1>Notre Histoire & Vision</h1>
+            <p>Découvrez l'histoire passionnante de Nord-Web, notre mission et notre engagement envers l'excellence numérique à Saint-Louis et au-delà</p>
         </div>
     </section>
 
-    <!-- Notre Histoire -->
+    <!-- Notre Histoire - NOUVELLE SECTION -->
     <section class="our-history">
         <div class="container">
-            <div class="history-content">
-                <div class="history-text">
+            <div class="history-section">
+                <div class="history-header">
                     <h2>Notre Histoire</h2>
-                    <p>Nord-Web est né en 2025 d'une vision commune partagée par <strong>Amadou BA</strong> et <strong>Al Housseynou BA</strong>, deux passionnés de technologie originaires de Saint-Louis. Constatant le manque d'offres digitales de qualité adaptées aux besoins locaux, ils décident de créer une entreprise qui allierait expertise technique et compréhension du contexte saint-louisien.</p>
-                    <p>Depuis nos débuts modestes, nous avons grandi pour devenir une référence dans le domaine des solutions digitales à Saint-Louis, collaborant avec des entreprises locales, des startups et des institutions pour transformer leurs idées en réalité numérique.</p>
-                    <p>Notre engagement envers l'excellence et notre passion pour l'innovation nous ont permis de réaliser plus de 20 projets réussis, établissant des relations durables avec nos clients qui nous font confiance pour leurs besoins numériques.</p>
+                    <p>Découvrez le parcours de Nord-Web, de ses débuts modestes à son statut actuel de référence numérique à Saint-Louis</p>
                 </div>
-                <div class="history-image">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fondation de Nord-Web">
+                
+                <div class="history-timeline">
+                    <!-- Étape 1 -->
+                    <div class="history-item">
+                        <div class="history-content">
+                            <div class="history-year">Janvier 2025</div>
+                            <h3>La Genèse</h3>
+                            <p><span class="highlight">Amadou BA</span>, développeur web passionné, constate le manque de solutions digitales adaptées au marché saint-louisien. Après des mois de réflexion et de préparation, il décide de créer <span class="highlight">Nord-Web</span> avec pour mission d'apporter l'excellence technologique à sa région natale.</p>
+                            <p>Les premiers mois sont consacrés à l'étude du marché local, à l'identification des besoins spécifiques et à la mise en place d'une infrastructure solide.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Étape 2 -->
+                    <div class="history-item">
+                        <div class="history-content">
+                            <div class="history-year">Mars 2025</div>
+                            <h3>Premiers Projets & Expansion</h3>
+                            <p>Nord-Web réalise ses <span class="highlight">premiers projets</span> pour des entreprises locales, établissant rapidement une réputation d'excellence technique et de fiabilité. La qualité du travail réalisé commence à attirer l'attention.</p>
+                            <p><span class="highlight">Al Housseynou BA</span>, spécialiste en data science, rejoint l'aventure, apportant une expertise complémentaire essentielle. Cette association crée une synergie unique entre développement web et analyse de données.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Étape 3 -->
+                    <div class="history-item">
+                        <div class="history-content">
+                            <div class="history-year">Juin 2025</div>
+                            <h3>Consolidation & Reconnaissance</h3>
+                            <p>Nord-Web élargit son portefeuille de services pour inclure des solutions complètes :</p>
+                            <ul class="achievements">
+                                <li><strong>Développement d'applications mobiles</strong> natives et hybrides</li>
+                                <li><strong>Solutions e-commerce</strong> sur mesure</li>
+                                <li><strong>Analyse de données</strong> et business intelligence</li>
+                                <li><strong>Stratégies digitales</strong> intégrées</li>
+                            </ul>
+                            <p>L'entreprise atteint le cap des <span class="highlight">20 projets réalisés</span> avec un taux de satisfaction client exceptionnel.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Étape 4 -->
+                    <div class="history-item">
+                        <div class="history-content">
+                            <div class="history-year">Août 2025</div>
+                            <h3>Leadership & Impact</h3>
+                            <p>Nord-Web s'impose comme <span class="highlight">référence numérique à Saint-Louis</span>, collaborant avec des institutions locales pour promouvoir la transformation digitale de la région.</p>
+                            <p>L'entreprise établit des partenariats stratégiques et commence à former la prochaine génération de talents numériques locaux, contribuant activement au développement économique de Saint-Louis.</p>
+                            <p>La vision de Nord-Web s'élargit : devenir le partenaire digital privilégié en Afrique de l'Ouest.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="founders-note">
+                    <p>"Notre succès repose sur notre capacité à comprendre les défis uniques de notre région tout en maîtrisant les technologies les plus avancées. Chez Nord-Web, nous croyons que la technologie doit être au service du développement humain et économique."</p>
+                    <div class="author">— Amadou BA , Fondateur</div>
                 </div>
             </div>
         </div>
@@ -1063,25 +1414,25 @@
             </div>
             <div class="why-grid">
                 <div class="why-card">
-                    <div class="why-number">01</div>
+                    <div class="why-number">1</div>
                     <h3>Expertise Locale, Vision Globale</h3>
                     <p>Basés à Saint-Louis, nous comprenons les défis et opportunités uniques de notre région, tout en maîtrisant les standards internationaux de développement et les meilleures pratiques du secteur.</p>
                 </div>
                 
                 <div class="why-card">
-                    <div class="why-number">02</div>
+                    <div class="why-number">2</div>
                     <h3>Approche Personnalisée</h3>
                     <p>Chaque projet est unique. Nous prenons le temps de comprendre vos besoins spécifiques, votre public cible et vos objectifs avant de proposer une solution parfaitement adaptée à votre contexte.</p>
                 </div>
                 
                 <div class="why-card">
-                    <div class="why-number">03</div>
+                    <div class="why-number">3</div>
                     <h3>Double Expertise Complémentaire</h3>
                     <p>La combinaison développement web (Amadou BA) et data science (Al Housseynou BA) nous permet d'offrir des solutions complètes et intégrées, de la conception à l'analyse des données.</p>
                 </div>
                 
                 <div class="why-card">
-                    <div class="why-number">04</div>
+                    <div class="why-number">4</div>
                     <h3>Support Continu & Évolutif</h3>
                     <p>Notre engagement ne s'arrête pas à la livraison. Nous assurons un support technique réactif, des formations et des mises à jour régulières pour que votre solution reste performante dans le temps.</p>
                 </div>
@@ -1089,75 +1440,34 @@
         </div>
     </section>
 
-    <!-- Évolution de l'entreprise -->
-    <section class="evolution-timeline">
+    <!-- Équipe Fondatrice -->
+    <section class="founders-team">
         <div class="container">
             <div class="section-title">
-                <h2>Notre Évolution</h2>
-                <p>Les étapes clés de notre parcours depuis 2025</p>
+                <h2>Les Fondateurs</h2>
+                <p>Découvrez les esprits créatifs derrière Nord-Web</p>
             </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2025</div>
-                        <h3>Fondation de Nord-Web</h3>
-                        <p>Amadou BA crée Nord-Web, avec pour objectif d'apporter des solutions digitales de qualité à Saint-Louis.</p>
+            <div class="founders-grid">
+                <div class="founder-card">
+                    <div class="founder-icon">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
+                    <h3>Amadou BA</h3>
+                    <div class="founder-title">Développeur Web & Fondateur</div>
+                    <p>Spécialiste en développement web avec plus de 5 ans d'expérience. Passionné par la création de solutions digitales innovantes qui répondent aux besoins réels des entreprises saint-louisiennes. Sa vision : faire de Nord-Web un catalyseur de transformation numérique pour la région.</p>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2025</div>
-                        <h3>Premiers Projets Majeurs</h3>
-                        <p>Réalisation de nos premiers projets importants pour des entreprises locales, établissant notre réputation d'excellence technique et de fiabilité.</p>
+                <div class="founder-card">
+                    <div class="founder-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2025</div>
-                        <h3>Expansion des Services</h3>
-                        <p>Élargissement de notre portefeuille de services pour inclure le développement mobile, l'analyse de données et des solutions e-commerce complètes.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2025</div>
-                        <h3>Reconnaissance & Croissance</h3>
-                        <p>Atteinte du cap des 20 projets réalisés et établissement de partenariats stratégiques avec des institutions locales pour promouvoir le numérique à Saint-Louis.</p>
-                    </div>
+                    <h3>Al Housseynou BA</h3>
+                    <div class="founder-title">Data Scientist & Co-Fondateur</div>
+                    <p>Expert en data science et intelligence artificielle. Il apporte à Nord-Web une expertise précieuse en analyse de données et en optimisation des processus métiers. Convaincu que les données sont la clé de la croissance des entreprises modernes.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Chiffres Clés 
-    <section class="key-numbers">
-        <div class="container">
-            <div class="numbers-grid">
-                <div class="number-card">
-                    <h3 id="projects-count">0</h3>
-                    <p>Projets Réalisés</p>
-                </div>
-                
-                <div class="number-card">
-                    <h3 id="clients-count">0</h3>
-                    <p>Clients Satisfaits</p>
-                </div>
-                
-                <div class="number-card">
-                    <h3 id="satisfaction-count">0</h3>
-                    <p>Satisfaction Client</p>
-                </div>
-                
-                <div class="number-card">
-                    <h3 id="experience-count">0</h3>
-                    <p>Années d'Expérience</p>
-                </div>
-            </div>
-        </div>
-    </section>  -->
 
     <!-- CTA -->
     <section class="cta">
@@ -1167,7 +1477,7 @@
             <div class="cta-btns">
                 <a href="contact.html" class="btn">Nous contacter</a>
                 <a href="equipe.html" class="btn btn-accent">Rencontrer notre équipe</a>
-                <a href="portfolio.html" class="btn">Voir nos réalisations</a>
+                <a href="portfolio.html" class="btn btn-outline">Voir nos réalisations</a>
             </div>
         </div>
     </section>
@@ -1220,7 +1530,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2025 Nord-Web. Tous droits réservés. Fondé par Amadou BA </p>
+                <p>&copy; 2025 Nord-Web. Tous droits réservés. Fondé par Amadou BA</p>
             </div>
         </div>
     </footer>
@@ -1259,15 +1569,15 @@
                 });
             });
             
-            // Header qui devient opaque au scroll
+            // Header qui devient plus opaque au scroll
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
-                    header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                    header.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.1)';
                     header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
                     header.style.backdropFilter = 'blur(10px)';
                 } else {
-                    header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+                    header.style.boxShadow = 'var(--shadow-md)';
                     header.style.backgroundColor = 'white';
                     header.style.backdropFilter = 'none';
                 }
@@ -1288,12 +1598,12 @@
             }, observerOptions);
             
             // Observer les éléments à animer
-            const animatedElements = document.querySelectorAll('.history-content, .mv-card, .why-card, .timeline-item, .section-title');
+            const animatedElements = document.querySelectorAll('.history-item, .mv-card, .why-card, .founder-card, .section-title');
             animatedElements.forEach(el => observer.observe(el));
             
-            // Timeline animation spécifique
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            const timelineObserver = new IntersectionObserver((entries) => {
+            // Animation spécifique pour la timeline
+            const historyItems = document.querySelectorAll('.history-item');
+            const historyObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.style.opacity = '1';
@@ -1302,57 +1612,7 @@
                 });
             }, { threshold: 0.2 });
             
-            timelineItems.forEach(item => timelineObserver.observe(item));
-            
-            // Compteur de statistiques
-            const stats = [
-                { id: 'projects-count', target: 50, duration: 2000 },
-                { id: 'clients-count', target: 30, duration: 2000 },
-                { id: 'satisfaction-count', target: 100, duration: 2000 },
-                { id: 'experience-count', target: 3, duration: 2000 }
-            ];
-            
-            // Observer la section des chiffres clés
-            const numbersSection = document.querySelector('.key-numbers');
-            if (numbersSection) {
-                const statsObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            stats.forEach(stat => {
-                                const element = document.getElementById(stat.id);
-                                if (element) {
-                                    animateCounter(element, stat.target, stat.duration);
-                                }
-                            });
-                            statsObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                
-                statsObserver.observe(numbersSection);
-            }
-            
-            function animateCounter(element, target, duration) {
-                let start = 0;
-                const increment = target / (duration / 16);
-                const timer = setInterval(() => {
-                    start += increment;
-                    if (start >= target) {
-                        if (element.id === 'satisfaction-count') {
-                            element.textContent = target + '%';
-                        } else {
-                            element.textContent = target + '+';
-                        }
-                        clearInterval(timer);
-                    } else {
-                        if (element.id === 'satisfaction-count') {
-                            element.textContent = Math.floor(start) + '%';
-                        } else {
-                            element.textContent = Math.floor(start) + '+';
-                        }
-                    }
-                }, 16);
-            }
+            historyItems.forEach(item => historyObserver.observe(item));
             
             // Smooth scroll pour les ancres
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1371,18 +1631,18 @@
                 });
             });
             
-            // Effet de parallaxe sur l'image de l'histoire
+            // Effet de parallaxe sur l'en-tête de page
             window.addEventListener('scroll', function() {
-                const historyImage = document.querySelector('.history-image');
+                const pageHeader = document.querySelector('.page-header');
                 const scrolled = window.pageYOffset;
-                if (historyImage && window.innerWidth > 768) {
-                    const rate = scrolled * -0.1;
-                    historyImage.style.transform = `perspective(1000px) rotateY(-5deg) translateY(${rate}px)`;
+                if (pageHeader && window.innerWidth > 768) {
+                    const rate = scrolled * 0.5;
+                    pageHeader.style.backgroundPosition = `center ${rate}px`;
                 }
             });
             
             // Animation des cartes au survol
-            const cards = document.querySelectorAll('.mv-card, .why-card, .number-card');
+            const cards = document.querySelectorAll('.mv-card, .why-card, .founder-card');
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     this.style.zIndex = '10';
@@ -1392,6 +1652,11 @@
                     this.style.zIndex = '1';
                 });
             });
+            
+            // Animation au chargement de la page
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
 </body>
