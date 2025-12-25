@@ -8,26 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES CSS UNIFIÉES - PALETTE BLEU CLAIR ET BLANC ===== */
+        /* ===== VARIABLES CSS UNIFIÉES - PALETTE BLEU FONCÉ ÉLÉGANT (#2c3e50) ===== */
         :root {
-            /* Couleurs principales - Palette bleu clair */
-            --primary-color: #3b82f6; /* Bleu vif */
-            --primary-light: #60a5fa; /* Bleu clair */
-            --primary-soft: #dbeafe; /* Bleu très clair */
-            --primary-dark: #2563eb; /* Bleu foncé pour contrastes */
+            /* Couleurs principales - Palette bleu foncé élégant */
+            --primary-color: #2c3e50; /* Bleu foncé principal */
+            --primary-light: #34495e; /* Bleu foncé plus clair */
+            --primary-soft: #5d7797; /* Bleu doux */
+            --primary-dark: #1a252f; /* Bleu nuit très foncé */
             
-            --secondary-color: #38bdf8; /* Bleu cyan */
-            --accent-color: #0ea5e9; /* Bleu accent */
-            --accent-light: #7dd3fc; /* Bleu très clair */
+            /* Couleur d'accent pour sécurité - Rouge */
+            --security-color: #e74c3c; /* Rouge pour la sécurité */
+            --security-light: #ff6b6b; /* Rouge clair */
+            --security-dark: #c0392b; /* Rouge foncé */
             
             /* Couleurs neutres */
-            --dark-color: #1e293b; /* Gris foncé */
-            --dark-light: #334155; /* Gris moyen */
-            --light-color: #f8fafc; /* Blanc cassé */
+            --dark-color: #1c2833; /* Presque noir bleuté */
+            --dark-light: #34495e; /* Gris moyen */
+            --light-color: #ecf0f1; /* Gris clair élégant */
             --white-color: #ffffff; /* Blanc pur */
-            --gray-color: #64748b; /* Gris */
-            --gray-light: #e2e8f0; /* Gris très clair */
-            --gray-soft: #f1f5f9; /* Gris ultra clair */
+            --gray-color: #95a5a6; /* Gris */
+            --gray-light: #e8edf1; /* Gris très clair */
+            --gray-soft: #f5f7fa; /* Gris ultra clair */
             
             /* Typographie */
             --heading-font: 'Montserrat', sans-serif;
@@ -40,10 +41,11 @@
             --transition: all 0.3s ease;
             
             /* Ombres */
-            --shadow-sm: 0 2px 4px rgba(59, 130, 246, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
-            --shadow-blue: 0 10px 25px rgba(59, 130, 246, 0.15);
+            --shadow-sm: 0 2px 4px rgba(44, 62, 80, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(44, 62, 80, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(44, 62, 80, 0.1);
+            --shadow-primary: 0 10px 25px rgba(44, 62, 80, 0.15);
+            --shadow-security: 0 10px 25px rgba(231, 76, 60, 0.15);
         }
 
         /* ===== RÉINITIALISATION ===== */
@@ -79,11 +81,11 @@
             text-align: center;
         }
 
-        /* ===== BOUTONS UNIFIÉS ===== */
+        /* ===== BOUTONS EN BLEU FONCÉ (#2c3e50) ===== */
         .btn {
             display: inline-block;
             padding: 12px 28px;
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* #2c3e50 */
             color: white;
             border-radius: var(--border-radius);
             text-decoration: none;
@@ -115,26 +117,37 @@
         }
 
         .btn:hover {
-            background-color: var(--primary-dark);
+            background-color: var(--primary-dark); /* #1a252f */
             transform: translateY(-2px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-primary);
+        }
+
+        /* Bouton sécurité en rouge */
+        .btn-security {
+            background-color: var(--security-color); /* Rouge */
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+        }
+
+        .btn-security:hover {
+            background-color: var(--security-dark); /* Rouge foncé */
+            box-shadow: var(--shadow-security);
         }
 
         .btn-accent {
-            background-color: var(--accent-color);
+            background-color: var(--primary-light); /* #34495e */
         }
 
         .btn-accent:hover {
-            background-color: #0284c7;
+            background-color: var(--primary-color); /* #2c3e50 */
         }
 
         .btn-light {
             background-color: var(--primary-soft);
-            color: var(--primary-color);
+            color: white;
         }
 
         .btn-light:hover {
-            background-color: var(--primary-light);
+            background-color: var(--primary-color);
             color: white;
         }
 
@@ -154,14 +167,9 @@
             color: white;
         }
 
-        /* ===== HEADER UNIFIÉ AVEC IMAGE DE FOND AMÉLIORÉE ===== */
+        /* ===== HEADER BLEU FONCÉ ÉLÉGANT ===== */
         header {
-            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.99)),
-                        url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background: var(--primary-color); /* #2c3e50 */
             position: fixed;
             top: 0;
             left: 0;
@@ -170,14 +178,13 @@
             padding: 18px 0;
             transition: var(--transition);
             box-shadow: var(--shadow-md);
-            border-bottom: 1px solid var(--primary-soft);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         header.scrolled {
             padding: 12px 0;
-            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15);
-            background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 1)),
-                        url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            box-shadow: 0 5px 20px rgba(44, 62, 80, 0.2);
+            background: var(--primary-color);
         }
 
         .header-container {
@@ -188,10 +195,11 @@
             z-index: 2;
         }
 
+        /* LOGO EN BLEU FONCÉ (#2c3e50) */
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: white;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -200,23 +208,27 @@
         }
 
         .logo i {
-            color: var(--primary-color);
+            color: white;
             font-size: 2rem;
             transition: var(--transition);
+            background-color: var(--primary-light);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .logo:hover i {
             transform: rotate(15deg) scale(1.1);
-            color: var(--primary-light);
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .logo span {
-            color: var(--dark-color);
+            color: white;
             transition: var(--transition);
         }
 
         .logo:hover span {
-            color: var(--primary-color);
+            color: #ecf0f1;
         }
 
         nav ul {
@@ -227,16 +239,15 @@
 
         nav a {
             text-decoration: none;
-            color: var(--dark-color);
+            color: var(--light-color);
             font-weight: 500;
             position: relative;
             padding: 5px 0;
             transition: var(--transition);
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
         }
 
         nav a.active {
-            color: var(--primary-color);
+            color: white;
             font-weight: 600;
         }
 
@@ -247,7 +258,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-color);
+            background-color: white;
             transition: var(--transition);
         }
 
@@ -257,7 +268,7 @@
         }
 
         nav a:hover {
-            color: var(--primary-color);
+            color: white;
         }
 
         .mobile-menu-btn {
@@ -265,7 +276,7 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--primary-color);
+            color: white;
             cursor: pointer;
             padding: 5px;
             transition: var(--transition);
@@ -276,10 +287,11 @@
             transform: rotate(90deg);
         }
 
-        /* ===== PAGE HEADER ===== */
+        /* ===== PAGE HEADER BLEU FONCÉ ===== */
         .page-header {
             background: 
-                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+                linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.9)), 
+                url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -324,19 +336,19 @@
             font-family: var(--heading-font);
             font-weight: 700;
             line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .page-header p {
             font-size: 1.3rem;
             max-width: 700px;
             margin: 0 auto 40px;
-            opacity: 0.95;
+            opacity: 0.9;
             line-height: 1.6;
         }
 
         .page-header .btn {
-            background-color: var(--white-color);
+            background-color: white;
             color: var(--primary-color);
             font-weight: 600;
             padding: 15px 35px;
@@ -373,7 +385,7 @@
         .service-nav-link {
             padding: 12px 24px;
             background: var(--primary-soft);
-            color: var(--primary-color);
+            color: white;
             border-radius: 50px;
             font-weight: 600;
             transition: var(--transition);
@@ -387,6 +399,12 @@
             gap: 8px;
         }
 
+        /* Style spécial pour le lien sécurité en rouge */
+        .service-nav-link.security-link {
+            background: var(--security-color);
+            border-color: var(--security-color);
+        }
+
         .service-nav-link i {
             font-size: 1.1rem;
         }
@@ -396,8 +414,16 @@
             background: var(--primary-color);
             color: white;
             transform: translateY(-3px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-primary);
             border-color: var(--primary-color);
+        }
+
+        /* Hover spécial pour sécurité */
+        .service-nav-link.security-link:hover,
+        .service-nav-link.security-link.active {
+            background: var(--security-dark);
+            border-color: var(--security-dark);
+            box-shadow: var(--shadow-security);
         }
 
         /* ===== SERVICES DÉTAILLÉS ===== */
@@ -448,12 +474,15 @@
             font-weight: 600;
         }
 
+        /* Icônes en bleu foncé */
         .service-detail-text h2 i {
             color: var(--primary-color);
             font-size: 2rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            
-            -webkit-text-fill-color: transparent;
+        }
+
+        /* Icône sécurité en rouge */
+        #security h2 i {
+            color: var(--security-color);
         }
 
         .service-detail-text > p {
@@ -469,8 +498,16 @@
             padding: 25px;
             border-radius: var(--border-radius);
             border-left: 4px solid var(--primary-color);
-            border-top: 1px solid var(--accent-light);
-            border-bottom: 1px solid var(--accent-light);
+            border-top: 1px solid var(--primary-light);
+            border-bottom: 1px solid var(--primary-light);
+        }
+
+        /* Section sécurité en rouge */
+        #security .service-features {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--security-color);
+            border-top: 1px solid rgba(231, 76, 60, 0.2);
+            border-bottom: 1px solid rgba(231, 76, 60, 0.2);
         }
 
         .service-features h3 {
@@ -486,6 +523,11 @@
 
         .service-features h3 i {
             color: var(--primary-color);
+        }
+
+        /* Titre sécurité en rouge */
+        #security .service-features h3 i {
+            color: var(--security-color);
         }
 
         .service-features ul {
@@ -511,6 +553,11 @@
             top: 2px;
         }
 
+        /* Icônes sécurité en rouge */
+        #security .service-features li i {
+            color: var(--security-color);
+        }
+
         .service-detail-image {
             flex: 1;
             border-radius: var(--border-radius);
@@ -522,9 +569,19 @@
             outline: 2px solid var(--primary-soft);
         }
 
+        /* Bordure sécurité en rouge */
+        #security .service-detail-image {
+            outline: 2px solid rgba(231, 76, 60, 0.3);
+        }
+
         .service-detail-image:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 50px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 30px 50px rgba(44, 62, 80, 0.15);
+        }
+
+        /* Hover sécurité en rouge */
+        #security .service-detail-image:hover {
+            box-shadow: 0 30px 50px rgba(231, 76, 60, 0.15);
         }
 
         .service-detail-image::before {
@@ -534,8 +591,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), transparent);
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.1), transparent);
             z-index: 1;
+        }
+
+        /* Overlay sécurité en rouge */
+        #security .service-detail-image::before {
+            background: linear-gradient(45deg, rgba(231, 76, 60, 0.1), transparent);
         }
 
         .service-detail-image img {
@@ -570,13 +632,13 @@
 
         .tech-tag {
             background: var(--primary-soft);
-            color: var(--primary-color);
+            color: white;
             padding: 8px 16px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
-            border: 1px solid var(--accent-light);
+            border: 1px solid var(--primary-light);
             cursor: default;
         }
 
@@ -584,15 +646,30 @@
             background: var(--primary-color);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+            box-shadow: var(--shadow-primary);
             border-color: var(--primary-color);
+        }
+
+        /* Tags sécurité en rouge */
+        #security .tech-tag {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--security-color);
+            border-color: rgba(231, 76, 60, 0.3);
+        }
+
+        #security .tech-tag:hover {
+            background: var(--security-color);
+            color: white;
+            box-shadow: var(--shadow-security);
+            border-color: var(--security-color);
         }
 
         /* ===== SECTION STATISTIQUES ===== */
         .stats-section {
             padding: 80px 0;
             background: 
-                        url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+                linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.9)), 
+                url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -606,7 +683,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(22, 22, 22, 0.85);
         }
 
         .stats-section .container {
@@ -632,8 +708,8 @@
 
         .stat-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-            border-color: var(--primary-light);
+            box-shadow: 0 20px 40px rgba(44, 62, 80, 0.15);
+            border-color: var(--primary-color);
         }
 
         .stat-number {
@@ -710,13 +786,18 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+        }
+
+        /* Carte sécurité en rouge */
+        .other-service-card.security-card::before {
+            background: linear-gradient(90deg, var(--security-color), var(--security-dark));
         }
 
         .other-service-card:hover {
             transform: translateY(-15px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
+            border-color: var(--primary-color);
         }
 
         .other-service-card i {
@@ -724,6 +805,11 @@
             margin-bottom: 20px;
             display: block;
             color: var(--primary-color);
+        }
+
+        /* Icône sécurité en rouge */
+        .other-service-card.security-card i {
+            color: var(--security-color);
         }
 
         .other-service-card h3 {
@@ -748,12 +834,19 @@
 
         .tech-tags-small span {
             background: var(--primary-soft);
-            color: var(--primary-color);
+            color: white;
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
-            border: 1px solid var(--accent-light);
+            border: 1px solid var(--primary-light);
+        }
+
+        /* Tags sécurité en rouge */
+        .other-service-card.security-card .tech-tags-small span {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--security-color);
+            border-color: rgba(231, 76, 60, 0.3);
         }
 
         /* ===== PROCESSUS DE SERVICE ===== */
@@ -777,7 +870,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
             z-index: 1;
         }
 
@@ -808,7 +901,7 @@
         .step-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: white;
             border-radius: 50%;
             display: flex;
@@ -817,7 +910,7 @@
             font-size: 2rem;
             font-weight: 700;
             margin: 0 auto 20px;
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 20px rgba(44, 62, 80, 0.3);
             border: 3px solid var(--white-color);
         }
 
@@ -833,14 +926,15 @@
             line-height: 1.6;
         }
 
-        /* ===== SECTION CTA ===== */
+        /* ===== SECTION CTA BLEU FONCÉ ===== */
         .cta {
             background: 
-                        url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+                linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.9)), 
+                url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: rgb(14, 13, 13);
+            color: white;
             padding: 100px 0;
             text-align: center;
             position: relative;
@@ -854,7 +948,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(59, 130, 246, 0.7), rgba(14, 165, 233, 0.6));
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.8), rgba(52, 73, 94, 0.7));
         }
 
         .cta .container {
@@ -882,7 +976,7 @@
         }
 
         .cta .btn {
-            background-color: var(--white-color);
+            background-color: white;
             color: var(--primary-color);
             margin: 0 10px;
             font-weight: 600;
@@ -896,17 +990,17 @@
         }
 
         .cta .btn-accent {
-            background-color: var(--accent-color);
+            background-color: var(--primary-light);
             color: white;
         }
 
         .cta .btn-accent:hover {
-            background-color: var(--primary-dark);
+            background-color: var(--primary-color);
         }
 
-        /* ===== FOOTER UNIFIÉ ===== */
+        /* ===== FOOTER BLEU FONCÉ ===== */
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--primary-dark);
             color: white;
             padding: 60px 0 20px;
             position: relative;
@@ -919,7 +1013,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
         }
 
         .footer-content {
@@ -940,8 +1034,11 @@
         }
 
         .footer-logo i {
-            color: var(--primary-light);
+            color: white;
             font-size: 2rem;
+            background-color: var(--primary-color);
+            padding: 8px;
+            border-radius: 8px;
         }
 
         .footer-logo span {
@@ -949,7 +1046,7 @@
         }
 
         .footer-about p {
-            color: #94a3b8;
+            color: #bdc3c7;
             margin-bottom: 20px;
             line-height: 1.6;
         }
@@ -993,7 +1090,7 @@
         .footer-links h4 i,
         .footer-services h4 i,
         .footer-contact h4 i {
-            color: var(--primary-light);
+            color: white;
         }
 
         .footer-links ul,
@@ -1008,19 +1105,19 @@
 
         .footer-links a,
         .footer-services a {
-            color: #94a3b8;
+            color: #bdc3c7;
             text-decoration: none;
             transition: var(--transition);
         }
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: var(--primary-light);
+            color: white;
             padding-left: 5px;
         }
 
         .footer-contact p {
-            color: #94a3b8;
+            color: #bdc3c7;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -1028,7 +1125,7 @@
         }
 
         .footer-contact i {
-            color: var(--primary-light);
+            color: white;
             width: 20px;
         }
 
@@ -1036,12 +1133,12 @@
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
+            color: #bdc3c7;
             font-size: 0.9rem;
         }
 
         .copyright i {
-            color: var(--primary-light);
+            color: var(--security-color);
             margin: 0 5px;
         }
 
@@ -1106,7 +1203,7 @@
             visibility: hidden;
             transition: var(--transition);
             z-index: 99;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
         }
         
         .scroll-top.visible {
@@ -1163,8 +1260,8 @@
                 right: -100%;
                 width: 280px;
                 height: 100vh;
-                background: var(--white-color);
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                background: var(--primary-color);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
                 flex-direction: column;
                 padding: 80px 30px 30px;
                 transition: right 0.3s ease;
@@ -1183,10 +1280,10 @@
             nav a {
                 font-size: 1.1rem;
                 padding: 10px 0;
-                border-bottom: 1px solid var(--gray-light);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 width: 100%;
                 display: block;
-                color: var(--dark-color);
+                color: var(--light-color);
             }
             
             .mobile-menu-btn {
@@ -1315,8 +1412,8 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h3>Nous transformons vos idées en solutions numériques performantes. Du développement web à la sécurité électronique, nous accompagnons votre projet à chaque étape pour garantir succès et innovation.</h3>
-            <p></p>
+            <h1>Nos Services Complets</h1>
+            <p>Nous transformons vos idées en solutions numériques performantes. Du développement web à la sécurité électronique, nous accompagnons votre projet à chaque étape pour garantir succès et innovation.</p>
             <a href="contact.html" class="btn">Demander un Devis Gratuit</a>
         </div>
     </section>
@@ -1327,7 +1424,7 @@
             <a href="#web-dev" class="service-nav-link active"><i class="fas fa-laptop-code"></i> Développement Web</a>
             <a href="#ecommerce" class="service-nav-link"><i class="fas fa-shopping-cart"></i> E-commerce</a>
             <a href="#mobile" class="service-nav-link"><i class="fas fa-mobile-alt"></i> Applications Mobiles</a>
-            <a href="#security" class="service-nav-link"><i class="fas fa-shield-alt"></i> Caméras & Alarmes</a>
+            <a href="#security" class="service-nav-link security-link"><i class="fas fa-shield-alt"></i> Sécurité Électronique</a>
             <a href="#seo" class="service-nav-link"><i class="fas fa-chart-line"></i> SEO & Marketing</a>
             <a href="#ui-ux" class="service-nav-link"><i class="fas fa-palette"></i> Design UI/UX</a>
             <a href="#data" class="service-nav-link"><i class="fas fa-database"></i> Data Science</a>
@@ -1442,11 +1539,11 @@
                 </div>
             </div>
 
-            <!-- Caméras et Alarmes - NOUVELLE IMAGE -->
+            <!-- Sécurité Électronique - EN ROUGE -->
             <div class="service-detail" id="security">
                 <div class="service-detail-content reverse">
                     <div class="service-detail-text">
-                        <h2><i class="fas fa-shield-alt"></i> Installation de Caméras & Alarmes</h2>
+                        <h2><i class="fas fa-shield-alt"></i> Sécurité Électronique</h2>
                         <p>Protégez vos biens et vos proches avec nos solutions de sécurité électronique sur mesure. Installation professionnelle de systèmes de surveillance et d'alarme haute technologie.</p>
                         
                         <div class="service-features">
@@ -1585,7 +1682,6 @@
         </div>
     </section>
 
-    
     <!-- Autres Services -->
     <section class="other-services">
         <div class="container">
@@ -1595,7 +1691,7 @@
             </div>
             
             <div class="other-services-grid">
-                <div class="other-service-card visible">
+                <div class="other-service-card security-card visible">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Sécurité Électronique</h3>
                     <p>Installation professionnelle de systèmes de surveillance, alarmes et contrôle d'accès pour votre sécurité.</p>
@@ -1725,7 +1821,7 @@
                         <li><a href="#web-dev">Développement Web</a></li>
                         <li><a href="#ecommerce">E-commerce</a></li>
                         <li><a href="#mobile">Applications Mobiles</a></li>
-                        <li><a href="#security">Caméras & Alarmes</a></li>
+                        <li><a href="#security">Sécurité Électronique</a></li>
                         <li><a href="#seo">SEO & Marketing</a></li>
                         <li><a href="#ui-ux">Design UI/UX</a></li>
                     </ul>
@@ -1735,9 +1831,9 @@
                     <h4><i class="fas fa-envelope"></i> Contact</h4>
                     <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
                     <p><i class="fas fa-phone"></i> 78 197 08 44</p>
-                    <p><i class="fas fa-envelope"></i> contact@nord-web.sn</p>
+                    <p><i class="fas fa-envelope"></i> ambarhama07@gmail.com</p>
                     <p><i class="fas fa-clock"></i> Lun-Sam: 8h-20h</p>
-                    <p><i class="fas fa-phone-alt"></i> Urgences: 24h/24</p>
+                    
                 </div>
             </div>
             

@@ -7,18 +7,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES CSS - BLEU CLAIR ET BLANC ===== */
+        /* ===== VARIABLES CSS - BLEU FONCÉ ET ROUGE ===== */
         :root {
-            /* Couleurs principales - BLEU CLAIR */
-            --primary-color: #3b82f6;
-            --primary-light: #93c5fd;
-            --primary-very-light: #dbeafe;
-            --primary-dark: #1d4ed8;
-            --accent-color: #3b82f6;
-            --dark-color: #1e293b;
-            --light-color: #f8fafc;
-            --gray-color: #64748b;
-            --gray-light: #e2e8f0;
+            /* Couleurs principales - BLEU FONCÉ (#2c3e50) pour boutons et éléments principaux */
+            --primary-color: #2c3e50; /* BLEU FONCÉ ÉLÉGANT */
+            --primary-light: #34495e; /* Bleu foncé plus clair */
+            --primary-very-light: #f8f9fa; /* Gris très clair pour fonds */
+            --primary-dark: #1a252f; /* Bleu presque noir */
+            --accent-color: #3498db; /* Bleu vif pour accents */
+            
+            /* Couleur sécurité - ROUGE */
+            --security-color: #e74c3c; /* Rouge pour sécurité */
+            --security-dark: #c0392b; /* Rouge foncé */
+            
+            /* Autres couleurs */
+            --dark-color: #2c3e50; /* Texte foncé */
+            --light-color: #ffffff; /* Blanc */
+            --gray-color: #7f8c8d; /* Gris moyen */
+            --gray-light: #ecf0f1; /* Gris clair */
             --white: #ffffff;
             
             /* Typographie */
@@ -32,9 +38,9 @@
             --transition: all 0.3s ease;
             
             /* Ombres */
-            --shadow-sm: 0 2px 4px rgba(59, 130, 246, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
+            --shadow-sm: 0 2px 8px rgba(44, 62, 80, 0.1);
+            --shadow-md: 0 4px 12px rgba(44, 62, 80, 0.15);
+            --shadow-lg: 0 8px 24px rgba(44, 62, 80, 0.2);
         }
 
         /* ===== RESET ET STYLES GÉNÉRAUX ===== */
@@ -70,11 +76,11 @@
             text-align: center;
         }
 
-        /* ===== BOUTONS ===== */
+        /* ===== BOUTONS - BLEU FONCÉ (#2c3e50) ===== */
         .btn {
             display: inline-block;
             padding: 12px 28px;
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* BLEU FONCÉ */
             color: white;
             border-radius: var(--border-radius);
             text-decoration: none;
@@ -84,6 +90,25 @@
             transition: var(--transition);
             font-size: 1rem;
             font-family: var(--heading-font);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
@@ -101,6 +126,18 @@
         .btn-accent:hover {
             background-color: var(--primary-color);
             color: white;
+        }
+
+        /* Boutons sécurité en ROUGE */
+        .btn-security {
+            background-color: var(--security-color); /* ROUGE */
+            color: white;
+        }
+
+        .btn-security:hover {
+            background-color: var(--security-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(231, 76, 60, 0.2);
         }
 
         /* ===== HEADER SIMPLE ===== */
@@ -125,14 +162,14 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--dark-color);
+            color: var(--primary-color); /* LOGO EN BLEU FONCÉ */
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* Icône </> en bleu clair */
+        /* Icône </> en bleu foncé */
         .logo i {
             color: var(--primary-color);
             font-size: 2rem;
@@ -163,7 +200,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* SOULIGNEMENT BLEU FONCÉ */
             transition: var(--transition);
         }
 
@@ -189,8 +226,7 @@
 
         /* ===== EN-TÊTE DE PAGE AVEC IMAGE DE FOND ===== */
         .page-header {
-            background: 
-                
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(26, 37, 47, 0.85)), 
                 url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
@@ -265,7 +301,7 @@
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 10px;
-            color: var(--dark-color);
+            color: var(--primary-color); /* TITRES EN BLEU FONCÉ */
             font-family: var(--heading-font);
         }
 
@@ -302,7 +338,7 @@
         .founder-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
+            border-color: var(--primary-color); /* BORDURE BLEU FONCÉ AU SURVOL */
         }
 
         /* STYLE DES IMAGES RONDES */
@@ -313,7 +349,7 @@
             align-items: center;
             justify-content: center;
             padding: 30px;
-            background-color: var(--primary-very-light);
+            background-color: rgba(44, 62, 80, 0.05); /* FOND BLEU TRÈS CLAIR */
         }
 
         .founder-img-container {
@@ -323,13 +359,13 @@
             border-radius: 50%;
             overflow: hidden;
             border: 4px solid var(--white);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.2); /* OMBRE BLEUE */
             transition: var(--transition);
         }
 
         .founder-card:hover .founder-img-container {
             transform: scale(1.05);
-            border-color: var(--primary-color);
+            border-color: var(--primary-color); /* BORDURE BLEU FONCÉ */
         }
 
         .founder-img-container img {
@@ -342,7 +378,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background: var(--primary-color);
+            background: var(--primary-color); /* BADGE BLEU FONCÉ */
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -362,19 +398,19 @@
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 5px;
-            color: var(--dark-color);
+            color: var(--primary-color); /* NOM EN BLEU FONCÉ */
             font-family: var(--heading-font);
         }
 
         .founder-role {
-            color: var(--primary-color);
+            color: var(--accent-color); /* ROLE EN BLEU VIF */
             font-weight: 600;
             margin-bottom: 15px;
             font-size: 1rem;
         }
 
         .founder-contact {
-            background-color: var(--primary-very-light);
+            background-color: rgba(44, 62, 80, 0.05); /* FOND BLEU TRÈS CLAIR */
             padding: 12px;
             border-radius: var(--border-radius);
             margin-bottom: 15px;
@@ -390,7 +426,7 @@
         }
 
         .founder-contact i {
-            color: var(--primary-color);
+            color: var(--primary-color); /* ICÔNES EN BLEU FONCÉ */
             width: 16px;
         }
 
@@ -408,7 +444,7 @@
         .expertise h4 {
             font-size: 1rem;
             margin-bottom: 10px;
-            color: var(--dark-color);
+            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
             font-family: var(--heading-font);
         }
 
@@ -419,8 +455,8 @@
         }
 
         .skill {
-            background-color: var(--primary-very-light);
-            color: var(--primary-color);
+            background-color: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
+            color: var(--primary-color); /* TEXTE BLEU FONCÉ */
             padding: 6px 12px;
             border-radius: 15px;
             font-size: 0.85rem;
@@ -429,7 +465,7 @@
         }
 
         .skill:hover {
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* FOND BLEU FONCÉ */
             color: white;
         }
 
@@ -445,8 +481,8 @@
             justify-content: center;
             width: 36px;
             height: 36px;
-            background-color: var(--primary-very-light);
-            color: var(--primary-color);
+            background-color: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
+            color: var(--primary-color); /* ICÔNES BLEU FONCÉ */
             border-radius: 50%;
             text-decoration: none;
             transition: var(--transition);
@@ -454,7 +490,7 @@
         }
 
         .founder-social a:hover {
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* FOND BLEU FONCÉ */
             color: white;
             transform: translateY(-3px);
         }
@@ -475,7 +511,7 @@
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 20px;
-            color: var(--dark-color);
+            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
             font-family: var(--heading-font);
             position: relative;
             padding-bottom: 15px;
@@ -488,7 +524,7 @@
             left: 0;
             width: 60px;
             height: 3px;
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* LIGNE BLEUE */
             border-radius: 2px;
         }
 
@@ -513,9 +549,9 @@
 
         .point i {
             font-size: 1.2rem;
-            color: var(--primary-color);
-            background: var(--primary-color);
-            
+            color: var(--primary-color); /* ICÔNES EN BLEU FONCÉ */
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             flex-shrink: 0;
             margin-top: 3px;
@@ -524,7 +560,7 @@
         .point h4 {
             font-size: 1.1rem;
             margin-bottom: 5px;
-            color: var(--dark-color);
+            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
             font-family: var(--heading-font);
         }
 
@@ -577,13 +613,13 @@
         .step:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
+            border-color: var(--primary-color); /* BORDURE BLEU FONCÉ */
         }
 
         .step-number {
             width: 50px;
             height: 50px;
-            background: var(--primary-color);
+            background: var(--primary-color); /* NUMÉRO BLEU FONCÉ */
             color: white;
             border-radius: 50%;
             display: flex;
@@ -598,7 +634,7 @@
         .step h3 {
             font-size: 1.2rem;
             margin-bottom: 10px;
-            color: var(--dark-color);
+            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
             font-family: var(--heading-font);
         }
 
@@ -633,13 +669,13 @@
         .value-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
+            border-color: var(--primary-color); /* BORDURE BLEU FONCÉ */
         }
 
         .value-icon {
             width: 60px;
             height: 60px;
-            background: var(--primary-color);
+            background: var(--primary-color); /* ICÔNE BLEU FONCÉ */
             color: white;
             border-radius: 50%;
             display: flex;
@@ -652,7 +688,7 @@
         .value-card h3 {
             font-size: 1.2rem;
             margin-bottom: 10px;
-            color: var(--dark-color);
+            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
             font-family: var(--heading-font);
         }
 
@@ -664,8 +700,7 @@
 
         /* ===== SECTION CTA AVEC IMAGE ===== */
         .cta {
-            background: 
-                
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(26, 37, 47, 0.85)),
                 url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
             background-size: cover;
             color: white;
@@ -708,8 +743,8 @@
         }
 
         .cta .btn {
-            background-color: white;
-            color: var(--primary-color);
+            background-color: var(--primary-color); /* BOUTON BLEU FONCÉ */
+            color: white;
         }
 
         .cta .btn:hover {
@@ -717,9 +752,9 @@
             color: white;
         }
 
-        /* ===== FOOTER AMÉLIORÉ ===== */
+        /* ===== FOOTER AMÉLIORÉ - BLEU FONCÉ ÉLÉGANT ===== */
         footer {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            background-color: var(--primary-color); /* BLEU FONCÉ ÉLÉGANT (#2c3e50) */
             color: white;
             padding: 50px 0 20px;
             margin-top: 40px;
@@ -735,7 +770,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--primary-light), var(--primary-color));
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
             background-size: 200% 100%;
             animation: gradientMove 3s ease infinite;
         }
@@ -776,27 +811,37 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            color: white;
+            color: white; /* LOGO EN BLANC */
             text-decoration: none;
             transition: var(--transition);
         }
 
         .footer-logo:hover {
-            color: var(--primary-light);
+            color: var(--accent-color); /* SURVOL BLEU VIF */
             transform: translateY(-3px);
         }
 
         .footer-logo i {
-            color: var(--primary-light);
+            color: white; /* ICÔNE EN BLANC */
             font-size: 2.2rem;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover i {
+            color: var(--accent-color); /* SURVOL BLEU */
         }
 
         .footer-logo span {
-            color: var(--primary-light);
+            color: white; /* "WEB" EN BLANC */
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover span {
+            color: var(--accent-color); /* SURVOL BLEU */
         }
 
         .footer-about p {
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 20px;
             line-height: 1.6;
             font-size: 0.95rem;
@@ -823,9 +868,9 @@
         .newsletter-input {
             flex: 1;
             padding: 12px 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--border-radius);
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(255, 255, 255, 0.1);
             color: white;
             font-family: var(--body-font);
             font-size: 0.9rem;
@@ -834,17 +879,17 @@
 
         .newsletter-input:focus {
             outline: none;
-            border-color: var(--primary-light);
-            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color); /* BORDURE BLEUE */
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
         .newsletter-input::placeholder {
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .newsletter-btn {
             padding: 12px 20px;
-            background-color: var(--primary-color);
+            background-color: var(--primary-dark); /* BOUTON BLEU PLUS FONCÉ */
             color: white;
             border: none;
             border-radius: var(--border-radius);
@@ -856,7 +901,7 @@
         }
 
         .newsletter-btn:hover {
-            background-color: var(--primary-dark);
+            background-color: var(--primary-color);
             transform: translateY(-2px);
         }
 
@@ -879,7 +924,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background-color: var(--primary-light);
+            background-color: var(--accent-color); /* LIGNE BLEUE */
         }
 
         .footer-links ul,
@@ -894,7 +939,7 @@
 
         .footer-links a,
         .footer-services a {
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
             font-size: 0.95rem;
@@ -905,14 +950,14 @@
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: var(--primary-light);
+            color: var(--accent-color); /* SURVOL BLEU */
             padding-left: 5px;
         }
 
         .footer-links i,
         .footer-services i {
             font-size: 0.8rem;
-            color: var(--primary-light);
+            color: var(--accent-color);
             opacity: 0.7;
         }
 
@@ -933,7 +978,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background-color: var(--primary-light);
+            background-color: var(--accent-color); /* LIGNE BLEUE */
         }
 
         .contact-info {
@@ -946,13 +991,13 @@
             display: flex;
             align-items: flex-start;
             gap: 15px;
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
             line-height: 1.5;
         }
 
         .contact-item i {
-            color: var(--primary-light);
+            color: var(--accent-color); /* ICÔNES BLEUES */
             font-size: 1.1rem;
             margin-top: 2px;
             flex-shrink: 0;
@@ -966,7 +1011,7 @@
         }
 
         .contact-item a:hover {
-            color: var(--primary-light);
+            color: var(--accent-color); /* SURVOL BLEU */
         }
 
         /* Réseaux sociaux améliorés */
@@ -982,7 +1027,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.08);
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             text-decoration: none;
@@ -999,7 +1044,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--primary-color);
+            background: var(--accent-color); /* SURVOL BLEU */
             border-radius: 50%;
             transform: scale(0);
             transition: var(--transition);
@@ -1019,7 +1064,7 @@
         /* Ligne de séparation */
         .footer-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             margin: 30px 0;
         }
 
@@ -1033,12 +1078,12 @@
         }
 
         .copyright {
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.85rem;
         }
 
         .copyright span {
-            color: var(--primary-light);
+            color: var(--accent-color); /* "NORD-WEB" EN BLEU */
             font-weight: 600;
         }
 
@@ -1048,14 +1093,14 @@
         }
 
         .footer-legal a {
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 0.85rem;
             transition: var(--transition);
         }
 
         .footer-legal a:hover {
-            color: var(--primary-light);
+            color: var(--accent-color); /* SURVOL BLEU */
         }
 
         /* Bouton retour en haut */
@@ -1065,7 +1110,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* BLEU FONCÉ */
             color: white;
             border-radius: 50%;
             display: flex;
@@ -1073,7 +1118,7 @@
             justify-content: center;
             text-decoration: none;
             font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
             transition: var(--transition);
             z-index: 999;
             opacity: 0;
@@ -1090,7 +1135,7 @@
         .back-to-top:hover {
             background-color: var(--primary-dark);
             transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
         }
 
         /* ===== RESPONSIVE ===== */
@@ -1363,7 +1408,7 @@
                             <img src="images/port.jpg" alt="Amadou BA">
                         </div>
                         <div class="founder-badge">
-                            <i class="fas fa-crown"></i> 
+                            <i class="fas fa-crown"></i> Fondateur
                         </div>
                     </div>
                     <div class="founder-info">
@@ -1403,7 +1448,7 @@
                             <img src="images/lognord.jpeg" alt="Al Housseynou BA">
                         </div>
                         <div class="founder-badge">
-                            <i class="fas fa-lightbulb"></i> 
+                            <i class="fas fa-lightbulb"></i> Data Scientist
                         </div>
                     </div>
                     <div class="founder-info">
@@ -1567,6 +1612,7 @@
             <p>Rencontrez notre équipe et découvrez comment notre expertise peut transformer votre vision en succès numérique.</p>
             <a href="contact.html" class="btn">Prendre rendez-vous</a>
             <a href="portfolio.html" class="btn btn-accent" style="margin-left: 10px;">Voir nos réalisations</a>
+            <a href="services.html#security" class="btn btn-security" style="margin-left: 10px;">Solutions Sécurité</a>
         </div>
     </section>
 
@@ -1624,7 +1670,7 @@
                         <li><a href="services.html#ecommerce"><i class="fas fa-chevron-right"></i> Solutions E-commerce</a></li>
                         <li><a href="services.html#mobile"><i class="fas fa-chevron-right"></i> Applications Mobile</a></li>
                         <li><a href="services.html#seo"><i class="fas fa-chevron-right"></i> SEO & Marketing Digital</a></li>
-                        <li><a href="services.html#design"><i class="fas fa-chevron-right"></i> Design UI/UX</a></li>
+                        <li><a href="services.html#security"><i class="fas fa-chevron-right"></i> Sécurité & Surveillance</a></li>
                     </ul>
                 </div>
                 
@@ -1723,9 +1769,13 @@
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 50) {
-                    header.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.1)';
+                    header.style.boxShadow = '0 4px 12px rgba(44, 62, 80, 0.15)';
+                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
                 } else {
-                    header.style.boxShadow = '0 2px 4px rgba(59, 130, 246, 0.05)';
+                    header.style.boxShadow = '0 2px 8px rgba(44, 62, 80, 0.1)';
+                    header.style.backgroundColor = 'white';
+                    header.style.backdropFilter = 'none';
                 }
             });
             
@@ -1758,7 +1808,7 @@
                     
                     // Simuler l'envoi
                     this.querySelector('.newsletter-btn').textContent = 'Merci !';
-                    this.querySelector('.newsletter-btn').style.backgroundColor = '#10b981';
+                    this.querySelector('.newsletter-btn').style.backgroundColor = '#27ae60';
                     
                     setTimeout(() => {
                         this.querySelector('.newsletter-btn').textContent = 'S\'abonner';

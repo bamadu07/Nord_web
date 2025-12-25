@@ -7,27 +7,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* PALETTE BLEU CLAIR ET BLANC UNIQUEMENT */
+        /* PALETTE BLEU FONCÉ ÉLÉGANT (#2c3e50) AVEC ROUGE SÉCURITÉ */
         :root {
-            --primary-color: #3b82f6;      /* Bleu vif */
-            --primary-light: #60a5fa;     /* Bleu clair */
-            --primary-very-light: #dbeafe; /* Bleu très clair */
-            --primary-dark: #2563eb;      /* Bleu foncé pour contrastes */
-            --secondary-color: #38bdf8;   /* Bleu cyan */
-            --accent-color: #0ea5e9;      /* Bleu accent */
+            /* Couleurs principales - Bleu foncé élégant */
+            --primary-color: #2c3e50;      /* Bleu foncé principal */
+            --primary-light: #34495e;     /* Bleu foncé plus clair */
+            --primary-very-light: #5d7797; /* Bleu doux */
+            --primary-dark: #1a252f;      /* Bleu nuit très foncé */
             
-            --light-color: #f8fafc;       /* Blanc cassé */
+            /* Couleur d'accent pour sécurité - Rouge */
+            --security-color: #e74c3c;    /* Rouge pour la sécurité */
+            --security-light: #ff6b6b;    /* Rouge clair */
+            --security-dark: #c0392b;     /* Rouge foncé */
+            
+            /* Couleurs neutres */
+            --light-color: #ecf0f1;       /* Gris clair élégant */
             --white-color: #ffffff;       /* Blanc pur */
-            --dark-color: #1e293b;        /* Gris foncé pour textes */
-            --gray-color: #64748b;        /* Gris moyen */
-            --gray-light: #e2e8f0;        /* Gris très clair */
-            --gray-soft: #f1f5f9;         /* Gris ultra clair */
+            --dark-color: #1c2833;        /* Presque noir bleuté */
+            --gray-color: #95a5a6;        /* Gris */
+            --gray-light: #e8edf1;        /* Gris très clair */
+            --gray-soft: #f5f7fa;         /* Gris ultra clair */
             
             --transition: all 0.3s ease;
-            --shadow-sm: 0 2px 4px rgba(59, 130, 246, 0.1);
-            --shadow-md: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
-            --shadow-blue: 0 10px 25px rgba(59, 130, 246, 0.15);
+            --shadow-sm: 0 2px 4px rgba(44, 62, 80, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(44, 62, 80, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(44, 62, 80, 0.1);
+            --shadow-primary: 0 10px 25px rgba(44, 62, 80, 0.15);
+            --shadow-security: 0 10px 25px rgba(231, 76, 60, 0.15);
             --radius: 12px;
         }
         
@@ -45,10 +51,10 @@
             background-color: var(--white-color);
         }
         
-        /* ===== NAVBAR COMPLET ===== */
+        /* ===== NAVBAR BLEU FONCÉ ===== */
         header {
-            background-color: var(--white-color);
-            color: var(--dark-color);
+            background-color: var(--primary-color); /* #2c3e50 */
+            color: white;
             position: fixed;
             top: 0;
             left: 0;
@@ -56,7 +62,7 @@
             z-index: 1000;
             padding: 15px 0;
             box-shadow: var(--shadow-md);
-            border-bottom: 1px solid var(--gray-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
         }
         
@@ -70,7 +76,7 @@
         }
         
         .logo {
-            color: var(--dark-color);
+            color: white;
             font-size: 1.8rem;
             font-weight: 700;
             text-decoration: none;
@@ -83,19 +89,25 @@
             transform: translateY(-2px);
         }
         
+        /* Icône logo en blanc avec fond bleu foncé */
         .logo i {
-            color: var(--primary-color);
+            color: white;
             margin-right: 10px;
             font-size: 2rem;
             transition: var(--transition);
+            background-color: var(--primary-light);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .logo:hover i {
             transform: rotate(15deg);
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
         .logo span {
-            color: var(--primary-color);
+            color: white;
         }
         
         .nav-content {
@@ -106,8 +118,8 @@
         
         .mobile-menu-btn {
             background-color: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+            border: 2px solid white;
+            color: white;
             border-radius: 5px;
             padding: 8px 12px;
             cursor: pointer;
@@ -117,8 +129,8 @@
         }
         
         .mobile-menu-btn:hover {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: white;
+            color: var(--primary-color);
         }
         
         #mainNav ul {
@@ -134,7 +146,7 @@
         }
         
         #mainNav ul li a {
-            color: var(--dark-color);
+            color: var(--light-color);
             text-decoration: none;
             font-weight: 500;
             font-size: 1rem;
@@ -145,11 +157,11 @@
         }
         
         #mainNav ul li a:hover {
-            color: var(--primary-color);
+            color: white;
         }
         
         #mainNav ul li a.active {
-            color: var(--primary-color);
+            color: white;
             font-weight: 600;
         }
         
@@ -160,13 +172,13 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: var(--primary-color);
+            background-color: white;
             border-radius: 2px;
         }
         
-        /* Bouton Contact dans le navbar */
+        /* Bouton Contact dans le navbar en bleu clair */
         .nav-contact-btn {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(to right, var(--primary-light), var(--primary-very-light));
             color: white;
             border: none;
             padding: 10px 20px;
@@ -176,14 +188,14 @@
             display: flex;
             align-items: center;
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
             font-family: 'Poppins', sans-serif;
         }
         
         .nav-contact-btn:hover {
-            background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.4);
             color: white;
         }
         
@@ -221,9 +233,9 @@
             padding: 0 20px;
         }
         
-        /* Page Header */
+        /* Page Header Bleu Foncé */
         .page-header {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(56, 189, 248, 0.85));
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.85));
             color: white;
             padding: 100px 0 60px;
             text-align: center;
@@ -264,7 +276,7 @@
         
         .contact-info-content h2 {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            color: var(--primary-color); /* #2c3e50 */
             margin-bottom: 30px;
             font-family: 'Montserrat', sans-serif;
             position: relative;
@@ -276,7 +288,7 @@
             position: absolute;
             width: 80px;
             height: 4px;
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* #2c3e50 */
             bottom: -10px;
             left: 0;
             border-radius: 2px;
@@ -289,7 +301,7 @@
             line-height: 1.7;
         }
         
-        /* Grille des contacts */
+        /* Grille des contacts - VERSION SIMPLIFIÉE SANS LOGOS */
         .contact-methods-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -297,49 +309,25 @@
         }
         
         .contact-method {
-            display: flex;
-            align-items: flex-start;
             padding: 25px;
             background-color: var(--white-color);
             border-radius: var(--radius);
             box-shadow: var(--shadow-md);
             transition: var(--transition);
             border: 2px solid transparent;
+            position: relative;
+            border-left: 4px solid var(--primary-color);
         }
         
         .contact-method:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-primary);
             border-color: var(--primary-light);
         }
         
+        /* Pas d'icônes dans les cartes de contact */
         .contact-method-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            color: white;
-            font-size: 24px;
-            flex-shrink: 0;
-            transition: var(--transition);
-        }
-        
-        .contact-method:hover .contact-method-icon {
-            transform: scale(1.1);
-        }
-        
-        /* Icône WhatsApp en vert */
-        .whatsapp-icon {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-        }
-        
-        /* Icône Sécurité */
-        .security-icon {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            display: none;
         }
         
         .contact-method-content h3 {
@@ -358,11 +346,17 @@
         .contact-number {
             font-size: 1.2rem;
             font-weight: 600;
-            color: var(--primary-color);
+            color: var(--primary-color); /* #2c3e50 */
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+        
+        /* Numéro sécurité en rouge */
+        .contact-method.security .contact-number {
+            color: var(--security-color);
+            border-left-color: var(--security-color);
         }
         
         /* Boutons */
@@ -384,16 +378,31 @@
             font-size: 0.95rem;
         }
         
+        /* Bouton principal en bleu foncé */
         .btn-primary {
-            background-color: var(--primary-color);
+            background-color: var(--primary-color); /* #2c3e50 */
             color: white;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
         }
         
         .btn-primary:hover {
-            background-color: var(--primary-dark);
+            background-color: var(--primary-dark); /* #1a252f */
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 6px 15px rgba(26, 37, 47, 0.4);
+            color: white;
+        }
+        
+        /* Bouton sécurité en rouge */
+        .btn-security {
+            background-color: var(--security-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-security:hover {
+            background-color: var(--security-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-security);
             color: white;
         }
         
@@ -430,7 +439,7 @@
         .contact-hours {
             margin-top: 40px;
             padding: 25px;
-            background-color: var(--primary-very-light);
+            background-color: rgba(44, 62, 80, 0.05);
             border-radius: var(--radius);
             border-left: 4px solid var(--primary-color);
         }
@@ -439,9 +448,6 @@
             font-size: 1.2rem;
             margin-bottom: 15px;
             color: var(--dark-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         
         .contact-hours ul {
@@ -517,7 +523,7 @@
         
         .form-header h2 {
             font-size: 2.2rem;
-            color: var(--primary-color);
+            color: var(--primary-color); /* #2c3e50 */
             margin-bottom: 15px;
             font-family: 'Montserrat', sans-serif;
         }
@@ -560,7 +566,7 @@
         }
         
         .form-group .required {
-            color: #ef4444;
+            color: var(--security-color);
             margin-left: 3px;
         }
         
@@ -582,12 +588,12 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
         }
         
         /* Indicateurs d'erreur */
         .error-message {
-            color: #ef4444;
+            color: var(--security-color);
             font-size: 0.85rem;
             margin-top: 5px;
             display: none;
@@ -596,13 +602,13 @@
         .form-group.error input,
         .form-group.error select,
         .form-group.error textarea {
-            border-color: #ef4444;
+            border-color: var(--security-color);
         }
         
         .form-group.success input,
         .form-group.success select,
         .form-group.success textarea {
-            border-color: #10b981;
+            border-color: #27ae60;
         }
         
         .form-group.full-width {
@@ -621,7 +627,7 @@
             display: flex;
             align-items: center;
             padding: 15px;
-            background: var(--primary-very-light);
+            background: rgba(44, 62, 80, 0.05);
             border: 2px solid var(--gray-light);
             border-radius: 8px;
             cursor: pointer;
@@ -630,7 +636,7 @@
         
         .service-option:hover {
             border-color: var(--primary-light);
-            background: var(--primary-very-light);
+            background: rgba(44, 62, 80, 0.1);
         }
         
         .service-option input[type="checkbox"] {
@@ -638,6 +644,11 @@
             width: 18px;
             height: 18px;
             accent-color: var(--primary-color);
+        }
+        
+        /* Checkbox sécurité en rouge */
+        #service-security + label {
+            color: var(--security-color);
         }
         
         .service-option label {
@@ -656,9 +667,9 @@
             display: block;
         }
         
-        /* Bouton de soumission */
+        /* Bouton de soumission en bleu foncé */
         .btn-submit {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
             color: white;
             border: none;
             padding: 18px 40px;
@@ -672,13 +683,13 @@
             justify-content: center;
             width: 100%;
             margin-top: 30px;
-            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.3);
             font-family: 'Poppins', sans-serif;
         }
         
         .btn-submit:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.4);
         }
         
         .btn-submit i {
@@ -697,7 +708,7 @@
             display: none;
             text-align: center;
             padding: 40px;
-            background: var(--primary-very-light);
+            background: rgba(44, 62, 80, 0.05);
             border-radius: var(--radius);
             border-left: 4px solid var(--primary-color);
         }
@@ -718,10 +729,10 @@
             margin-bottom: 15px;
         }
         
-        /* ===== CTA FINAL ===== */
+        /* ===== CTA FINAL BLEU FONCÉ ===== */
         .final-cta {
             padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
             text-align: center;
         }
@@ -786,9 +797,9 @@
             margin-right: 10px;
         }
         
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER BLEU FONCÉ ===== */
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--primary-dark);
             color: white;
             padding: 60px 0 20px;
         }
@@ -809,7 +820,8 @@
         }
         
         .footer-logo span {
-            color: var(--primary-light);
+            color: white;
+            font-weight: 600;
         }
         
         .footer-about p {
@@ -880,7 +892,7 @@
         }
         
         .footer-contact i {
-            color: var(--primary-light);
+            color: white;
             margin-right: 10px;
             width: 20px;
         }
@@ -924,7 +936,7 @@
                 left: -100%;
                 width: 280px;
                 height: calc(100vh - 80px);
-                background-color: var(--white-color);
+                background-color: var(--primary-color);
                 box-shadow: var(--shadow-lg);
                 padding: 30px;
                 transition: var(--transition);
@@ -949,8 +961,9 @@
             
             #mainNav ul li a {
                 padding: 12px 0;
-                border-bottom: 1px solid var(--gray-light);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 width: 100%;
+                color: var(--light-color);
             }
             
             .page-header {
@@ -972,11 +985,6 @@
             .contact-method {
                 flex-direction: column;
                 text-align: center;
-            }
-            
-            .contact-method-icon {
-                margin-right: 0;
-                margin-bottom: 15px;
             }
             
             .contact-actions {
@@ -1035,7 +1043,7 @@
         /* Header au scroll */
         header.scrolled {
             padding: 10px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -1072,7 +1080,7 @@
         <div class="nav-overlay" id="navOverlay"></div>
     </header>
 
-    <!-- Page Header -->
+    <!-- Page Header Bleu Foncé -->
     <section class="page-header">
         <div class="container">
             <h1>Contactez-nous</h1>
@@ -1080,7 +1088,7 @@
         </div>
     </section>
 
-    <!-- ===== SECTION CONTACT INFO ===== -->
+    <!-- ===== SECTION CONTACT INFO - VERSION SANS LOGOS ===== -->
     <section class="contact-info-section">
         <div class="container">
             <div class="contact-main-container">
@@ -1094,15 +1102,10 @@
                     <div class="contact-methods-grid">
                         <!-- WhatsApp -->
                         <div class="contact-method fade-in">
-                            <div class="contact-method-icon whatsapp-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
                             <div class="contact-method-content">
                                 <h3>WhatsApp Direct</h3>
                                 <p>Pour une réponse rapide et des discussions instantanées</p>
-                                <div class="contact-number">
-                                    <i class="fab fa-whatsapp"></i> 78 197 08 44
-                                </div>
+                                <div class="contact-number">78 197 08 44</div>
                                 <div class="contact-actions">
                                     <a href="https://wa.me/221781970844?text=Bonjour%20Nord-Web%2C%20je%20suis%20intéressé(e)%20par%20vos%20services" 
                                        target="_blank" class="btn-contact btn-whatsapp">
@@ -1114,15 +1117,10 @@
                         
                         <!-- Téléphone -->
                         <div class="contact-method fade-in">
-                            <div class="contact-method-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
                             <div class="contact-method-content">
                                 <h3>Téléphone</h3>
                                 <p>Appelez-nous pour discuter de votre projet</p>
-                                <div class="contact-number">
-                                    <i class="fas fa-phone"></i> +221 78 197 08 44
-                                </div>
+                                <div class="contact-number">+221 78 197 08 44</div>
                                 <div class="contact-actions">
                                     <a href="tel:+221781970844" class="btn-contact btn-primary">
                                         <i class="fas fa-phone"></i> Appeler maintenant
@@ -1133,15 +1131,10 @@
                         
                         <!-- Email -->
                         <div class="contact-method fade-in">
-                            <div class="contact-method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
                             <div class="contact-method-content">
                                 <h3>Email</h3>
                                 <p>Pour les demandes détaillées et les documents</p>
-                                <div class="contact-number">
-                                    <i class="fas fa-envelope"></i> ambarhama07@gmail.com
-                                </div>
+                                <div class="contact-number">ambarhama07@gmail.com</div>
                                 <div class="contact-actions">
                                     <a href="mailto:ambarhama07@gmail.com" class="btn-contact btn-outline">
                                         <i class="fas fa-envelope"></i> Envoyer un email
@@ -1150,20 +1143,15 @@
                             </div>
                         </div>
                         
-                        <!-- Sécurité & Alarmes -->
-                        <div class="contact-method fade-in">
-                            <div class="contact-method-icon security-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
+                        <!-- Sécurité & Alarmes (EN ROUGE) -->
+                        <div class="contact-method fade-in security">
                             <div class="contact-method-content">
                                 <h3>Sécurité & Alarmes</h3>
                                 <p>Service sécurité - Installation et maintenance</p>
-                                <div class="contact-number">
-                                    <i class="fas fa-shield-alt"></i> Même numéro
-                                </div>
+                                <div class="contact-number">78 197 08 44</div>
                                 <div class="contact-actions">
-                                    <a href="tel:+221781970844" class="btn-contact btn-primary">
-                                        <i class="fas fa-shield-alt"></i> Demander un devis
+                                    <a href="tel:+221781970844" class="btn-contact btn-security">
+                                        <i class="fas fa-shield-alt"></i> Demander un devis sécurité
                                     </a>
                                 </div>
                             </div>
@@ -1194,7 +1182,7 @@
                 <div class="contact-map-container">
                     <div class="contact-map">
                         <!-- Carte Saint-Louis -->
-                        <div style="width: 100%; height: 100%; background: linear-gradient(rgba(59, 130, 246, 0.9), rgba(56, 189, 248, 0.9)), 
+                        <div style="width: 100%; height: 100%; background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.9)), 
                                     url('https://images.unsplash.com/photo-1573994591087-e8ab7eb6c96c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); 
                                     background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white;">
                             <div style="text-align: center; padding: 20px;">
@@ -1222,15 +1210,6 @@
                     <p>Remplissez ce formulaire pour recevoir un devis personnalisé adapté à vos besoins</p>
                 </div>
                 
-                <!-- OPTION 1 : Formspree (décommentez pour utiliser) -->
-                <!-- 
-                <form class="contact-form" id="devisForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                    <input type="hidden" name="_replyto" value="ambarhama07@gmail.com">
-                    <input type="hidden" name="_subject" value="Nouvelle demande de devis - Nord-Web">
-                    <input type="text" name="_gotcha" style="display:none">
-                -->
-                
-                <!-- OPTION 2 : Email direct (fonctionnel immédiatement) -->
                 <form class="contact-form" id="devisForm" action="mailto:ambarhama07@gmail.com" method="post" enctype="text/plain">
                     
                     <div class="form-row">
@@ -1325,12 +1304,6 @@
                         </div>
                     </div>
                     
-                    <!-- Pour Formspree, utilisez ce bouton -->
-                    <!-- <button type="submit" class="btn-submit">
-                        <i class="fas fa-paper-plane"></i> Envoyer ma demande
-                    </button> -->
-                    
-                    <!-- Pour email direct, utilisez ce bouton avec JavaScript -->
                     <button type="button" class="btn-submit" id="submitBtn">
                         <i class="fas fa-paper-plane"></i> Envoyer ma demande
                     </button>
@@ -1371,7 +1344,7 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER BLEU FONCÉ ===== -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1641,10 +1614,10 @@
                     const serviceOption = this.closest('.service-option');
                     if (this.checked) {
                         serviceOption.style.borderColor = 'var(--primary-color)';
-                        serviceOption.style.background = 'var(--primary-very-light)';
+                        serviceOption.style.background = 'rgba(44, 62, 80, 0.1)';
                     } else {
                         serviceOption.style.borderColor = 'var(--gray-light)';
-                        serviceOption.style.background = 'var(--primary-very-light)';
+                        serviceOption.style.background = 'rgba(44, 62, 80, 0.05)';
                     }
                     validateServices();
                 });

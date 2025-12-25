@@ -8,29 +8,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES ET RESET - PALETTE BLEU CLAIR ET BLANC ===== */
+        /* ===== VARIABLES ET RESET - BLEU FONCÉ (#2c3e50) ET ROUGE POUR SÉCURITÉ ===== */
         :root {
-            --primary: #3b82f6;          /* Bleu vif */
-            --primary-dark: #2563eb;     /* Bleu foncé */
-            --primary-light: #60a5fa;    /* Bleu clair */
-            --primary-soft: #dbeafe;     /* Bleu très clair */
-            --secondary: #38bdf8;        /* Bleu cyan */
-            --accent: #0ea5e9;           /* Bleu accent */
-            --accent-light: #7dd3fc;     /* Bleu très clair */
+            --primary: #2c3e50;          /* BLEU FONCÉ ÉLÉGANT pour boutons et éléments principaux */
+            --primary-dark: #1a252f;     /* Bleu presque noir */
+            --primary-light: #34495e;    /* Bleu foncé plus clair */
+            --primary-soft: #f8f9fa;     /* Gris très clair pour fonds */
             
-            --dark: #1e293b;             /* Gris foncé */
-            --dark-light: #64748b;       /* Gris moyen */
-            --light: #f8fafc;            /* Blanc cassé */
-            --white: #ffffff;            /* Blanc pur */
-            --gray: #94a3b8;             /* Gris */
-            --gray-light: #e2e8f0;       /* Gris très clair */
-            --gray-soft: #f1f5f9;        /* Gris ultra clair */
+            --accent: #3498db;           /* Bleu vif pour accents */
+            --accent-light: #5dade2;     /* Bleu plus clair */
             
-            --shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
-            --shadow-lg: 0 8px 24px rgba(59, 130, 246, 0.12);
-            --shadow-blue: 0 10px 25px rgba(59, 130, 246, 0.15);
+            /* COULEUR SÉCURITÉ EN ROUGE */
+            --security-color: #e74c3c;   /* Rouge vif pour sécurité */
+            --security-dark: #c0392b;    /* Rouge foncé */
+            --security-light: #fd746c;   /* Rouge clair */
+            
+            /* Autres couleurs */
+            --dark: #2c3e50;             /* Gris foncé */
+            --dark-light: #7f8c8d;       /* Gris moyen */
+            --light: #ffffff;            /* Blanc pur */
+            --white: #ffffff;            /* Blanc */
+            --gray: #95a5a6;             /* Gris */
+            --gray-light: #ecf0f1;       /* Gris très clair */
+            --gray-soft: #f5f7fa;        /* Gris ultra clair */
+            
+            /* Ombres */
+            --shadow: 0 4px 12px rgba(44, 62, 80, 0.08);
+            --shadow-lg: 0 8px 24px rgba(44, 62, 80, 0.12);
+            --shadow-blue: 0 10px 25px rgba(44, 62, 80, 0.15);
+            --shadow-red: 0 10px 25px rgba(231, 76, 60, 0.15); /* Ombre rouge pour sécurité */
+            
+            /* Rayons */
             --radius: 12px;
             --radius-lg: 20px;
+            
+            /* Transition */
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -42,8 +55,9 @@
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--dark);
-            background: var(--light);
+            background: var(--white);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -73,20 +87,40 @@
             display: block;
         }
 
+        /* ===== BOUTONS PRINCIPAUX EN BLEU FONCÉ (#2c3e50) ===== */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             padding: 14px 28px;
-            background: var(--primary);
+            background: var(--primary); /* BLEU FONCÉ */
             color: white;
             border: none;
             border-radius: 50px;
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
@@ -95,33 +129,39 @@
             box-shadow: var(--shadow-blue);
         }
 
+        /* Bouton accent (blanc avec bordure bleue) */
         .btn-accent {
-            background: var(--accent);
-        }
-
-        .btn-accent:hover {
-            background: #0284c7;
-        }
-
-        .btn-light {
-            background: var(--primary-soft);
-            color: var(--primary);
-        }
-
-        .btn-light:hover {
-            background: var(--primary-light);
-            color: white;
-        }
-
-        .btn-outline {
             background: transparent;
             border: 2px solid var(--primary);
             color: var(--primary);
         }
 
-        .btn-outline:hover {
+        .btn-accent:hover {
             background: var(--primary);
             color: white;
+        }
+
+        /* Bouton léger (fond bleu très clair) */
+        .btn-light {
+            background: rgba(44, 62, 80, 0.1);
+            color: var(--primary);
+        }
+
+        .btn-light:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* BOUTON SÉCURITÉ EN ROUGE */
+        .btn-security {
+            background: var(--security-color); /* ROUGE */
+            color: white;
+        }
+
+        .btn-security:hover {
+            background: var(--security-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-red);
         }
 
         /* ===== HEADER ===== */
@@ -134,6 +174,7 @@
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             border-bottom: 1px solid var(--gray-soft);
+            transition: var(--transition);
         }
 
         .header-container {
@@ -146,7 +187,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--primary); /* LOGO EN BLEU FONCÉ */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -225,9 +266,7 @@
             display: flex;
             align-items: center;
             background: 
-                linear-gradient(45deg, 
-                    rgba(59, 130, 246, 0.9) 0%, 
-                    rgba(56, 189, 248, 0.8) 100%),
+                linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.9)),
                 url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -248,8 +287,8 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(45deg, 
-                rgba(59, 130, 246, 0.3) 0%, 
-                rgba(56, 189, 248, 0.2) 100%);
+                rgba(44, 62, 80, 0.3) 0%, 
+                rgba(52, 73, 94, 0.2) 100%);
         }
 
         .page-header .container {
@@ -274,14 +313,14 @@
         }
 
         .page-header .btn {
-            background: var(--white);
-            color: var(--primary);
+            background: var(--accent); /* BLEU VIF POUR CONTRASSE SUR FOND BLEU FONCÉ */
+            color: white;
             font-weight: 700;
             animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         .page-header .btn:hover {
-            background: var(--primary-soft);
+            background: var(--accent-light);
             transform: translateY(-2px) scale(1.05);
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
         }
@@ -312,7 +351,7 @@
             color: var(--dark);
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .filter-btn:hover {
@@ -326,6 +365,18 @@
             background: var(--primary);
             color: white;
             border-color: var(--primary);
+        }
+
+        /* Bouton filtre sécurité en ROUGE */
+        .filter-btn[data-filter="securite"] {
+            border-color: var(--security-color);
+        }
+
+        .filter-btn[data-filter="securite"]:hover,
+        .filter-btn[data-filter="securite"].active {
+            background: var(--security-color);
+            color: white;
+            border-color: var(--security-color);
         }
 
         /* ===== STATISTIQUES ===== */
@@ -364,7 +415,7 @@
             backdrop-filter: blur(10px);
             border-radius: var(--radius);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .stat-item:hover {
@@ -377,7 +428,7 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 10px;
-            color: var(--primary-light);
+            color: var(--accent-light);
         }
 
         .stat-label {
@@ -394,6 +445,14 @@
 
         .project-detail {
             margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .project-detail.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-detail-content {
@@ -419,7 +478,7 @@
         .project-detail-text h2 {
             font-size: 2rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: var(--primary); /* TITRES EN BLEU FONCÉ */
         }
 
         .project-category {
@@ -431,12 +490,19 @@
 
         .category-badge {
             padding: 6px 16px;
-            background: var(--primary-soft);
-            color: var(--primary-dark);
+            background: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
+            color: var(--primary);
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
             border: 1px solid var(--primary-light);
+        }
+
+        /* Badge sécurité en ROUGE */
+        .category-badge.security {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--security-color);
+            border-color: var(--security-color);
         }
 
         .project-description {
@@ -453,7 +519,7 @@
         .project-features h3 {
             font-size: 1.2rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: var(--primary); /* TITRE EN BLEU FONCÉ */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -461,6 +527,11 @@
 
         .project-features h3 i {
             color: var(--primary);
+        }
+
+        /* Titre sécurité en ROUGE */
+        .project-detail.securite .project-features h3 i {
+            color: var(--security-color);
         }
 
         .features-grid {
@@ -476,18 +547,27 @@
             padding: 12px;
             background: var(--gray-soft);
             border-radius: 8px;
-            border-left: 3px solid var(--primary);
-            transition: all 0.3s ease;
+            border-left: 3px solid var(--primary); /* BORDURE GAUCHE BLEUE */
+            transition: var(--transition);
         }
 
         .feature-item:hover {
-            background: var(--primary-soft);
+            background: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
             transform: translateX(5px);
         }
 
         .feature-item i {
             color: var(--primary);
             font-size: 1.1rem;
+        }
+
+        /* Feature item sécurité avec bordure ROUGE */
+        .project-detail.securite .feature-item {
+            border-left-color: var(--security-color);
+        }
+
+        .project-detail.securite .feature-item i {
+            color: var(--security-color);
         }
 
         .project-technologies {
@@ -497,7 +577,7 @@
         .project-technologies h3 {
             font-size: 1.2rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: var(--primary); /* TITRE EN BLEU FONCÉ */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -515,19 +595,31 @@
 
         .tech-tag {
             padding: 8px 16px;
-            background: var(--primary-soft);
-            color: var(--primary-dark);
+            background: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
+            color: var(--primary);
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 500;
             border: 1px solid var(--primary-light);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .tech-tag:hover {
             background: var(--primary);
             color: white;
             transform: translateY(-2px);
+        }
+
+        /* Tech tag sécurité en ROUGE */
+        .project-detail.securite .tech-tag {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--security-color);
+            border-color: var(--security-color);
+        }
+
+        .project-detail.securite .tech-tag:hover {
+            background: var(--security-color);
+            color: white;
         }
 
         .project-results {
@@ -537,7 +629,7 @@
         .project-results h3 {
             font-size: 1.2rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: var(--primary); /* TITRE EN BLEU FONCÉ */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -556,14 +648,14 @@
         .result-item {
             text-align: center;
             padding: 20px;
-            background: var(--primary-soft);
+            background: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
             border-radius: 10px;
             border: 1px solid var(--primary-light);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .result-item:hover {
-            background: var(--primary-light);
+            background: var(--primary);
             transform: translateY(-3px);
             color: white;
         }
@@ -597,7 +689,7 @@
             box-shadow: var(--shadow);
             height: 400px;
             border: 3px solid var(--white);
-            outline: 2px solid var(--primary-soft);
+            outline: 2px solid rgba(44, 62, 80, 0.1); /* CONTOUR BLEU TRÈS CLAIR */
             position: relative;
         }
 
@@ -626,7 +718,7 @@
         .section-title h2 {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: var(--primary); /* TITRE EN BLEU FONCÉ */
             position: relative;
             display: inline-block;
         }
@@ -639,7 +731,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--primary);
+            background: var(--primary); /* LIGNE BLEUE */
             border-radius: 2px;
         }
 
@@ -667,11 +759,22 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--gray-soft);
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .alt-project.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .alt-project:hover {
             box-shadow: var(--shadow-blue);
+            transform: translateY(-5px);
+        }
+
+        .alt-project.visible:hover {
             transform: translateY(-5px);
         }
 
@@ -704,7 +807,7 @@
         .alt-project-text h3 {
             font-size: 1.8rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: var(--primary); /* TITRE EN BLEU FONCÉ */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -713,6 +816,11 @@
         .alt-project-text h3 i {
             color: var(--primary);
             font-size: 1.5rem;
+        }
+
+        /* Icône sécurité en ROUGE */
+        .alt-project[data-category="securite"] .alt-project-text h3 i {
+            color: var(--security-color);
         }
 
         .alt-project-text p {
@@ -730,12 +838,19 @@
 
         .alt-project-meta span {
             padding: 8px 18px;
-            background: var(--primary-soft);
-            color: var(--primary-dark);
+            background: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
+            color: var(--primary);
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 500;
             border: 1px solid var(--primary-light);
+        }
+
+        /* Tag sécurité en ROUGE */
+        .alt-project[data-category="securite"] .alt-project-meta span {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--security-color);
+            border-color: var(--security-color);
         }
 
         .alt-project-features {
@@ -752,12 +867,12 @@
             padding: 10px 15px;
             background: var(--gray-soft);
             border-radius: 8px;
-            transition: all 0.3s ease;
-            border-left: 3px solid var(--primary);
+            transition: var(--transition);
+            border-left: 3px solid var(--primary); /* BORDURE BLEUE */
         }
 
         .alt-project-features li:hover {
-            background: var(--primary-soft);
+            background: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
             transform: translateX(5px);
         }
 
@@ -771,13 +886,20 @@
             font-weight: 500;
         }
 
+        /* Features sécurité avec bordure ROUGE */
+        .alt-project[data-category="securite"] .alt-project-features li {
+            border-left-color: var(--security-color);
+        }
+
+        .alt-project[data-category="securite"] .alt-project-features li i {
+            color: var(--security-color);
+        }
+
         /* ===== CTA ===== */
         .cta {
             padding: 100px 0;
             background: 
-                linear-gradient(45deg, 
-                    rgba(59, 130, 246, 0.9) 0%, 
-                    rgba(56, 189, 248, 0.8) 100%),
+                linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.9)),
                 url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -794,8 +916,8 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(45deg, 
-                rgba(59, 130, 246, 0.6) 0%, 
-                rgba(14, 165, 233, 0.5) 100%);
+                rgba(44, 62, 80, 0.6) 0%, 
+                rgba(52, 73, 94, 0.5) 100%);
         }
 
         .cta .container {
@@ -818,33 +940,34 @@
         }
 
         .cta .btn {
-            background: var(--white);
-            color: var(--primary);
+            background: var(--accent); /* BLEU VIF POUR CONTRASSE */
+            color: white;
             font-weight: 700;
             margin: 0 10px;
         }
 
         .cta .btn:hover {
-            background: var(--primary-soft);
+            background: var(--accent-light);
             transform: translateY(-2px) scale(1.05);
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
         }
 
         .cta .btn-accent {
-            background: var(--accent);
+            background: transparent;
+            border: 2px solid white;
             color: white;
         }
 
         .cta .btn-accent:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
+            background: white;
+            color: var(--primary);
         }
 
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER ÉLÉGANT EN BLEU FONCÉ ===== */
         footer {
-            background: var(--dark);
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
             color: white;
-            padding: 60px 0 20px;
+            padding: 70px 0 25px;
             position: relative;
             overflow: hidden;
         }
@@ -855,41 +978,63 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: var(--primary);
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+
+        footer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0) 70%);
+            border-radius: 50%;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             position: relative;
             z-index: 2;
         }
 
+        .footer-about {
+            padding-right: 30px;
+        }
+
         .footer-about .footer-logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .footer-logo i {
-            color: var(--primary-light);
-            font-size: 2rem;
+            color: var(--accent);
+            font-size: 2.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 12px;
         }
 
+        /* CORRECTION : LOGO "NordWeb" EN BLANC */
         .footer-logo span {
-            color: white;
+            color: white; /* BLANC */
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .footer-about p {
-            color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
         .social-icons {
@@ -898,84 +1043,161 @@
         }
 
         .social-icons a {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: var(--transition);
+            color: white;
+            font-size: 1.1rem;
         }
 
         .social-icons a:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-3px);
+            background: var(--accent);
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
         }
 
         .footer-links h4,
         .footer-services h4,
         .footer-contact h4 {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
             color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after,
+        .footer-services h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
         .footer-links h4 i,
         .footer-services h4 i,
         .footer-contact h4 i {
-            color: var(--primary-light);
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 1.1rem;
         }
 
         .footer-links ul,
         .footer-services ul {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .footer-links li,
+        .footer-services li {
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-links li::before,
+        .footer-services li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            transition: var(--transition);
         }
 
         .footer-links a,
         .footer-services a {
-            color: var(--gray);
-            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
         }
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: var(--primary-light);
-            padding-left: 5px;
+            color: var(--accent);
+            padding-left: 8px;
+        }
+
+        .footer-links li:hover::before,
+        .footer-services li:hover::before {
+            transform: translateX(5px);
         }
 
         .footer-contact p {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: var(--gray);
-            margin-bottom: 12px;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 18px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .footer-contact i {
-            color: var(--primary-light);
-            width: 20px;
+            color: var(--accent);
+            font-size: 1.1rem;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .footer-contact a {
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: white;
+            text-decoration: underline;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--gray);
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
             position: relative;
             z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .copyright p {
+            margin: 0;
         }
 
         .copyright i {
-            color: var(--primary-light);
+            color: var(--accent);
             margin: 0 5px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--accent);
         }
 
         /* ===== ANIMATIONS ===== */
@@ -1037,6 +1259,21 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px 30px;
+            }
+            
+            .footer-about {
+                grid-column: 1 / -1;
+                padding-right: 0;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
         }
 
         /* ===== CORRECTION COMPLÈTE DU MENU MOBILE ===== */
@@ -1082,7 +1319,7 @@
                 padding: 15px 0;
                 color: var(--dark);
                 font-weight: 500;
-                transition: all 0.3s ease;
+                transition: var(--transition);
             }
             
             #mainNav a:hover {
@@ -1092,7 +1329,7 @@
             
             #mainNav a.active {
                 color: var(--primary);
-                background: var(--primary-soft);
+                background: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
                 padding-left: 15px;
             }
             
@@ -1160,6 +1397,26 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-links li::before,
+            .footer-services li::before {
+                display: none;
+            }
+            
+            .copyright {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1201,6 +1458,11 @@
             .alt-project-text h3 {
                 font-size: 1.5rem;
             }
+            
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -1240,6 +1502,9 @@
             <a href="#portfolio" class="btn">
                 <i class="fas fa-arrow-down"></i> Explorer les Projets
             </a>
+            <a href="#securite" class="btn btn-security" style="margin-left: 15px;">
+                <i class="fas fa-shield-alt"></i> Projets Sécurité
+            </a>
         </div>
     </section>
 
@@ -1273,7 +1538,7 @@
     <section class="portfolio-projects">
         <div class="container">
             <!-- Projet 1 - E-commerce Artisanat -->
-            <div class="project-detail web ecommerce" id="projet1">
+            <div class="project-detail web ecommerce visible" id="projet1">
                 <div class="project-detail-content">
                     <div class="project-detail-text">
                         <h2>Artisanat Saint-Louis - Plateforme E-commerce</h2>
@@ -1317,6 +1582,28 @@
                                 <span class="tech-tag">Docker</span>
                             </div>
                         </div>
+                        
+                        <div class="project-results">
+                            <h3><i class="fas fa-trophy"></i> Résultats :</h3>
+                            <div class="results-grid">
+                                <div class="result-item">
+                                    <h4>+<span>40</span>%</h4>
+                                    <p>Ventes en ligne</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4><span>25</span></h4>
+                                    <p>Artisans actifs</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4>+<span>15</span></h4>
+                                    <p>Pays couverts</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4><span>4.8</span>/5</h4>
+                                    <p>Satisfaction clients</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-detail-image">
                         <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
@@ -1327,7 +1614,7 @@
             </div>
             
             <!-- Projet 2 - Application Mobile Tourisme -->
-            <div class="project-detail mobile" id="projet2">
+            <div class="project-detail mobile visible" id="projet2">
                 <div class="project-detail-content reverse">
                     <div class="project-detail-image">
                         <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
@@ -1376,12 +1663,34 @@
                                 <span class="tech-tag">Redux</span>
                             </div>
                         </div>
+                        
+                        <div class="project-results">
+                            <h3><i class="fas fa-trophy"></i> Résultats :</h3>
+                            <div class="results-grid">
+                                <div class="result-item">
+                                    <h4><span>10K</span>+</h4>
+                                    <p>Téléchargements</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4><span>4.9</span>/5</h4>
+                                    <p>Notes App Store</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4>+<span>30</span>%</h4>
+                                    <p>Visites touristiques</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4><span>150</span></h4>
+                                    <p>Points d'intérêt</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <!-- Projet 3 - Data Science Agriculture -->
-            <div class="project-detail data" id="projet3">
+            <div class="project-detail data visible" id="projet3">
                 <div class="project-detail-content">
                     <div class="project-detail-text">
                         <h2>AgriSmart - Intelligence Agricole</h2>
@@ -1436,6 +1745,28 @@
                                 <span class="tech-tag">LoRaWAN</span>
                             </div>
                         </div>
+                        
+                        <div class="project-results">
+                            <h3><i class="fas fa-trophy"></i> Résultats :</h3>
+                            <div class="results-grid">
+                                <div class="result-item">
+                                    <h4>-<span>40</span>%</h4>
+                                    <p>Consommation d'eau</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4>+<span>25</span>%</h4>
+                                    <p>Rendement agricole</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4><span>150</span></h4>
+                                    <p>Fermes équipées</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4>-<span>30</span>%</h4>
+                                    <p>Pertes de récoltes</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- Section images multiple pour AgriSmart -->
                     <div class="project-detail-image">
@@ -1464,7 +1795,7 @@
             </div>
             
             <!-- Projet 4 - Sécurité Intelligente -->
-            <div class="project-detail securite" id="projet4">
+            <div class="project-detail securite visible" id="projet4">
                 <div class="project-detail-content reverse">
                     <!-- Image principale avec superposition pour SmartSecure -->
                     <div class="project-detail-image">
@@ -1495,54 +1826,76 @@
                     <div class="project-detail-text">
                         <h2>SmartSecure - Solutions de Sécurité Intelligente</h2>
                         <div class="project-category">
-                            <span class="category-badge">Sécurité</span>
+                            <span class="category-badge security">Sécurité</span>
+                            <span class="category-badge security">Installation</span>
+                            <span class="category-badge security">Surveillance</span>
                             <span class="category-badge">IoT</span>
-                            <span class="category-badge">Surveillance</span>
-                            <span class="category-badge">Installation</span>
                         </div>
                         <p class="project-description">Système complet de sécurité intelligente avec installation de caméras HD 4K, alarmes connectées et monitoring 24h/24. Surveillance à distance via application mobile et intelligence artificielle pour détection avancée des intrusions.</p>
                         
                         <div class="project-features">
-                            <h3><i class="fas fa-star"></i> Services Proposés :</h3>
+                            <h3><i class="fas fa-star" style="color: #e74c3c;"></i> Services Proposés :</h3>
                             <div class="features-grid">
                                 <div class="feature-item">
-                                    <i class="fas fa-video"></i>
+                                    <i class="fas fa-video" style="color: #e74c3c;"></i>
                                     <span>Installation caméras 4K</span>
                                 </div>
                                 <div class="feature-item">
-                                    <i class="fas fa-bell"></i>
+                                    <i class="fas fa-bell" style="color: #e74c3c;"></i>
                                     <span>Alarmes connectées</span>
                                 </div>
                                 <div class="feature-item">
-                                    <i class="fas fa-mobile-alt"></i>
+                                    <i class="fas fa-mobile-alt" style="color: #e74c3c;"></i>
                                     <span>Contrôle à distance</span>
                                 </div>
                                 <div class="feature-item">
-                                    <i class="fas fa-brain"></i>
+                                    <i class="fas fa-brain" style="color: #e74c3c;"></i>
                                     <span>Détection IA avancée</span>
                                 </div>
                                 <div class="feature-item">
-                                    <i class="fas fa-cloud"></i>
+                                    <i class="fas fa-cloud" style="color: #e74c3c;"></i>
                                     <span>Stockage cloud sécurisé</span>
                                 </div>
                                 <div class="feature-item">
-                                    <i class="fas fa-user-shield"></i>
+                                    <i class="fas fa-user-shield" style="color: #e74c3c;"></i>
                                     <span>Maintenance 24/7</span>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="project-technologies">
-                            <h3><i class="fas fa-cogs"></i> Équipements & Technologies :</h3>
+                            <h3><i class="fas fa-cogs" style="color: #e74c3c;"></i> Équipements & Technologies :</h3>
                             <div class="tech-tags">
-                                <span class="tech-tag">Caméras IP 4K</span>
-                                <span class="tech-tag">Systèmes d'alarme</span>
-                                <span class="tech-tag">Détecteurs de mouvement</span>
-                                <span class="tech-tag">Capteurs IoT</span>
-                                <span class="tech-tag">Cloud Storage</span>
-                                <span class="tech-tag">Applications Mobile</span>
-                                <span class="tech-tag">Monitoring 24/7</span>
-                                <span class="tech-tag">Réseaux sécurisés</span>
+                                <span class="tech-tag" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Caméras IP 4K</span>
+                                <span class="tech-tag" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Systèmes d'alarme</span>
+                                <span class="tech-tag" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Détecteurs de mouvement</span>
+                                <span class="tech-tag" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Capteurs IoT</span>
+                                <span class="tech-tag" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Cloud Storage</span>
+                                <span class="tech-tag" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Applications Mobile</span>
+                                <span class="tech-tag" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Monitoring 24/7</span>
+                                <span class="tech-tag" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Réseaux sécurisés</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-results">
+                            <h3><i class="fas fa-trophy" style="color: #e74c3c;"></i> Résultats :</h3>
+                            <div class="results-grid">
+                                <div class="result-item">
+                                    <h4><span style="color: #e74c3c;">95</span>%</h4>
+                                    <p>Taux de prévention</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4><span style="color: #e74c3c;">24</span>/7</h4>
+                                    <p>Monitoring</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4><span style="color: #e74c3c;">50</span>+</h4>
+                                    <p>Systèmes installés</p>
+                                </div>
+                                <div class="result-item">
+                                    <h4><span style="color: #e74c3c;">4.9</span>/5</h4>
+                                    <p>Satisfaction clients</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1561,7 +1914,7 @@
             
             <div class="alternating-projects">
                 <!-- Projet 1 - Alterné -->
-                <div class="alt-project">
+                <div class="alt-project visible" data-category="education">
                     <div class="alt-project-image">
                         <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
                              alt="Portail éducatif numérique" 
@@ -1581,11 +1934,14 @@
                             <li><i class="fas fa-chart-bar"></i> <span>Tableaux de bord analytiques</span></li>
                             <li><i class="fas fa-mobile-alt"></i> <span>Application mobile dédiée</span></li>
                         </ul>
+                        <a href="contact.html" class="btn" style="margin-top: 20px;">
+                            <i class="fas fa-info-circle"></i> Plus d'informations
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Projet 2 - Alterné (reverse) -->
-                <div class="alt-project reverse">
+                <div class="alt-project reverse visible" data-category="logistics">
                     <div class="alt-project-image">
                         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
                              alt="Application de livraison express" 
@@ -1605,11 +1961,14 @@
                             <li><i class="fas fa-route"></i> <span>Optimisation des itinéraires</span></li>
                             <li><i class="fas fa-star"></i> <span>Système de notation</span></li>
                         </ul>
+                        <a href="contact.html" class="btn" style="margin-top: 20px;">
+                            <i class="fas fa-info-circle"></i> Plus d'informations
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Projet 3 - Alterné -->
-                <div class="alt-project">
+                <div class="alt-project visible" data-category="ecommerce">
                     <div class="alt-project-image">
                         <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
                              alt="Marché local en ligne" 
@@ -1629,283 +1988,368 @@
                             <li><i class="fas fa-chart-line"></i> <span>Gestion des stocks</span></li>
                             <li><i class="fas fa-comments"></i> <span>Messagerie intégrée</span></li>
                         </ul>
+                        <a href="contact.html" class="btn" style="margin-top: 20px;">
+                            <i class="fas fa-info-circle"></i> Plus d'informations
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Projet 4 - Sécurité Entreprise Premium -->
-                <div class="alt-project reverse">
+                <div class="alt-project reverse visible" data-category="securite">
                     <div class="alt-project-image">
                         <img src="https://images.unsplash.com/photo-1593941707882-a5bba5338fe2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
                              alt="Système de sécurité d'entreprise avec caméras de surveillance" 
                              loading="lazy">
                     </div>
                     <div class="alt-project-text">
-                        <h3><i class="fas fa-building"></i> Sécurité Entreprise Premium</h3>
+                        <h3><i class="fas fa-building" style="color: #e74c3c;"></i> Sécurité Entreprise Premium</h3>
                         <div class="alt-project-meta">
-                            <span>Sécurité</span>
-                            <span>Entreprise</span>
-                            <span>Surveillance</span>
+                            <span style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Sécurité</span>
+                            <span style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Entreprise</span>
+                            <span style="background: rgba(231, 76, 60, 0.1); color: #e74c3c; border-color: #e74c3c;">Surveillance</span>
                         </div>
                         <p>Système de sécurité sur mesure pour entreprises avec contrôle d'accès biométrique, vidéosurveillance HD, monitoring centralisé et conformité aux normes de sécurité.</p>
                         <ul class="alt-project-features">
-                            <li><i class="fas fa-fingerprint"></i> <span>Contrôle d'accès biométrique</span></li>
-                            <li><i class="fas fa-video"></i> <span>Vidéosurveillance 360°</span></li>
-                            <li><i class="fas fa-shield-alt"></i> <span>Monitoring 24/7</span></li>
-                            <li><i class="fas fa-file-contract"></i> <span>Rapports de conformité</span></li>
+                            <li><i class="fas fa-fingerprint" style="color: #e74c3c;"></i> <span>Contrôle d'accès biométrique</span></li>
+                            <li><i class="fas fa-video" style="color: #e74c3c;"></i> <span>Vidéosurveillance 360°</span></li>
+                            <li><i class="fas fa-shield-alt" style="color: #e74c3c;"></i> <span>Monitoring 24/7</span></li>
+                            <li><i class="fas fa-file-contract" style="color: #e74c3c;"></i> <span>Rapports de conformité</span></li>
                         </ul>
+                        <a href="contact.html" class="btn btn-security" style="margin-top: 20px;">
+                            <i class="fas fa-shield-alt"></i> Devis Sécurité
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Projet 5 - Alterné -->
-                <div class="alt-project">
-                    <div class="alt-project-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-                             alt="Business Intelligence" 
-                             loading="lazy">
-                    </div>
-                    <div class="alt-project-text">
-                        <h3><i class="fas fa-chart-pie"></i> Business Intelligence Platform</h3>
-                        <div class="alt-project-meta">
-                            <span>Data Science</span>
-                            <span>Analytics</span>
-                            <span>Visualisation</span>
-                        </div>
-                        <p>Plateforme d'analyse de données pour PME avec dashboards interactifs, rapports automatisés, prédictions de tendances et intégration de multiples sources de données.</p>
-                        <ul class="alt-project-features">
-                            <li><i class="fas fa-database"></i> <span>Intégration de données</span></li>
-                            <li><i class="fas fa-chart-bar"></i> <span>Dashboards interactifs</span></li>
-                            <li><i class="fas fa-robot"></i> <span>Alertes intelligentes</span></li>
-                            <li><i class="fas fa-cloud"></i> <span>Accessibilité cloud</span></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Projet 6 - Santé Connectée Mobile -->
-                <div class="alt-project reverse">
+                <div class="alt-project visible" data-category="health">
                     <div class="alt-project-image">
                         <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-                             alt="Application mobile de santé connectée avec suivi médical" 
+                             alt="Application santé mobile" 
                              loading="lazy">
                     </div>
                     <div class="alt-project-text">
-                        <h3><i class="fas fa-heartbeat"></i> Santé Connectée Mobile</h3>
+                        <h3><i class="fas fa-heartbeat"></i> Saint-Louis Santé Connectée</h3>
                         <div class="alt-project-meta">
+                            <span>Application Mobile</span>
                             <span>Santé</span>
-                            <span>Mobile</span>
-                            <span>IoT</span>
+                            <span>Télémédecine</span>
                         </div>
-                        <p>Application de suivi santé avec connectivité aux wearables, monitoring de signes vitaux, rappels de médicaments et téléconsultation avec professionnels de santé.</p>
+                        <p>Application de santé connectée permettant la prise de rendez-vous en ligne, le suivi médical à distance et l'accès aux résultats d'analyses de manière sécurisée.</p>
                         <ul class="alt-project-features">
-                            <li><i class="fas fa-heart"></i> <span>Monitoring santé</span></li>
-                            <li><i class="fas fa-pills"></i> <span>Gestion des traitements</span></li>
-                            <li><i class="fas fa-user-md"></i> <span>Téléconsultation</span></li>
-                            <li><i class="fas fa-bell"></i> <span>Alertes personnalisées</span></li>
+                            <li><i class="fas fa-calendar-check"></i> <span>Rendez-vous en ligne</span></li>
+                            <li><i class="fas fa-file-medical"></i> <span>Dossier médical électronique</span></li>
+                            <li><i class="fas fa-video"></i> <span>Consultations à distance</span></li>
+                            <li><i class="fas fa-lock"></i> <span>Cryptage des données</span></li>
                         </ul>
+                        <a href="contact.html" class="btn" style="margin-top: 20px;">
+                            <i class="fas fa-info-circle"></i> Plus d'informations
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- Statistiques Portfolio -->
+    <section class="portfolio-stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Projets Réalisés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-label">Clients Satisfaits</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="3">0</div>
+                    <div class="stat-label">Prix Nationaux</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-label">Solutions Innovantes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
     <section class="cta">
         <div class="container">
-            <h2>Votre Projet Suivant ?</h2>
-            <p>Prêt à transformer votre idée en réalité numérique ? Notre équipe d'experts est prête à concrétiser votre vision.</p>
+            <h2>Prêt à Transformer Votre Projet en Réalité ?</h2>
+            <p>Notre équipe d'experts est prête à vous accompagner dans la réalisation de votre projet digital, du concept à la mise en production.</p>
             <a href="contact.html" class="btn">
-                <i class="fas fa-rocket"></i> Démarrer mon projet
+                <i class="fas fa-paper-plane"></i> Discuter de mon projet
             </a>
             <a href="services.html" class="btn btn-accent">
-                <i class="fas fa-concierge-bell"></i> Voir nos services
+                <i class="fas fa-concierge-bell"></i> Découvrir nos services
             </a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer Élégant en Bleu Foncé -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo"><i class="fas fa-code"></i> Nord<span>Web</span></div>
-                    <p>Solutions digitales innovantes créées à Saint-Louis par une équipe passionnée de développeurs et data scientists.</p>
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i> Nord<span>Web</span>
+                    </div>
+                    <p>Agence digitale innovante spécialisée dans le développement web, mobile, data science et solutions de sécurité intelligente. Nous transformons vos idées en solutions digitales performantes.</p>
                     <div class="social-icons">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
-                    <h4><i class="fas fa-compass"></i> Navigation</h4>
+                    <h4><i class="fas fa-link"></i> Navigation</h4>
                     <ul>
                         <li><a href="index.html">Accueil</a></li>
-                        <li><a href="apropos.html">À propos</a></li>
-                        <li><a href="equipe.html">Équipe</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="apropos.html">À propos de nous</a></li>
+                        <li><a href="equipe.html">Notre équipe</a></li>
+                        <li><a href="services.html">Nos services</a></li>
+                        <li><a href="portfolio.html">Nos réalisations</a></li>
+                        <li><a href="contact.html">Nous contacter</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-services">
-                    <h4><i class="fas fa-cogs"></i> Services</h4>
+                    <h4><i class="fas fa-cogs"></i> Nos Expertises</h4>
                     <ul>
-                        <li><a href="services.html#web-dev">Développement Web</a></li>
-                        <li><a href="services.html#data-science">Data Science</a></li>
-                        <li><a href="services.html#ecommerce">E-commerce</a></li>
+                        <li><a href="services.html#web">Développement Web</a></li>
                         <li><a href="services.html#mobile">Applications Mobile</a></li>
-                        <li><a href="services.html#securite">Sécurité & Alarmes</a></li>
-                        <li><a href="services.html#seo">SEO & Marketing</a></li>
+                        <li><a href="services.html#ecommerce">Solutions E-commerce</a></li>
+                        <li><a href="services.html#data">Data Science & IA</a></li>
+                        <li><a href="services.html#securite">Sécurité Intelligente</a></li>
+                        <li><a href="services.html#consulting">Consulting Digital</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
-                    <h4><i class="fas fa-address-book"></i> Contact</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Saint-Louis, Sénégal</p>
-                    <p><i class="fas fa-envelope"></i> contact@nordweb.sn</p>
-                    <p><i class="fas fa-phone"></i> +221 78 197 08 44</p>
+                    <h4><i class="fas fa-map-marker-alt"></i> Contact</h4>
+                    <p>
+                        <i class="fas fa-map-pin"></i>
+                        <span>Boudiouck,<br>Saint-Louis, Sénégal</span>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+221331234567">+221 78 197 08 44</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contact@nord-web.sn">contact@nord-web.sn</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-clock"></i>
+                        <span>Lun - Ven: 8h - 18h<br>Samedi: 9h - 13h</span>
+                    </p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2025 Nord-Web <i class="fas fa-code"></i> Tous droits réservés <i class="fas fa-heart"></i> Fondé par Amadou BA.</p>
+                <p>
+                    &copy; <span id="currentYear"></span> Nord-Web. Tous droits réservés. 
+                    <i class="fas fa-heart"></i> Développé avec passion à Saint-Louis.
+                </p>
+                <div class="footer-bottom-links">
+                    <a href="confidentialite.html">Politique de confidentialité</a>
+                    <a href="cgu.html">Conditions d'utilisation</a>
+                    <a href="mentions.html">Mentions légales</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // JavaScript corrigé pour le menu mobile
-        document.addEventListener('DOMContentLoaded', function() {
-            // Éléments DOM
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mainNav = document.getElementById('mainNav');
-            const navOverlay = document.getElementById('navOverlay');
-            
-            // Fonction pour ouvrir/fermer le menu
-            function toggleMobileMenu() {
-                mainNav.classList.toggle('active');
-                navOverlay.classList.toggle('active');
-                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                    ? '<i class="fas fa-times"></i>' 
-                    : '<i class="fas fa-bars"></i>';
+        // Menu mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const navOverlay = document.getElementById('navOverlay');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        navOverlay.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Filtrage des projets
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projects = document.querySelectorAll('.project-detail, .alt-project');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                button.classList.add('active');
                 
-                // Empêcher le défilement du body quand le menu est ouvert
-                document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
-            }
-            
-            // Fonction pour fermer le menu
-            function closeMobileMenu() {
-                mainNav.classList.remove('active');
-                navOverlay.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                document.body.style.overflow = '';
-            }
-            
-            // Événements
-            if (mobileMenuBtn && mainNav) {
-                // Bouton menu mobile
-                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+                const filterValue = button.getAttribute('data-filter');
                 
-                // Overlay pour fermer le menu
-                navOverlay.addEventListener('click', closeMobileMenu);
-                
-                // Fermer le menu en cliquant sur un lien
-                const navLinks = mainNav.querySelectorAll('a');
-                navLinks.forEach(link => {
-                    link.addEventListener('click', closeMobileMenu);
-                });
-                
-                // Fermer le menu avec la touche Échap
-                document.addEventListener('keydown', function(event) {
-                    if (event.key === 'Escape') {
-                        closeMobileMenu();
-                    }
-                });
-            }
-            
-            // Filtrage des projets
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const projectDetails = document.querySelectorAll('.project-detail');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Mettre à jour les boutons actifs
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const filterValue = this.getAttribute('data-filter');
-                    
-                    // Filtrer les projets détaillés
-                    projectDetails.forEach(project => {
-                        if (filterValue === 'all' || project.classList.contains(filterValue)) {
+                projects.forEach(project => {
+                    if (filterValue === 'all') {
+                        project.style.display = 'block';
+                        setTimeout(() => {
+                            project.style.opacity = '1';
+                            project.classList.add('visible');
+                        }, 100);
+                    } else {
+                        const projectCategories = project.classList;
+                        if (projectCategories.contains(filterValue) || 
+                            project.getAttribute('data-category') === filterValue) {
                             project.style.display = 'block';
-                            project.style.animation = 'fadeInUp 0.6s ease-out';
+                            setTimeout(() => {
+                                project.style.opacity = '1';
+                                project.classList.add('visible');
+                            }, 100);
                         } else {
-                            project.style.display = 'none';
-                        }
-                    });
-                });
-            });
-            
-            // Animation au défilement pour la section "Plus de Réalisations"
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const altProject = entry.target;
-                        if (altProject.classList.contains('reverse')) {
-                            altProject.style.animation = 'slideInRight 0.8s ease-out forwards';
-                        } else {
-                            altProject.style.animation = 'slideInLeft 0.8s ease-out forwards';
-                        }
-                        altProject.style.opacity = '1';
-                        observer.unobserve(altProject);
-                    }
-                });
-            }, observerOptions);
-            
-            // Observer tous les projets alternés
-            document.querySelectorAll('.alt-project').forEach(project => {
-                project.style.opacity = '0';
-                observer.observe(project);
-            });
-            
-            // Smooth scroll pour les ancres
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    if (this.getAttribute('href').startsWith('#') && this.getAttribute('href').length > 1) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        
-                        if (targetElement) {
-                            const headerHeight = document.querySelector('header').offsetHeight;
-                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                            
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                            
-                            // Fermer le menu mobile s'il est ouvert
-                            closeMobileMenu();
+                            project.style.opacity = '0';
+                            project.classList.remove('visible');
+                            setTimeout(() => {
+                                project.style.display = 'none';
+                            }, 300);
                         }
                     }
                 });
+                
+                // Scroll vers la section portfolio
+                document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
             });
+        });
+
+        // Animation des statistiques
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        const animateStats = () => {
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current);
+                    }
+                }, 20);
+            });
+        };
+
+        // Observer pour déclencher l'animation des stats
+        const statsSection = document.querySelector('.portfolio-stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Année actuelle dans le footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Animation au scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.project-detail, .alt-project');
             
-            // Fermer le menu lors du redimensionnement de la fenêtre (si on revient en desktop)
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    closeMobileMenu();
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+
+        // Initialiser les animations
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Exécuter une première fois
+
+        // Smooth scroll pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
         });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(44, 62, 80, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Images lazy loading
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => {
+            img.dataset.src = img.src;
+            img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PC9zdmc+';
+            imageObserver.observe(img);
+        });
+
+        // Effet hover sur les icônes sociales du footer
+        const socialIcons = document.querySelectorAll('.social-icons a');
+        socialIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', (e) => {
+                const iconElement = e.target.closest('a');
+                iconElement.style.transform = 'translateY(-8px) rotate(10deg) scale(1.2)';
+            });
+            
+            icon.addEventListener('mouseleave', (e) => {
+                const iconElement = e.target.closest('a');
+                iconElement.style.transform = 'translateY(0) rotate(0) scale(1)';
+            });
+        });
+
+        console.log('Portfolio Nord-Web chargé avec succès!');
     </script>
 </body>
 </html>
