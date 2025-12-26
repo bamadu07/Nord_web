@@ -583,6 +583,16 @@
             background-color: var(--white-color);
         }
         
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%232c3e50' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+        
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
@@ -615,56 +625,9 @@
             grid-column: 1 / -1;
         }
         
-        /* Styles pour les options de service */
-        .service-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .service-option {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            background: rgba(44, 62, 80, 0.05);
-            border: 2px solid var(--gray-light);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .service-option:hover {
-            border-color: var(--primary-light);
-            background: rgba(44, 62, 80, 0.1);
-        }
-        
-        .service-option input[type="checkbox"] {
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary-color);
-        }
-        
-        /* Checkbox sécurité en rouge */
-        #service-security + label {
-            color: var(--security-color);
-        }
-        
-        .service-option label {
-            margin-bottom: 0;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--dark-color);
-            flex: 1;
-        }
-        
-        /* Aide pour le format de téléphone */
+        /* Aide pour le format de téléphone - SUPPRIMÉ */
         .phone-help {
-            font-size: 0.85rem;
-            color: var(--gray-color);
-            margin-top: 5px;
-            display: block;
+            display: none;
         }
         
         /* Bouton de soumission en bleu foncé */
@@ -990,10 +953,6 @@
             .contact-actions {
                 justify-content: center;
             }
-            
-            .service-options {
-                grid-template-columns: 1fr;
-            }
         }
         
         @media (max-width: 576px) {
@@ -1221,8 +1180,7 @@
                         
                         <div class="form-group">
                             <label for="phone">Téléphone <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" required placeholder="Ex: 78 197 08 44 ou 781970844">
-                            <span class="phone-help">Formats acceptés: 71xxxxxxx, 76xxxxxxx, 77xxxxxxx, 78xxxxxxx, 70xxxxxxx, 75xxxxxxx, +2217xxxxxxxx</span>
+                            <input type="tel" id="phone" name="phone" required placeholder="Votre numéro de téléphone">
                             <div class="error-message" id="phone-error"></div>
                         </div>
                     </div>
@@ -1240,66 +1198,75 @@
                         </div>
                     </div>
                     
-                    <div class="form-group full-width">
-                        <label>Services intéressés <span class="required">*</span></label>
-                        <div class="service-options">
-                            <div class="service-option">
-                                <input type="checkbox" id="service-web" name="service_web" value="Développement Web">
-                                <label for="service-web">Développement Web</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service-mobile" name="service_mobile" value="Application Mobile">
-                                <label for="service-mobile">Application Mobile</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service-seo" name="service_seo" value="Référencement SEO">
-                                <label for="service-seo">Référencement SEO</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service-security" name="service_security" value="Sécurité & Alarmes">
-                                <label for="service-security">Sécurité & Alarmes</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service-hosting" name="service_hosting" value="Hébergement">
-                                <label for="service-hosting">Hébergement</label>
-                            </div>
-                            <div class="service-option">
-                                <input type="checkbox" id="service-maintenance" name="service_maintenance" value="Maintenance">
-                                <label for="service-maintenance">Maintenance</label>
-                            </div>
+                    <!-- SERVICES INTÉRESSÉS - COMME BUDGET ESTIMÉ (LISTE DÉROULANTE) -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service-interest">Service intéressé <span class="required">*</span></label>
+                            <select id="service-interest" name="service_interest" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="Développement Web">Développement Web</option>
+                                <option value="Application Mobile">Application Mobile</option>
+                                <option value="Référencement SEO">Référencement SEO</option>
+                                <option value="Sécurité & Alarmes">Sécurité & Alarmes</option>
+                                <option value="Hébergement">Hébergement</option>
+                                <option value="Maintenance">Maintenance</option>
+                                <option value="Plusieurs services">Plusieurs services</option>
+                                <option value="Conseil en transformation digitale">Conseil en transformation digitale</option>
+                                <option value="Formation digitale">Formation digitale</option>
+                                <option value="Autre">Autre (précisez dans la description)</option>
+                            </select>
+                            <div class="error-message" id="service-interest-error"></div>
                         </div>
-                        <div class="error-message" id="services-error"></div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Budget estimé <span class="required">*</span></label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Sélectionnez une fourchette</option>
+                                <option value="50k-100k">50 000 - 100 000 FCFA</option>
+                                <option value="100k-300k">100 000 - 300 000 FCFA</option>
+                                <option value="300k-500k">300 000 - 500 000 FCFA</option>
+                                <option value="500k-1M">500 000 - 1 000 000 FCFA</option>
+                                <option value="1M-2M">1M - 2M FCFA</option>
+                                <option value="2M-5M">2M - 5M FCFA</option>
+                                <option value="5M+">Plus de 5M FCFA</option>
+                                <option value="indetermine">À déterminer après discussion</option>
+                            </select>
+                            <div class="error-message" id="budget-error"></div>
+                        </div>
                     </div>
                     
                     <div class="form-group full-width">
                         <label for="project-description">Description du projet <span class="required">*</span></label>
                         <textarea id="project-description" name="project_description" rows="5" required 
-                                  placeholder="Décrivez votre projet, vos besoins et vos objectifs..."></textarea>
+                                  placeholder="Décrivez votre projet, vos besoins, vos objectifs et toute information pertinente..."></textarea>
                         <div class="error-message" id="description-error"></div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="budget">Budget estimé</label>
-                            <select id="budget" name="budget">
-                                <option value="">Sélectionnez une fourchette</option>
-                                <option value="100k-500k">100 000 - 500 000 FCFA</option>
-                                <option value="500k-1M">500 000 - 1 000 000 FCFA</option>
-                                <option value="1M-2M">1M - 2M FCFA</option>
-                                <option value="2M+">Plus de 2M FCFA</option>
-                                <option value="indetermine">À déterminer</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
                             <label for="timeline">Délai souhaité</label>
                             <select id="timeline" name="timeline">
                                 <option value="">Sélectionnez un délai</option>
                                 <option value="urgent">Urgent (1-2 semaines)</option>
+                                <option value="very-urgent">Très urgent (moins d'une semaine)</option>
                                 <option value="court">Court terme (1 mois)</option>
                                 <option value="moyen">Moyen terme (1-3 mois)</option>
                                 <option value="long">Long terme (+3 mois)</option>
                                 <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="source">Comment nous avez-vous connu ?</label>
+                            <select id="source" name="source">
+                                <option value="">Sélectionnez une option</option>
+                                <option value="recherche-google">Recherche Google</option>
+                                <option value="recommandation">Recommandation</option>
+                                <option value="reseaux-sociaux">Réseaux sociaux</option>
+                                <option value="portfolio">Notre portfolio</option>
+                                <option value="client-existant">Client existant</option>
+                                <option value="evenement">Événement</option>
+                                <option value="autre">Autre</option>
                             </select>
                         </div>
                     </div>
@@ -1454,7 +1421,7 @@
         const submitBtn = document.getElementById('submitBtn');
         const formSuccess = document.getElementById('formSuccess');
         
-        // Fonction de validation du téléphone améliorée
+        // Fonction de validation du téléphone simplifiée
         function validateSenegalPhone(phone) {
             // Nettoyer le numéro
             const cleanedPhone = phone.replace(/[\s\-\(\)\.\+]/g, '');
@@ -1468,12 +1435,12 @@
             if (cleanedPhone.startsWith('+221') || cleanedPhone.startsWith('00221')) {
                 // Extraire la partie après le code pays
                 const localPart = cleanedPhone.replace(/^(\+|00)221/, '');
-                // Vérifier le préfixe (71, 76, 77, 78, 70, 75) et la longueur
-                return /^[71|76|77|78|70|75]/.test(localPart) && localPart.length === 9;
+                // Vérifier le préfixe et la longueur
+                return /^[0-9]{9}$/.test(localPart);
             }
             
-            // Vérifier le format local avec TOUS les préfixes
-            return /^[71|76|77|78|70|75][0-9]{8}$/.test(cleanedPhone);
+            // Vérifier le format local
+            return /^[0-9]{9}$/.test(cleanedPhone);
         }
         
         // Fonction de validation de l'email
@@ -1520,19 +1487,26 @@
             return true;
         }
         
-        // Formatage automatique du téléphone
+        // Fonction pour valider un select (liste déroulante)
+        function validateSelect(selectId, errorId) {
+            const select = document.getElementById(selectId);
+            const value = select.value;
+            
+            if (!value) {
+                showError(errorId, 'Ce champ est obligatoire');
+                return false;
+            }
+            
+            hideError(errorId);
+            return true;
+        }
+        
+        // Formatage automatique du téléphone (simplifié)
         function formatPhoneNumber(value) {
             // Supprimer tout sauf les chiffres
             let numbers = value.replace(/\D/g, '');
             
             if (numbers.length === 0) return '';
-            
-            // Si le numéro commence par +221 ou 00221, garder ce format
-            if (numbers.startsWith('221') && numbers.length >= 12) {
-                const prefix = numbers.substring(0, 3);
-                const rest = numbers.substring(3);
-                return `+${prefix} ${rest.substring(0, 2)} ${rest.substring(2, 5)} ${rest.substring(5, 7)} ${rest.substring(7, 9)}`;
-            }
             
             // Format local Sénégal
             if (numbers.length <= 2) {
@@ -1552,6 +1526,8 @@
             const emailInput = document.getElementById('email');
             const nameInput = document.getElementById('name');
             const descriptionInput = document.getElementById('project-description');
+            const serviceInterestSelect = document.getElementById('service-interest');
+            const budgetSelect = document.getElementById('budget');
             
             // Validation du nom
             nameInput.addEventListener('blur', () => {
@@ -1572,7 +1548,7 @@
                 validateField('phone', 
                     validateSenegalPhone, 
                     'phone-error', 
-                    'Format invalide. Exemples acceptés: 71xxxxxxx, 78 197 08 44, +221781970844'
+                    'Veuillez entrer un numéro de téléphone valide'
                 );
             });
             
@@ -1594,39 +1570,14 @@
                 );
             });
             
-            // Validation des services
-            const serviceCheckboxes = devisForm.querySelectorAll('input[type="checkbox"]');
+            // Validation du service intéressé
+            serviceInterestSelect.addEventListener('change', () => {
+                validateSelect('service-interest', 'service-interest-error');
+            });
             
-            function validateServices() {
-                let atLeastOneChecked = false;
-                serviceCheckboxes.forEach(checkbox => {
-                    if (checkbox.checked) {
-                        atLeastOneChecked = true;
-                    }
-                });
-                
-                if (!atLeastOneChecked) {
-                    showError('services-error', 'Veuillez sélectionner au moins un service');
-                    return false;
-                }
-                
-                hideError('services-error');
-                return true;
-            }
-            
-            // Ajouter des événements pour rendre les cases à cocher plus interactives
-            serviceCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    const serviceOption = this.closest('.service-option');
-                    if (this.checked) {
-                        serviceOption.style.borderColor = 'var(--primary-color)';
-                        serviceOption.style.background = 'rgba(44, 62, 80, 0.1)';
-                    } else {
-                        serviceOption.style.borderColor = 'var(--gray-light)';
-                        serviceOption.style.background = 'rgba(44, 62, 80, 0.05)';
-                    }
-                    validateServices();
-                });
+            // Validation du budget
+            budgetSelect.addEventListener('change', () => {
+                validateSelect('budget', 'budget-error');
             });
             
             // Gestion de la soumission
@@ -1643,7 +1594,7 @@
                 const isPhoneValid = validateField('phone', 
                     validateSenegalPhone, 
                     'phone-error', 
-                    'Format invalide. Exemples acceptés: 71xxxxxxx, 78 197 08 44, +221781970844'
+                    'Veuillez entrer un numéro de téléphone valide'
                 );
                 
                 const isEmailValid = validateField('email', 
@@ -1658,42 +1609,50 @@
                     'La description doit contenir au moins 10 caractères'
                 );
                 
-                const isServicesValid = validateServices();
+                const isServiceInterestValid = validateSelect('service-interest', 'service-interest-error');
+                const isBudgetValid = validateSelect('budget', 'budget-error');
                 
                 // Si tout est valide
-                if (isNameValid && isPhoneValid && isEmailValid && isDescriptionValid && isServicesValid) {
+                if (isNameValid && isPhoneValid && isEmailValid && isDescriptionValid && isServiceInterestValid && isBudgetValid) {
                     // Désactiver le bouton pendant l'envoi
                     const originalText = submitBtn.innerHTML;
                     submitBtn.disabled = true;
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Préparation de l\'email...';
                     
                     // Préparer le contenu de l'email
-                    const formData = new FormData(devisForm);
                     let emailBody = "Nouvelle demande de devis - Nord-Web\n\n";
+                    emailBody += "=== INFORMATIONS CLIENT ===\n";
                     emailBody += "Nom: " + document.getElementById('name').value + "\n";
                     emailBody += "Téléphone: " + document.getElementById('phone').value + "\n";
                     emailBody += "Email: " + document.getElementById('email').value + "\n";
                     emailBody += "Entreprise: " + (document.getElementById('company').value || "Non spécifié") + "\n\n";
                     
-                    // Services sélectionnés
-                    emailBody += "Services demandés:\n";
-                    serviceCheckboxes.forEach(checkbox => {
-                        if (checkbox.checked) {
-                            emailBody += "- " + checkbox.value + "\n";
-                        }
-                    });
+                    // Service intéressé
+                    const serviceInterest = document.getElementById('service-interest');
+                    emailBody += "=== SERVICE DEMANDÉ ===\n";
+                    emailBody += "Service intéressé: " + serviceInterest.options[serviceInterest.selectedIndex].text + "\n\n";
                     
-                    emailBody += "\nDescription du projet:\n" + document.getElementById('project-description').value + "\n\n";
+                    // Budget
+                    const budget = document.getElementById('budget');
+                    emailBody += "=== BUDGET & DÉLAI ===\n";
+                    emailBody += "Budget estimé: " + budget.options[budget.selectedIndex].text + "\n";
                     
-                    const budget = document.getElementById('budget').value;
-                    if (budget) {
-                        emailBody += "Budget estimé: " + document.getElementById('budget').options[document.getElementById('budget').selectedIndex].text + "\n";
+                    const timeline = document.getElementById('timeline');
+                    if (timeline.value) {
+                        emailBody += "Délai souhaité: " + timeline.options[timeline.selectedIndex].text + "\n";
                     }
                     
-                    const timeline = document.getElementById('timeline').value;
-                    if (timeline) {
-                        emailBody += "Délai souhaité: " + document.getElementById('timeline').options[document.getElementById('timeline').selectedIndex].text + "\n";
+                    const source = document.getElementById('source');
+                    if (source.value) {
+                        emailBody += "Comment nous avez-vous connu: " + source.options[source.selectedIndex].text + "\n";
                     }
+                    
+                    emailBody += "\n=== DESCRIPTION DU PROJET ===\n";
+                    emailBody += document.getElementById('project-description').value + "\n\n";
+                    
+                    emailBody += "=== INFORMATIONS SUPPLEMENTAIRES ===\n";
+                    emailBody += "Date de la demande: " + new Date().toLocaleString('fr-FR') + "\n";
+                    emailBody += "Page de provenance: Formulaire de contact\n";
                     
                     // Ouvrir le client email par défaut
                     const mailtoLink = "mailto:ambarhama07@gmail.com" +
