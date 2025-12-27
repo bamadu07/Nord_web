@@ -7,22 +7,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES CSS - BLEU FONCÉ ÉLÉGANT (#2c3e50) ===== */
+        /* ===== VARIABLES CSS - BLEU FONCÉ ÉLÉGANT (#1a5276) ===== */
         :root {
-            /* Couleurs principales - BLEU FONCÉ ÉLÉGANT */
-            --primary-color: #2c3e50; /* Bleu foncé principal */
-            --primary-light: #34495e; /* Bleu foncé plus clair */
-            --primary-lighter: #4a6583; /* Bleu foncé encore plus clair */
-            --primary-soft: #5d7797; /* Bleu doux */
-            --secondary-color: #1a252f; /* Bleu nuit très foncé */
-            --accent-color: #2c3e50; /* Même que le logo et boutons */
-            --accent-light: #34495e; /* Version plus claire */
-            --dark-color: #1c2833; /* Presque noir bleuté */
+            /* Palette de couleurs - Basée sur la couleur du logo */
+            --primary-color: #1a5276; /* Bleu foncé inspiré du logo */
+            --primary-dark: #154360; /* Version plus foncée */
+            --primary-light: #3498db; /* Version plus claire */
+            --primary-lighter: #5dade2; /* Bleu plus clair */
+            --primary-soft: #85c1e9; /* Bleu doux */
+            --secondary-color: #2ecc71; /* Vert - couleur secondaire */
+            --accent-color: #1a5276; /* Même que le logo et boutons */
+            --dark-color: #2c3e50; /* Texte foncé */
             --light-color: #ecf0f1; /* Gris clair élégant */
             --gray-color: #95a5a6; /* Gris bleuté */
             --gray-light: #f8f9fa; /* Gris très clair pour fonds */
             --gray-lighter: #e8edf1; /* Gris plus clair */
             --background-light: #f5f7fa; /* Fond bleu très clair */
+            
+            /* Couleurs d'accent basées sur le logo */
+            --logo-accent-1: #3498db; /* Bleu du logo */
+            --logo-accent-2: #2ecc71; /* Vert du logo */
+            --logo-accent-3: #f39c12; /* Orange du logo */
             
             /* Typographie */
             --heading-font: 'Montserrat', sans-serif;
@@ -35,10 +40,10 @@
             --transition: all 0.3s ease;
             
             /* Ombres */
-            --shadow-sm: 0 2px 8px rgba(44, 62, 80, 0.05);
-            --shadow-md: 0 4px 12px rgba(44, 62, 80, 0.08);
-            --shadow-lg: 0 10px 25px rgba(44, 62, 80, 0.1);
-            --shadow-dark: 0 10px 25px rgba(44, 62, 80, 0.15);
+            --shadow-sm: 0 2px 8px rgba(26, 82, 118, 0.05);
+            --shadow-md: 0 4px 12px rgba(26, 82, 118, 0.08);
+            --shadow-lg: 0 10px 25px rgba(26, 82, 118, 0.1);
+            --shadow-dark: 0 10px 25px rgba(26, 82, 118, 0.15);
         }
 
         /* ===== RESET ET STYLES GÉNÉRAUX ===== */
@@ -80,11 +85,11 @@
             text-align: center;
         }
 
-        /* ===== BOUTONS EN BLEU FONCÉ (#2c3e50) ===== */
+        /* ===== BOUTONS EN BLEU FONCÉ (#1a5276) ===== */
         .btn {
             display: inline-block;
             padding: 14px 32px;
-            background-color: var(--primary-color); /* #2c3e50 */
+            background-color: var(--primary-color); /* #1a5276 */
             color: white;
             border-radius: var(--border-radius);
             text-decoration: none;
@@ -98,7 +103,7 @@
             overflow: hidden;
             z-index: 1;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+            box-shadow: 0 4px 12px rgba(26, 82, 118, 0.2);
         }
 
         .btn::before {
@@ -118,37 +123,37 @@
         }
 
         .btn:hover {
-            background-color: var(--secondary-color); /* #1a252f */
+            background-color: var(--primary-dark); /* #154360 */
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.3);
+            box-shadow: 0 8px 20px rgba(26, 82, 118, 0.3);
         }
 
         .btn-accent {
-            background-color: var(--primary-color); /* #2c3e50 */
-            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+            background-color: var(--secondary-color); /* #2ecc71 - Vert */
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
         }
 
         .btn-accent:hover {
-            background-color: var(--secondary-color); /* #1a252f */
-            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.3);
+            background-color: #27ae60;
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
         }
 
         .btn-outline {
             background-color: transparent;
-            border: 2px solid var(--primary-color); /* #2c3e50 */
-            color: var(--primary-color); /* #2c3e50 */
+            border: 2px solid var(--primary-color); /* #1a5276 */
+            color: var(--primary-color); /* #1a5276 */
             box-shadow: none;
         }
 
         .btn-outline:hover {
-            background-color: var(--primary-color); /* #2c3e50 */
+            background-color: var(--primary-color); /* #1a5276 */
             color: white;
         }
 
-        /* ===== HEADER BLEU FONCÉ ===== */
+        /* ===== HEADER BLANC ÉLÉGANT ===== */
         header {
-            background-color: var(--primary-color); /* #2c3e50 */
-            box-shadow: var(--shadow-md);
+            background-color: white; /* Changé en blanc */
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08); /* Ombre plus visible sur blanc */
             position: fixed;
             top: 0;
             left: 0;
@@ -156,6 +161,7 @@
             z-index: 1000;
             padding: 15px 0;
             transition: var(--transition);
+            border-bottom: 1px solid rgba(26, 82, 118, 0.1); /* Ligne de séparation subtile */
         }
 
         .header-container {
@@ -164,38 +170,25 @@
             align-items: center;
         }
 
-        /* LOGO EN BLEU FONCÉ (#2c3e50) */
+        /* LOGO IMAGE - TAILLE OPTIMISÉE */
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            text-decoration: none;
         }
 
-        /* Icône </> en bleu foncé */
-        .logo i {
-            color: var(--primary-color); /* #2c3e50 */
-            font-size: 2rem;
+        .logo-img {
+            height: 80px; /* TAILLE DU LOGO - Ajustez selon votre logo */
+            width: auto;
             transition: var(--transition);
-            background-color: white;
-            padding: 8px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 180px; /* Largeur maximum pour éviter le débordement */
         }
 
-        .logo:hover i {
-            transform: rotate(15deg);
-            background-color: #f8f9fa;
+        .logo:hover .logo-img {
+            transform: scale(1.05);
         }
 
-        .logo span {
-            color: white;
-            font-weight: 600;
-        }
-
+        /* Navigation en bleu sur fond blanc */
         nav ul {
             display: flex;
             list-style: none;
@@ -204,11 +197,16 @@
 
         nav a {
             text-decoration: none;
-            color: var(--light-color);
+            color: var(--dark-color); /* Texte foncé pour contraste */
             font-weight: 500;
             position: relative;
             padding: 5px 0;
             transition: var(--transition);
+        }
+
+        nav a.active {
+            color: var(--primary-color); /* Bleu pour l'actif */
+            font-weight: 600;
         }
 
         nav a::after {
@@ -218,7 +216,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: white;
+            background-color: var(--primary-color); /* Ligne bleue */
             transition: var(--transition);
         }
 
@@ -227,16 +225,15 @@
             width: 100%;
         }
 
-        nav a:hover,
-        nav a.active {
-            color: white;
+        nav a:hover {
+            color: var(--primary-color); /* Bleu au hover */
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: white;
+            border: 2px solid var(--primary-color); /* Bordure bleue */
+            color: var(--primary-color); /* Icône bleue */
             cursor: pointer;
             padding: 8px 12px;
             border-radius: 5px;
@@ -245,13 +242,14 @@
         }
 
         .mobile-menu-btn:hover {
-            border-color: white;
-            color: white;
+            border-color: var(--primary-dark);
+            color: var(--primary-dark);
+            background-color: rgba(26, 82, 118, 0.05);
         }
 
         /* ===== EN-TÊTE DE PAGE AVEC BACKGROUND IMAGE BLEU FONCÉ ===== */
         .page-header {
-            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.9)), 
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(21, 67, 96, 0.9)), 
                         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
@@ -260,7 +258,7 @@
             color: white;
             text-align: center;
             padding: 180px 0 120px;
-            margin-top: 0;
+            margin-top: 80px;
             position: relative;
             overflow: hidden;
         }
@@ -315,8 +313,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(44, 62, 80, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(44, 62, 80, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(26, 82, 118, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(26, 82, 118, 0.05) 0%, transparent 50%);
         }
 
         .history-section {
@@ -398,7 +396,7 @@
             border: 3px solid var(--primary-color);
             border-radius: 50%;
             z-index: 2;
-            box-shadow: 0 0 0 5px rgba(44, 62, 80, 0.15);
+            box-shadow: 0 0 0 5px rgba(26, 82, 118, 0.15);
         }
 
         /* Année stylisée */
@@ -406,12 +404,12 @@
             display: inline-block;
             font-size: 1.3rem;
             font-weight: 700;
-            color: var(--primary-color); /* #2c3e50 */
+            color: var(--primary-color); /* #1a5276 */
             margin-bottom: 15px;
             padding: 8px 18px;
-            background-color: rgba(44, 62, 80, 0.1);
+            background-color: rgba(26, 82, 118, 0.1);
             border-radius: 25px;
-            border: 1px solid rgba(44, 62, 80, 0.2);
+            border: 1px solid rgba(26, 82, 118, 0.2);
             font-family: var(--heading-font);
         }
 
@@ -450,7 +448,7 @@
         }
 
         .history-content .highlight {
-            color: var(--primary-color); /* #2c3e50 */
+            color: var(--primary-color); /* #1a5276 */
             font-weight: 600;
         }
 
@@ -472,7 +470,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--primary-color); /* #2c3e50 */
+            color: var(--primary-color); /* #1a5276 */
             font-weight: bold;
         }
 
@@ -496,7 +494,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(44, 62, 80, 0.05), transparent);
+            background: linear-gradient(45deg, transparent, rgba(26, 82, 118, 0.05), transparent);
         }
 
         .founders-note p {
@@ -510,7 +508,7 @@
 
         .founders-note .author {
             margin-top: 20px;
-            color: var(--primary-color); /* #2c3e50 */
+            color: var(--primary-color); /* #1a5276 */
             font-weight: 600;
             font-size: 1.1rem;
         }
@@ -529,7 +527,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 80% 80%, rgba(44, 62, 80, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at 80% 80%, rgba(26, 82, 118, 0.05) 0%, transparent 50%);
         }
 
         .mv-grid {
@@ -606,7 +604,7 @@
             position: relative;
             z-index: 2;
             font-size: 3rem;
-            color: var(--primary-color); /* #2c3e50 */
+            color: var(--primary-color); /* #1a5276 */
             transition: var(--transition);
         }
 
@@ -685,7 +683,7 @@
             transform: translateY(-50%);
             width: 20px;
             height: 20px;
-            background-color: rgba(44, 62, 80, 0.1);
+            background-color: rgba(26, 82, 118, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -720,7 +718,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 20%, rgba(44, 62, 80, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 20%, rgba(26, 82, 118, 0.05) 0%, transparent 50%);
         }
 
         .section-title {
@@ -821,14 +819,14 @@
             font-weight: 700;
             font-family: var(--heading-font);
             font-size: 1.3rem;
-            box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+            box-shadow: 0 4px 12px rgba(26, 82, 118, 0.3);
             z-index: 2;
             transition: var(--transition);
         }
 
         .why-card:hover .why-number {
             transform: translateX(-50%) scale(1.1);
-            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.4);
+            box-shadow: 0 6px 15px rgba(26, 82, 118, 0.4);
         }
 
         .why-card h3 {
@@ -864,8 +862,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 30% 70%, rgba(44, 62, 80, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(44, 62, 80, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 30% 70%, rgba(26, 82, 118, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(26, 82, 118, 0.05) 0%, transparent 50%);
         }
 
         .founders-grid {
@@ -899,7 +897,7 @@
             width: 100px;
             height: 100px;
             margin: 0 auto 25px;
-            background: linear-gradient(135deg, rgba(44, 62, 80, 0.1), rgba(44, 62, 80, 0.15));
+            background: linear-gradient(135deg, rgba(26, 82, 118, 0.1), rgba(26, 82, 118, 0.15));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -935,7 +933,7 @@
 
         /* ===== SECTION CTA ===== */
         .cta {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -1009,13 +1007,13 @@
         }
 
         .cta .btn-accent {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            color: white;
         }
 
         .cta .btn-accent:hover {
-            background-color: white;
-            color: var(--primary-color);
+            background-color: #27ae60;
+            color: white;
         }
 
         .cta .btn-outline {
@@ -1031,7 +1029,7 @@
 
         /* ===== FOOTER BLEU FONCÉ ===== */
         footer {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
             color: white;
             padding: 80px 0 30px;
             position: relative;
@@ -1057,18 +1055,17 @@
             z-index: 1;
         }
 
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
+        /* Footer logo */
+        .footer-logo-img {
+            height: 65px; /* TAILLE DU LOGO DANS LE FOOTER */
+            width: auto;
             margin-bottom: 20px;
-            display: inline-block;
-            letter-spacing: -0.5px;
-            color: white;
+            transition: var(--transition);
+            max-width: 200px;
         }
 
-        .footer-logo span {
-            color: white;
-            font-weight: 600;
+        .footer-logo-img:hover {
+            transform: scale(1.05);
         }
 
         .footer-about p {
@@ -1286,7 +1283,7 @@
                 top: 70px;
                 left: 0;
                 right: 0;
-                background-color: var(--primary-color);
+                background-color: var(--primary-color); /* Bleu pour le menu mobile */
                 box-shadow: var(--shadow-lg);
                 padding: 25px;
                 transform: translateY(-100%);
@@ -1307,12 +1304,22 @@
                 gap: 20px;
             }
             
+            /* Dans le menu mobile, le texte est en clair */
+            nav a {
+                color: var(--light-color); /* Texte clair dans le menu mobile */
+            }
+            
+            nav a:hover,
+            nav a.active {
+                color: white; /* Blanc au hover dans le menu mobile */
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
             
             .page-header {
-                padding: 140px 0 80px;
+                padding: 160px 0 80px;
                 background-attachment: scroll;
             }
             
@@ -1324,6 +1331,11 @@
             .page-header p {
                 font-size: 1.1rem;
                 padding: 0 15px;
+            }
+            
+            /* Ajustement logo mobile */
+            .logo-img {
+                height: 50px;
             }
             
             /* SECTION HISTOIRE OPTIMISÉE MOBILE */
@@ -1472,6 +1484,10 @@
                 gap: 40px;
             }
             
+            .footer-logo-img {
+                height: 55px;
+            }
+            
             .mv-grid {
                 grid-template-columns: 1fr;
             }
@@ -1517,7 +1533,7 @@
 
         @media (max-width: 480px) {
             .page-header {
-                padding: 120px 0 60px;
+                padding: 140px 0 60px;
             }
             
             .page-header h1 {
@@ -1527,6 +1543,11 @@
             .page-header p {
                 font-size: 1rem;
                 line-height: 1.6;
+            }
+            
+            /* Ajustement logo très petits écrans */
+            .logo-img {
+                height: 45px;
             }
             
             /* SECTION HISTOIRE - SMALL MOBILE */
@@ -1624,6 +1645,10 @@
                 padding: 0 15px;
             }
             
+            .footer-logo-img {
+                height: 50px;
+            }
+            
             .founder-card {
                 padding: 25px 20px;
             }
@@ -1634,6 +1659,11 @@
         }
 
         @media (max-width: 360px) {
+            /* Ajustement logo très petit mobile */
+            .logo-img {
+                height: 40px;
+            }
+            
             /* SECTION HISTOIRE - VERY SMALL MOBILE */
             .history-timeline {
                 padding-left: 25px;
@@ -1692,6 +1722,10 @@
                 height: 38px;
                 font-size: 1rem;
             }
+            
+            .footer-logo-img {
+                height: 45px;
+            }
         }
 
         /* ===== ÉLÉMENTS ANIMÉS ===== */
@@ -1711,11 +1745,12 @@
     </style>
 </head>
 <body>
-    <!-- Header avec fond bleu foncé -->
+    <!-- Header avec fond blanc -->
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-code"></i> Nord<span>Web</span>
+                <!-- Logo Nord-Web -->
+                <img src="images/nordzeb2.png" alt="Nord-Web Logo" class="logo-img">
             </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1935,7 +1970,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">Nord<span>Web</span></div>
+                    <!-- Logo dans le footer -->
+                    <img src="images/nordzeb2.png" alt="Nord-Web Logo" class="footer-logo-img">
                     <p>Solutions digitales innovantes créées à Saint-Louis par une équipe passionnée de développeurs et data scientifiques. Nous transformons vos idées en succès numériques.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -2027,12 +2063,12 @@
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
-                    header.style.boxShadow = '0 8px 25px rgba(44, 62, 80, 0.1)';
-                    header.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
+                    header.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)'; /* Blanc transparent */
                     header.style.backdropFilter = 'blur(10px)';
                 } else {
-                    header.style.boxShadow = 'var(--shadow-md)';
-                    header.style.backgroundColor = 'var(--primary-color)';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+                    header.style.backgroundColor = 'white'; /* Blanc solide */
                     header.style.backdropFilter = 'none';
                 }
             });

@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ===== VARIABLES CSS ===== */
+        /* COULEURS PRINCIPALES BASÉES SUR LE LOGO */
         :root {
-            /* Palette de couleurs - Bleu foncé principal avec sécurité en rouge */
-            --primary-color: #2c3e50; /* Bleu foncé élégant principal */
-            --primary-dark: #1a252f; /* Bleu presque noir */
-            --primary-light: #34495e; /* Bleu foncé plus clair */
-            --secondary-color: #3498db; /* Bleu vif pour accents */
-            --accent-color: #2980b9; /* Bleu pour les accents */
+            /* Palette de couleurs - Basée sur la couleur du logo */
+            --primary-color: #1a5276; /* Bleu foncé inspiré du logo */
+            --primary-dark: #154360; /* Version plus foncée */
+            --primary-light: #3498db; /* Version plus claire */
+            --secondary-color: #2ecc71; /* Vert - couleur secondaire du logo */
+            --accent-color: #2980b9; /* Bleu pour accents */
             --security-color: #e74c3c; /* Rouge pour sécurité */
             --security-dark: #c0392b; /* Rouge foncé pour sécurité */
             --light-color: #ffffff; /* Blanc */
@@ -23,6 +24,11 @@
             --gray-color: #95a5a6; /* Gris moyen */
             --gray-dark: #7f8c8d; /* Gris foncé */
             --border-color: #e0e0e0; /* Couleur de bordure */
+            
+            /* Couleurs d'accent basées sur le logo */
+            --logo-accent-1: #3498db; /* Bleu du logo */
+            --logo-accent-2: #2ecc71; /* Vert du logo */
+            --logo-accent-3: #f39c12; /* Orange du logo */
             
             /* Typographie */
             --heading-font: 'Montserrat', sans-serif;
@@ -35,9 +41,9 @@
             --transition: all 0.3s ease;
             
             /* Ombres élégantes */
-            --shadow-sm: 0 2px 8px rgba(44, 62, 80, 0.1);
-            --shadow-md: 0 4px 12px rgba(44, 62, 80, 0.15);
-            --shadow-lg: 0 8px 24px rgba(44, 62, 80, 0.2);
+            --shadow-sm: 0 2px 8px rgba(26, 82, 118, 0.1);
+            --shadow-md: 0 4px 12px rgba(26, 82, 118, 0.15);
+            --shadow-lg: 0 8px 24px rgba(26, 82, 118, 0.2);
         }
 
         /* ===== RESET ET STYLES GÉNÉRAUX ===== */
@@ -82,7 +88,7 @@
         .btn {
             display: inline-block;
             padding: 12px 28px;
-            background-color: var(--primary-color); /* BOUTONS EN BLEU FONCÉ */
+            background-color: var(--primary-color); /* BOUTONS EN COULEUR PRINCIPALE */
             color: white;
             border-radius: var(--border-radius);
             text-decoration: none;
@@ -120,12 +126,14 @@
         }
 
         .btn-accent {
-            background-color: var(--primary-color); /* BOUTONS ACCENT EN BLEU FONCÉ */
+            background-color: var(--secondary-color); /* BOUTONS ACCENT EN COULEUR SECONDAIRE */
             color: white;
         }
 
         .btn-accent:hover {
-            background-color: var(--primary-dark);
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(46, 204, 113, 0.2);
         }
 
         .btn-security {
@@ -175,23 +183,22 @@
             position: relative;
         }
 
+        /* Logo style - TAILLE OPTIMISÉE */
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            text-decoration: none;
         }
 
-        .logo i {
-            color: var(--primary-color);
-            font-weight: bold;
+        .logo-img {
+            height: 80px; /* TAILLE DU LOGO - Ajustez selon votre logo */
+            width: auto;
+            transition: var(--transition);
+            max-width: 180px; /* Largeur maximum pour éviter le débordement */
         }
 
-        .logo span {
-            color: var(--primary-color);
+        .logo:hover .logo-img {
+            transform: scale(1.05);
         }
 
         nav ul {
@@ -242,7 +249,7 @@
         /* ===== SECTION HERO ===== */
         .hero {
             padding-top: 120px;
-            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.9)), 
+            background:  
                         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
@@ -263,7 +270,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(44, 62, 80, 0.3), rgba(52, 73, 94, 0.3));
+            background: linear-gradient(45deg, rgba(26, 82, 118, 0.3), rgba(52, 152, 219, 0.3));
             z-index: 1;
         }
 
@@ -301,7 +308,7 @@
         }
 
         .hero .btn {
-            background-color: var(--primary-color); /* BOUTONS HERO EN BLEU FONCÉ */
+            background-color: var(--primary-color);
             color: white;
             border: 2px solid var(--primary-color);
         }
@@ -313,19 +320,32 @@
         }
 
         .hero .btn-accent {
-            background-color: transparent;
-            border: 2px solid white;
+            background-color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
             color: white;
         }
 
         .hero .btn-accent:hover {
-            background-color: white;
-            color: var(--primary-color);
+            background-color: transparent;
+            border-color: white;
+            color: white;
+        }
+
+        .hero .btn-security {
+            background-color: var(--security-color);
+            border: 2px solid var(--security-color);
+            color: white;
+        }
+
+        .hero .btn-security:hover {
+            background-color: transparent;
+            border-color: white;
+            color: white;
         }
 
         /* ===== SECTION STATISTIQUES ===== */
         .stats {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             color: white;
             padding: 60px 0;
         }
@@ -339,10 +359,15 @@
 
         .stat-item {
             padding: 20px;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             font-family: var(--heading-font);
             margin-bottom: 10px;
@@ -475,7 +500,7 @@
 
         /* ===== SÉCURITÉ SPÉCIALISÉE ===== */
         .security-section {
-            background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, rgba(231, 76, 60, 0.02) 100%); /* FOND ROUGE CLAIR */
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, rgba(231, 76, 60, 0.02) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -507,14 +532,14 @@
             padding: 30px;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
-            border-left: 4px solid var(--security-color); /* BORDURE GAUCHE EN ROUGE */
+            border-left: 4px solid var(--security-color);
             position: relative;
             overflow: hidden;
         }
 
         .security-feature:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.1); /* OMBRE ROUGE */
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.1);
         }
 
         .security-feature-header {
@@ -526,8 +551,8 @@
 
         .security-feature-header i {
             font-size: 2.5rem;
-            color: var(--security-color); /* ICÔNE EN ROUGE */
-            background-color: rgba(231, 76, 60, 0.1); /* FOND ROUGE CLAIR */
+            color: var(--security-color);
+            background-color: rgba(231, 76, 60, 0.1);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -559,7 +584,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--security-color); /* CHECKMARK EN ROUGE */
+            color: var(--security-color);
             font-weight: bold;
         }
 
@@ -569,7 +594,7 @@
 
         /* ===== À PROPOS PRÉVISUALISATION ===== */
         .about-preview {
-            background-color: var(--gray-light);
+            background: linear-gradient(135deg, rgba(26, 82, 118, 0.02) 0%, rgba(52, 152, 219, 0.02) 100%);
         }
 
         .about-preview-content {
@@ -614,7 +639,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(44, 62, 80, 0.1), rgba(52, 73, 94, 0.1));
+            background: linear-gradient(45deg, rgba(26, 82, 118, 0.1), rgba(52, 152, 219, 0.1));
             z-index: 1;
         }
 
@@ -661,7 +686,7 @@
         }
 
         .feature-item.security-feature .feature-icon {
-            background: linear-gradient(45deg, var(--security-color), var(--security-dark)); /* DÉGRADÉ ROUGE */
+            background: linear-gradient(45deg, var(--security-color), var(--security-dark));
         }
 
         .feature-content h3 {
@@ -677,7 +702,7 @@
 
         /* ===== PROJETS RÉCENTS ===== */
         .recent-projects {
-            background-color: var(--gray-light);
+            background: linear-gradient(135deg, rgba(26, 82, 118, 0.02) 0%, rgba(52, 152, 219, 0.02) 100%);
         }
 
         .projects-grid {
@@ -713,13 +738,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(44, 62, 80, 0.7), transparent);
+            background: linear-gradient(to top, rgba(26, 82, 118, 0.7), transparent);
             opacity: 0;
             transition: var(--transition);
         }
 
         .project-card.security-project .project-image::after {
-            background: linear-gradient(to top, rgba(231, 76, 60, 0.7), transparent); /* DÉGRADÉ ROUGE */
+            background: linear-gradient(to top, rgba(231, 76, 60, 0.7), transparent);
         }
 
         .project-card:hover .project-image::after {
@@ -749,7 +774,7 @@
         }
 
         .project-card.security-project .project-info h3 {
-            color: var(--security-color); /* TITRE EN ROUGE */
+            color: var(--security-color);
         }
 
         .project-info p {
@@ -862,20 +887,30 @@
         }
 
         .cta .btn {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: white;
+            color: var(--primary-color);
             font-size: 1.1rem;
             padding: 15px 35px;
         }
 
         .cta .btn:hover {
-            background-color: var(--primary-dark);
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+        }
+
+        .cta .btn-security {
+            background-color: var(--security-color);
+            color: white;
+        }
+
+        .cta .btn-security:hover {
+            background-color: var(--security-dark);
             color: white;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
             color: white;
             padding: 40px 0 15px;
         }
@@ -887,17 +922,17 @@
             margin-bottom: 30px;
         }
 
-        .footer-logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: inline-block;
-            color: white;
+        /* Footer logo */
+        .footer-logo-img {
+            height: 70px; /* TAILLE DU LOGO DANS LE FOOTER */
+            width: auto;
+            margin-bottom: 15px;
+            transition: var(--transition);
+            max-width: 200px;
         }
 
-        .footer-logo span {
-            color: white;
-            opacity: 0.9;
+        .footer-logo-img:hover {
+            transform: scale(1.05);
         }
 
         .footer-about p {
@@ -1023,7 +1058,7 @@
             }
             
             .stat-number {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .cta h2 {
@@ -1137,6 +1172,15 @@
             .security-features {
                 grid-template-columns: 1fr;
             }
+            
+            /* Ajustement logo mobile */
+            .logo-img {
+                height: 50px;
+            }
+            
+            .footer-logo-img {
+                height: 55px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1190,6 +1234,15 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+            
+            /* Ajustement logo très petits écrans */
+            .logo-img {
+                height: 45px;
+            }
+            
+            .footer-logo-img {
+                height: 50px;
+            }
         }
 
         /* ===== ÉLÉMENTS ANIMÉS ===== */
@@ -1199,7 +1252,8 @@
         .project-card,
         .feature-item,
         .testimonial-slide,
-        .security-feature {
+        .security-feature,
+        .stat-item {
             opacity: 0;
             transform: translateY(20px);
         }
@@ -1248,7 +1302,8 @@
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-code"></i> Nord<span>Web</span>
+                <!-- Remplacez "votre-logo.png" par le chemin de votre logo -->
+                <img src="images/nordzeb2.png" alt="Nord-Web Logo" class="logo-img">
             </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1283,7 +1338,7 @@
         </div>
     </section>
 
-   
+    
 
     <!-- Services Prévisualisation -->
     <section class="services-preview">
@@ -1510,7 +1565,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">Nord<span>Web</span></div>
+                    <!-- Logo dans le footer -->
+                    <img src="images/nordzeb2.png" alt="Nord-Web Logo" class="footer-logo-img">
                     <p>Solutions digitales innovantes et systèmes de sécurité créés à Saint-Louis par une équipe passionnée. Nous transformons vos idées en succès numériques et protégeons vos espaces.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1601,11 +1657,11 @@
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
-                    header.style.boxShadow = '0 4px 12px rgba(44, 62, 80, 0.15)';
+                    header.style.boxShadow = '0 4px 12px rgba(26, 82, 118, 0.15)';
                     header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
                     header.style.backdropFilter = 'blur(10px)';
                 } else {
-                    header.style.boxShadow = '0 2px 8px rgba(44, 62, 80, 0.1)';
+                    header.style.boxShadow = '0 2px 8px rgba(26, 82, 118, 0.1)';
                     header.style.backgroundColor = 'white';
                     header.style.backdropFilter = 'none';
                 }
@@ -1626,7 +1682,7 @@
             }, observerOptions);
             
             // Observer les éléments à animer
-            const animatedElements = document.querySelectorAll('.hero-content, .service-card, .about-preview-text, .project-card, .section-title, .feature-item, .testimonial-slide, .security-feature');
+            const animatedElements = document.querySelectorAll('.hero-content, .service-card, .about-preview-text, .project-card, .section-title, .feature-item, .testimonial-slide, .security-feature, .stat-item');
             animatedElements.forEach(el => observer.observe(el));
             
             // Compteur de statistiques

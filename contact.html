@@ -7,26 +7,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* PALETTE BLEU FONCÉ ÉLÉGANT (#2c3e50) AVEC ROUGE SÉCURITÉ */
+        /* PALETTE AVEC NOUVELLE COULEUR */
         :root {
-            /* Couleurs principales - Bleu foncé élégant */
-            --primary-color: #2c3e50;      /* Bleu foncé principal */
-            --primary-light: #34495e;     /* Bleu foncé plus clair */
-            --primary-very-light: #5d7797; /* Bleu doux */
-            --primary-dark: #1a252f;      /* Bleu nuit très foncé */
+            /* Nouvelle couleur spécifiée */
+            --new-gradient-color: linear-gradient(rgba(26, 82, 118, 0.9), rgba(21, 67, 96, 0.9));
+            --new-color-solid: #1a5276;
+            --new-color-light: rgba(26, 82, 118, 0.1);
+            
+            /* Couleurs principales */
+            --primary-color: #2c3e50;
+            --primary-light: #34495e;
+            --primary-very-light: #5d7797;
+            --primary-dark: #1a252f;
             
             /* Couleur d'accent pour sécurité - Rouge */
-            --security-color: #e74c3c;    /* Rouge pour la sécurité */
-            --security-light: #ff6b6b;    /* Rouge clair */
-            --security-dark: #c0392b;     /* Rouge foncé */
+            --security-color: #e74c3c;
+            --security-light: #ff6b6b;
+            --security-dark: #c0392b;
             
             /* Couleurs neutres */
-            --light-color: #ecf0f1;       /* Gris clair élégant */
-            --white-color: #ffffff;       /* Blanc pur */
-            --dark-color: #1c2833;        /* Presque noir bleuté */
-            --gray-color: #95a5a6;        /* Gris */
-            --gray-light: #e8edf1;        /* Gris très clair */
-            --gray-soft: #f5f7fa;         /* Gris ultra clair */
+            --light-color: #ecf0f1;
+            --white-color: #ffffff;
+            --dark-color: #1c2833;
+            --gray-color: #95a5a6;
+            --gray-light: #e8edf1;
+            --gray-soft: #f5f7fa;
             
             --transition: all 0.3s ease;
             --shadow-sm: 0 2px 4px rgba(44, 62, 80, 0.1);
@@ -34,6 +39,7 @@
             --shadow-lg: 0 10px 15px -3px rgba(44, 62, 80, 0.1);
             --shadow-primary: 0 10px 25px rgba(44, 62, 80, 0.15);
             --shadow-security: 0 10px 25px rgba(231, 76, 60, 0.15);
+            --shadow-new: 0 10px 25px rgba(26, 82, 118, 0.15);
             --radius: 12px;
         }
         
@@ -51,10 +57,10 @@
             background-color: var(--white-color);
         }
         
-        /* ===== NAVBAR BLEU FONCÉ ===== */
+        /* ===== NAVBAR BLANC ===== */
         header {
-            background-color: var(--primary-color); /* #2c3e50 */
-            color: white;
+            background-color: var(--white-color); /* CHANGÉ EN BLANC */
+            color: var(--dark-color);
             position: fixed;
             top: 0;
             left: 0;
@@ -62,7 +68,7 @@
             z-index: 1000;
             padding: 15px 0;
             box-shadow: var(--shadow-md);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--gray-light);
             transition: var(--transition);
         }
         
@@ -75,39 +81,33 @@
             padding: 0 20px;
         }
         
-        .logo {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-decoration: none;
+        /* Logo en image */
+        .logo-img {
+            height: 80px;
+            width: auto;
+            transition: var(--transition);
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        
+        .logo-link {
             display: flex;
             align-items: center;
-            transition: var(--transition);
+            text-decoration: none;
         }
         
-        .logo:hover {
-            transform: translateY(-2px);
-        }
-        
-        /* Icône logo en blanc avec fond bleu foncé */
-        .logo i {
-            color: white;
-            margin-right: 10px;
-            font-size: 2rem;
-            transition: var(--transition);
-            background-color: var(--primary-light);
-            padding: 8px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        
-        .logo:hover i {
-            transform: rotate(15deg);
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .logo span {
-            color: white;
+        /* Fallback si l'image ne charge pas */
+        .logo-fallback {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--new-color-solid);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
         }
         
         .nav-content {
@@ -118,8 +118,8 @@
         
         .mobile-menu-btn {
             background-color: transparent;
-            border: 2px solid white;
-            color: white;
+            border: 2px solid var(--new-color-solid);
+            color: var(--new-color-solid);
             border-radius: 5px;
             padding: 8px 12px;
             cursor: pointer;
@@ -129,8 +129,8 @@
         }
         
         .mobile-menu-btn:hover {
-            background-color: white;
-            color: var(--primary-color);
+            background-color: var(--new-color-solid);
+            color: white;
         }
         
         #mainNav ul {
@@ -146,7 +146,7 @@
         }
         
         #mainNav ul li a {
-            color: var(--light-color);
+            color: var(--dark-color);
             text-decoration: none;
             font-weight: 500;
             font-size: 1rem;
@@ -157,11 +157,11 @@
         }
         
         #mainNav ul li a:hover {
-            color: white;
+            color: var(--new-color-solid);
         }
         
         #mainNav ul li a.active {
-            color: white;
+            color: var(--new-color-solid);
             font-weight: 600;
         }
         
@@ -172,13 +172,13 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: white;
+            background-color: var(--new-color-solid);
             border-radius: 2px;
         }
         
-        /* Bouton Contact dans le navbar en bleu clair */
+        /* Bouton Contact dans le navbar avec nouvelle couleur */
         .nav-contact-btn {
-            background: linear-gradient(to right, var(--primary-light), var(--primary-very-light));
+            background: var(--new-color-solid);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -188,14 +188,14 @@
             display: flex;
             align-items: center;
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
+            box-shadow: 0 4px 10px rgba(26, 82, 118, 0.3);
             font-family: 'Poppins', sans-serif;
         }
         
         .nav-contact-btn:hover {
-            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            background: #144a6b;
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.4);
+            box-shadow: 0 6px 15px rgba(26, 82, 118, 0.4);
             color: white;
         }
         
@@ -233,9 +233,10 @@
             padding: 0 20px;
         }
         
-        /* Page Header Bleu Foncé */
+        /* Page Header avec nouvelle couleur */
         .page-header {
-            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.85));
+            
+            background: var(--new-gradient-color);
             color: white;
             padding: 100px 0 60px;
             text-align: center;
@@ -276,7 +277,7 @@
         
         .contact-info-content h2 {
             font-size: 2.5rem;
-            color: var(--primary-color); /* #2c3e50 */
+            color: var(--new-color-solid);
             margin-bottom: 30px;
             font-family: 'Montserrat', sans-serif;
             position: relative;
@@ -288,7 +289,7 @@
             position: absolute;
             width: 80px;
             height: 4px;
-            background-color: var(--primary-color); /* #2c3e50 */
+            background-color: var(--new-color-solid);
             bottom: -10px;
             left: 0;
             border-radius: 2px;
@@ -301,7 +302,7 @@
             line-height: 1.7;
         }
         
-        /* Grille des contacts - VERSION SIMPLIFIÉE SANS LOGOS */
+        /* Grille des contacts */
         .contact-methods-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -316,18 +317,13 @@
             transition: var(--transition);
             border: 2px solid transparent;
             position: relative;
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid var(--new-color-solid);
         }
         
         .contact-method:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-primary);
-            border-color: var(--primary-light);
-        }
-        
-        /* Pas d'icônes dans les cartes de contact */
-        .contact-method-icon {
-            display: none;
+            box-shadow: var(--shadow-new);
+            border-color: var(--new-color-solid);
         }
         
         .contact-method-content h3 {
@@ -346,7 +342,7 @@
         .contact-number {
             font-size: 1.2rem;
             font-weight: 600;
-            color: var(--primary-color); /* #2c3e50 */
+            color: var(--new-color-solid);
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -356,6 +352,10 @@
         /* Numéro sécurité en rouge */
         .contact-method.security .contact-number {
             color: var(--security-color);
+            border-left-color: var(--security-color);
+        }
+        
+        .contact-method.security {
             border-left-color: var(--security-color);
         }
         
@@ -378,17 +378,17 @@
             font-size: 0.95rem;
         }
         
-        /* Bouton principal en bleu foncé */
+        /* Bouton principal avec nouvelle couleur */
         .btn-primary {
-            background-color: var(--primary-color); /* #2c3e50 */
+            background-color: var(--new-color-solid);
             color: white;
-            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
+            box-shadow: 0 4px 10px rgba(26, 82, 118, 0.3);
         }
         
         .btn-primary:hover {
-            background-color: var(--primary-dark); /* #1a252f */
+            background-color: #144a6b;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(26, 37, 47, 0.4);
+            box-shadow: 0 6px 15px rgba(26, 82, 118, 0.4);
             color: white;
         }
         
@@ -421,12 +421,12 @@
         
         .btn-outline {
             background-color: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+            border: 2px solid var(--new-color-solid);
+            color: var(--new-color-solid);
         }
         
         .btn-outline:hover {
-            background-color: var(--primary-color);
+            background-color: var(--new-color-solid);
             color: white;
             transform: translateY(-3px);
         }
@@ -439,9 +439,9 @@
         .contact-hours {
             margin-top: 40px;
             padding: 25px;
-            background-color: rgba(44, 62, 80, 0.05);
+            background-color: var(--new-color-light);
             border-radius: var(--radius);
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid var(--new-color-solid);
         }
         
         .contact-hours h3 {
@@ -487,11 +487,11 @@
             right: 0;
             background: rgba(255, 255, 255, 0.95);
             padding: 20px;
-            border-top: 4px solid var(--primary-color);
+            border-top: 4px solid var(--new-color-solid);
         }
         
         .map-overlay h3 {
-            color: var(--primary-color);
+            color: var(--new-color-solid);
             margin-bottom: 10px;
             font-size: 1.2rem;
         }
@@ -523,7 +523,7 @@
         
         .form-header h2 {
             font-size: 2.2rem;
-            color: var(--primary-color); /* #2c3e50 */
+            color: var(--new-color-solid);
             margin-bottom: 15px;
             font-family: 'Montserrat', sans-serif;
         }
@@ -585,7 +585,7 @@
         
         .form-group select {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%232c3e50' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%231a5276' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 15px center;
             background-size: 12px;
@@ -597,8 +597,8 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+            border-color: var(--new-color-solid);
+            box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.1);
         }
         
         /* Indicateurs d'erreur */
@@ -625,14 +625,9 @@
             grid-column: 1 / -1;
         }
         
-        /* Aide pour le format de téléphone - SUPPRIMÉ */
-        .phone-help {
-            display: none;
-        }
-        
-        /* Bouton de soumission en bleu foncé */
+        /* Bouton de soumission avec nouvelle couleur */
         .btn-submit {
-            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            background: var(--new-color-solid);
             color: white;
             border: none;
             padding: 18px 40px;
@@ -646,13 +641,14 @@
             justify-content: center;
             width: 100%;
             margin-top: 30px;
-            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.3);
+            box-shadow: 0 6px 15px rgba(26, 82, 118, 0.3);
             font-family: 'Poppins', sans-serif;
         }
         
         .btn-submit:hover {
+            background: #144a6b;
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(44, 62, 80, 0.4);
+            box-shadow: 0 10px 25px rgba(26, 82, 118, 0.4);
         }
         
         .btn-submit i {
@@ -671,9 +667,9 @@
             display: none;
             text-align: center;
             padding: 40px;
-            background: rgba(44, 62, 80, 0.05);
+            background: var(--new-color-light);
             border-radius: var(--radius);
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid var(--new-color-solid);
         }
         
         .form-success.show {
@@ -682,20 +678,20 @@
         
         .form-success i {
             font-size: 3rem;
-            color: var(--primary-color);
+            color: var(--new-color-solid);
             margin-bottom: 20px;
         }
         
         .form-success h3 {
             font-size: 1.8rem;
-            color: var(--primary-color);
+            color: var(--new-color-solid);
             margin-bottom: 15px;
         }
         
-        /* ===== CTA FINAL BLEU FONCÉ ===== */
+        /* ===== CTA FINAL AVEC NOUVELLE COULEUR ===== */
         .final-cta {
             padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: var(--new-gradient-color);
             color: white;
             text-align: center;
         }
@@ -733,7 +729,7 @@
         
         .btn-light {
             background-color: white;
-            color: var(--primary-color);
+            color: var(--new-color-solid);
             font-weight: 600;
             box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
         }
@@ -752,7 +748,7 @@
         
         .btn-outline-light:hover {
             background-color: white;
-            color: var(--primary-color);
+            color: var(--new-color-solid);
             transform: translateY(-5px);
         }
         
@@ -760,9 +756,9 @@
             margin-right: 10px;
         }
         
-        /* ===== FOOTER BLEU FONCÉ ===== */
+        /* ===== FOOTER AVEC NOUVELLE COULEUR ===== */
         footer {
-            background-color: var(--primary-dark);
+            background: linear-gradient(135deg, #0a1929 0%, var(--new-color-solid) 100%);
             color: white;
             padding: 60px 0 20px;
         }
@@ -774,21 +770,26 @@
             margin-bottom: 40px;
         }
         
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
+        .footer-logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
         
-        .footer-logo span {
-            color: white;
-            font-weight: 600;
+        .footer-logo-img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        
+        .footer-logo-img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 5px 15px rgba(255, 255, 255, 0.3));
         }
         
         .footer-about p {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             margin-bottom: 20px;
             line-height: 1.6;
         }
@@ -808,10 +809,11 @@
             border-radius: 50%;
             color: white;
             transition: var(--transition);
+            text-decoration: none;
         }
         
         .social-icons a:hover {
-            background-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
         }
         
@@ -860,6 +862,16 @@
             width: 20px;
         }
         
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.9);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .footer-contact a:hover {
+            color: white;
+        }
+        
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -899,7 +911,7 @@
                 left: -100%;
                 width: 280px;
                 height: calc(100vh - 80px);
-                background-color: var(--primary-color);
+                background-color: var(--white-color);
                 box-shadow: var(--shadow-lg);
                 padding: 30px;
                 transition: var(--transition);
@@ -924,9 +936,14 @@
             
             #mainNav ul li a {
                 padding: 12px 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid var(--gray-light);
                 width: 100%;
-                color: var(--light-color);
+                color: var(--dark-color);
+            }
+            
+            #mainNav ul li a:hover,
+            #mainNav ul li a.active {
+                color: var(--new-color-solid);
             }
             
             .page-header {
@@ -958,14 +975,6 @@
         @media (max-width: 576px) {
             .header-container {
                 padding: 0 15px;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .logo i {
-                font-size: 1.7rem;
             }
             
             .page-header h1 {
@@ -1002,16 +1011,18 @@
         /* Header au scroll */
         header.scrolled {
             padding: 10px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
-    <!-- ===== HEADER AVEC NAVBAR COMPLET ===== -->
+    <!-- ===== HEADER AVEC NAVBAR BLANC ===== -->
     <header>
         <div class="container header-container">
+            <!-- Logo en image -->
             <a href="index.html" class="logo">
-                <i class="fas fa-code"></i> Nord<span>Web</span>
+                <!-- Logo Nord-Web -->
+                <img src="images/nordzeb2.png" alt="Nord-Web Logo" class="logo-img">
             </a>
             
             <div class="nav-content">
@@ -1039,7 +1050,7 @@
         <div class="nav-overlay" id="navOverlay"></div>
     </header>
 
-    <!-- Page Header Bleu Foncé -->
+    <!-- Page Header avec nouvelle couleur -->
     <section class="page-header">
         <div class="container">
             <h1>Contactez-nous</h1>
@@ -1047,7 +1058,7 @@
         </div>
     </section>
 
-    <!-- ===== SECTION CONTACT INFO - VERSION SANS LOGOS ===== -->
+    <!-- ===== SECTION CONTACT INFO ===== -->
     <section class="contact-info-section">
         <div class="container">
             <div class="contact-main-container">
@@ -1141,14 +1152,14 @@
                 <div class="contact-map-container">
                     <div class="contact-map">
                         <!-- Carte Saint-Louis -->
-                        <div style="width: 100%; height: 100%; background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.9)), 
+                        <div style="width: 100%; height: 100%; background: var(--new-gradient-color), 
                                     url('https://images.unsplash.com/photo-1573994591087-e8ab7eb6c96c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); 
                                     background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white;">
                             <div style="text-align: center; padding: 20px;">
                                 <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Nord-Web Saint-Louis</h3>
                                 <p style="margin-bottom: 20px;">Situé au cœur de la ville historique</p>
                                 <a href="https://maps.google.com/?q=Saint-Louis,Senegal" target="_blank" 
-                                   style="display: inline-flex; align-items: center; padding: 12px 24px; background-color: white; color: var(--primary-color); 
+                                   style="display: inline-flex; align-items: center; padding: 12px 24px; background-color: white; color: var(--new-color-solid); 
                                           border-radius: 8px; text-decoration: none; font-weight: 600;">
                                     <i class="fas fa-directions" style="margin-right: 8px;"></i> Voir sur Google Maps
                                 </a>
@@ -1198,7 +1209,7 @@
                         </div>
                     </div>
                     
-                    <!-- SERVICES INTÉRESSÉS - COMME BUDGET ESTIMÉ (LISTE DÉROULANTE) -->
+                    <!-- SERVICES INTÉRESSÉS -->
                     <div class="form-row">
                         <div class="form-group">
                             <label for="service-interest">Service intéressé <span class="required">*</span></label>
@@ -1222,8 +1233,8 @@
                             <label for="budget">Budget estimé <span class="required">*</span></label>
                             <select id="budget" name="budget" required>
                                 <option value="">Sélectionnez une fourchette</option>
-                                <option value="50k-100k">50 000 - 100 000 FCFA</option>
-                                <option value="100k-300k">100 000 - 300 000 FCFA</option>
+                                <option value="50k-100k">100 000 - 200 000 FCFA</option>
+                                <option value="100k-300k">200 000 - 300 000 FCFA</option>
                                 <option value="300k-500k">300 000 - 500 000 FCFA</option>
                                 <option value="500k-1M">500 000 - 1 000 000 FCFA</option>
                                 <option value="1M-2M">1M - 2M FCFA</option>
@@ -1311,13 +1322,19 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER BLEU FONCÉ ===== -->
+    <!-- ===== FOOTER AVEC LOGO IMAGE ===== -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-about">
-                    <h3 class="footer-logo">Nord<span>Web</span></h3>
-                    <p>Agence spécialisée en développement web et solutions de sécurité à Saint-Louis, Sénégal.</p>
+                <div class="footer-logo-section">
+                    <!-- Logo en image dans le footer -->
+                    <a href="index.html" class="logo">
+                <!-- Logo Nord-Web -->
+                <img src="images/nordzeb2.png" alt="Nord-Web Logo" class="logo-img">
+            </a>
+                    <div class="footer-about">
+                        <p>Agence spécialisée en développement web et solutions de sécurité à Saint-Louis, Sénégal.</p>
+                    </div>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1396,8 +1413,10 @@
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
             } else {
                 header.classList.remove('scrolled');
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             }
         });
         
@@ -1423,23 +1442,17 @@
         
         // Fonction de validation du téléphone simplifiée
         function validateSenegalPhone(phone) {
-            // Nettoyer le numéro
             const cleanedPhone = phone.replace(/[\s\-\(\)\.\+]/g, '');
             
-            // Vérifier la longueur minimale (9 chiffres pour Sénégal)
             if (cleanedPhone.length < 9) {
                 return false;
             }
             
-            // Vérifier si c'est un format international
             if (cleanedPhone.startsWith('+221') || cleanedPhone.startsWith('00221')) {
-                // Extraire la partie après le code pays
                 const localPart = cleanedPhone.replace(/^(\+|00)221/, '');
-                // Vérifier le préfixe et la longueur
                 return /^[0-9]{9}$/.test(localPart);
             }
             
-            // Vérifier le format local
             return /^[0-9]{9}$/.test(cleanedPhone);
         }
         
@@ -1503,12 +1516,10 @@
         
         // Formatage automatique du téléphone (simplifié)
         function formatPhoneNumber(value) {
-            // Supprimer tout sauf les chiffres
             let numbers = value.replace(/\D/g, '');
             
             if (numbers.length === 0) return '';
             
-            // Format local Sénégal
             if (numbers.length <= 2) {
                 return numbers;
             } else if (numbers.length <= 5) {
@@ -1540,7 +1551,6 @@
             
             // Validation et formatage du téléphone
             phoneInput.addEventListener('input', function() {
-                // Formater le numéro
                 this.value = formatPhoneNumber(this.value);
             });
             
@@ -1714,8 +1724,26 @@
             });
         });
         
-        // ===== LOADING ANIMATIONS =====
+        // ===== GESTION DES IMAGES DE LOGO =====
         document.addEventListener('DOMContentLoaded', () => {
+            // Gestion du logo du header
+            const headerLogo = document.querySelector('.logo-img');
+            if (headerLogo) {
+                headerLogo.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    this.parentElement.innerHTML = '<span class="logo-fallback"><i class="fas fa-code"></i> Nord<span>Web</span></span>';
+                });
+            }
+            
+            // Gestion du logo du footer
+            const footerLogo = document.querySelector('.footer-logo-img');
+            if (footerLogo) {
+                footerLogo.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    this.parentElement.innerHTML = '<h3 class="footer-logo" style="color:white;">Nord<span>Web</span></h3>';
+                });
+            }
+            
             // Animation des éléments de contact
             setTimeout(() => {
                 const methods = document.querySelectorAll('.contact-method');

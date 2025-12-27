@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES CSS - BLEU FONCÉ ET ROUGE ===== */
+        /* ===== VARIABLES CSS - BLEU FONCÉ ET NOUVELLE COULEUR ===== */
         :root {
             /* Couleurs principales - BLEU FONCÉ (#2c3e50) pour boutons et éléments principaux */
             --primary-color: #2c3e50; /* BLEU FONCÉ ÉLÉGANT */
@@ -15,6 +15,12 @@
             --primary-very-light: #f8f9fa; /* Gris très clair pour fonds */
             --primary-dark: #1a252f; /* Bleu presque noir */
             --accent-color: #3498db; /* Bleu vif pour accents */
+            
+            /* Nouvelle couleur spécifiée - Dégradé bleu */
+            --new-gradient-color: linear-gradient(rgba(26, 82, 118, 0.9), rgba(21, 67, 96, 0.9));
+            --new-color-solid: #1a5276; /* Version solide pour les boutons */
+            --new-color-light: rgba(26, 82, 118, 0.1); /* Version claire pour fonds */
+            --new-color-medium: rgba(26, 82, 118, 0.3); /* Version moyenne */
             
             /* Couleur sécurité - ROUGE */
             --security-color: #e74c3c; /* Rouge pour sécurité */
@@ -76,11 +82,33 @@
             text-align: center;
         }
 
-        /* ===== BOUTONS - BLEU FONCÉ (#2c3e50) ===== */
+        /* ===== LOGO IMAGE ===== */
+        .logo-img {
+            height: 80px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-logo-img {
+            height: 60px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .footer-logo-img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+
+        /* ===== BOUTONS ===== */
         .btn {
             display: inline-block;
             padding: 12px 28px;
-            background-color: var(--primary-color); /* BLEU FONCÉ */
+            background-color: var(--primary-color);
             color: white;
             border-radius: var(--border-radius);
             text-decoration: none;
@@ -117,6 +145,20 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* Bouton avec nouvelle couleur */
+        .btn-new-color {
+            background-color: var(--new-color-solid);
+            color: white;
+            border: 2px solid var(--new-color-solid);
+        }
+
+        .btn-new-color:hover {
+            background-color: #144a6b;
+            border-color: #144a6b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(26, 82, 118, 0.3);
+        }
+
         .btn-accent {
             background-color: var(--white);
             color: var(--primary-color);
@@ -130,7 +172,7 @@
 
         /* Boutons sécurité en ROUGE */
         .btn-security {
-            background-color: var(--security-color); /* ROUGE */
+            background-color: var(--security-color);
             color: white;
         }
 
@@ -162,21 +204,11 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary-color); /* LOGO EN BLEU FONCÉ */
+            color: var(--primary-color);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-
-        /* Icône </> en bleu foncé */
-        .logo i {
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-
-        .logo span {
-            color: var(--primary-color);
         }
 
         nav ul {
@@ -200,7 +232,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-color); /* SOULIGNEMENT BLEU FONCÉ */
+            background-color: var(--new-color-solid);
             transition: var(--transition);
         }
 
@@ -211,7 +243,7 @@
 
         nav a:hover,
         nav a.active {
-            color: var(--primary-color);
+            color: var(--new-color-solid);
         }
 
         .mobile-menu-btn {
@@ -224,9 +256,9 @@
             padding: 5px;
         }
 
-        /* ===== EN-TÊTE DE PAGE AVEC IMAGE DE FOND ===== */
+        /* ===== EN-TÊTE DE PAGE AVEC NOUVELLE COULEUR ===== */
         .page-header {
-            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(26, 37, 47, 0.85)), 
+            background:  
                 url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
@@ -301,7 +333,7 @@
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 10px;
-            color: var(--primary-color); /* TITRES EN BLEU FONCÉ */
+            color: var(--new-color-solid);
             font-family: var(--heading-font);
         }
 
@@ -338,10 +370,9 @@
         .founder-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color); /* BORDURE BLEU FONCÉ AU SURVOL */
+            border-color: var(--new-color-solid);
         }
 
-        /* STYLE DES IMAGES RONDES */
         .founder-img {
             position: relative;
             height: 100%;
@@ -349,7 +380,7 @@
             align-items: center;
             justify-content: center;
             padding: 30px;
-            background-color: rgba(44, 62, 80, 0.05); /* FOND BLEU TRÈS CLAIR */
+            background-color: var(--new-color-light);
         }
 
         .founder-img-container {
@@ -359,13 +390,13 @@
             border-radius: 50%;
             overflow: hidden;
             border: 4px solid var(--white);
-            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.2); /* OMBRE BLEUE */
+            box-shadow: 0 8px 20px rgba(26, 82, 118, 0.2);
             transition: var(--transition);
         }
 
         .founder-card:hover .founder-img-container {
             transform: scale(1.05);
-            border-color: var(--primary-color); /* BORDURE BLEU FONCÉ */
+            border-color: var(--new-color-solid);
         }
 
         .founder-img-container img {
@@ -378,7 +409,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background: var(--primary-color); /* BADGE BLEU FONCÉ */
+            background: var(--new-gradient-color);
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -398,19 +429,19 @@
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 5px;
-            color: var(--primary-color); /* NOM EN BLEU FONCÉ */
+            color: var(--new-color-solid);
             font-family: var(--heading-font);
         }
 
         .founder-role {
-            color: var(--accent-color); /* ROLE EN BLEU VIF */
+            color: var(--accent-color);
             font-weight: 600;
             margin-bottom: 15px;
             font-size: 1rem;
         }
 
         .founder-contact {
-            background-color: rgba(44, 62, 80, 0.05); /* FOND BLEU TRÈS CLAIR */
+            background-color: var(--new-color-light);
             padding: 12px;
             border-radius: var(--border-radius);
             margin-bottom: 15px;
@@ -426,7 +457,7 @@
         }
 
         .founder-contact i {
-            color: var(--primary-color); /* ICÔNES EN BLEU FONCÉ */
+            color: var(--new-color-solid);
             width: 16px;
         }
 
@@ -444,7 +475,7 @@
         .expertise h4 {
             font-size: 1rem;
             margin-bottom: 10px;
-            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
+            color: var(--new-color-solid);
             font-family: var(--heading-font);
         }
 
@@ -455,8 +486,8 @@
         }
 
         .skill {
-            background-color: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
-            color: var(--primary-color); /* TEXTE BLEU FONCÉ */
+            background-color: var(--new-color-light);
+            color: var(--new-color-solid);
             padding: 6px 12px;
             border-radius: 15px;
             font-size: 0.85rem;
@@ -465,7 +496,7 @@
         }
 
         .skill:hover {
-            background-color: var(--primary-color); /* FOND BLEU FONCÉ */
+            background-color: var(--new-color-solid);
             color: white;
         }
 
@@ -481,8 +512,8 @@
             justify-content: center;
             width: 36px;
             height: 36px;
-            background-color: rgba(44, 62, 80, 0.1); /* FOND BLEU TRÈS CLAIR */
-            color: var(--primary-color); /* ICÔNES BLEU FONCÉ */
+            background-color: var(--new-color-light);
+            color: var(--new-color-solid);
             border-radius: 50%;
             text-decoration: none;
             transition: var(--transition);
@@ -490,7 +521,7 @@
         }
 
         .founder-social a:hover {
-            background-color: var(--primary-color); /* FOND BLEU FONCÉ */
+            background-color: var(--new-color-solid);
             color: white;
             transform: translateY(-3px);
         }
@@ -511,7 +542,7 @@
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 20px;
-            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
+            color: var(--new-color-solid);
             font-family: var(--heading-font);
             position: relative;
             padding-bottom: 15px;
@@ -524,7 +555,7 @@
             left: 0;
             width: 60px;
             height: 3px;
-            background-color: var(--primary-color); /* LIGNE BLEUE */
+            background: var(--new-gradient-color);
             border-radius: 2px;
         }
 
@@ -549,8 +580,7 @@
 
         .point i {
             font-size: 1.2rem;
-            color: var(--primary-color); /* ICÔNES EN BLEU FONCÉ */
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            background: var(--new-gradient-color);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             flex-shrink: 0;
@@ -560,7 +590,7 @@
         .point h4 {
             font-size: 1.1rem;
             margin-bottom: 5px;
-            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
+            color: var(--new-color-solid);
             font-family: var(--heading-font);
         }
 
@@ -588,62 +618,6 @@
             transform: scale(1.05);
         }
 
-        /* ===== PROCESSUS DE TRAVAIL ===== */
-        .work-process {
-            background-color: var(--white);
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .step {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            padding: 25px;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid var(--gray-light);
-        }
-
-        .step:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color); /* BORDURE BLEU FONCÉ */
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color); /* NUMÉRO BLEU FONCÉ */
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 0 auto 15px;
-            font-family: var(--heading-font);
-        }
-
-        .step h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
-            font-family: var(--heading-font);
-        }
-
-        .step p {
-            color: var(--gray-color);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
         /* ===== VALEURS ===== */
         .values {
             background-color: var(--primary-very-light);
@@ -669,13 +643,13 @@
         .value-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color); /* BORDURE BLEU FONCÉ */
+            border-color: var(--new-color-solid);
         }
 
         .value-icon {
             width: 60px;
             height: 60px;
-            background: var(--primary-color); /* ICÔNE BLEU FONCÉ */
+            background: var(--new-gradient-color);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -688,7 +662,7 @@
         .value-card h3 {
             font-size: 1.2rem;
             margin-bottom: 10px;
-            color: var(--primary-color); /* TITRE EN BLEU FONCÉ */
+            color: var(--new-color-solid);
             font-family: var(--heading-font);
         }
 
@@ -698,9 +672,65 @@
             font-size: 0.95rem;
         }
 
-        /* ===== SECTION CTA AVEC IMAGE ===== */
+        /* ===== PROCESSUS DE TRAVAIL ===== */
+        .work-process {
+            background-color: var(--white);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .step {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--gray-light);
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--new-color-solid);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--new-gradient-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 auto 15px;
+            font-family: var(--heading-font);
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--new-color-solid);
+            font-family: var(--heading-font);
+        }
+
+        .step p {
+            color: var(--gray-color);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* ===== SECTION CTA AVEC NOUVELLE COULEUR ===== */
         .cta {
-            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(26, 37, 47, 0.85)),
+            background: var(--new-gradient-color),
                 url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
             background-size: cover;
             color: white;
@@ -742,19 +772,9 @@
             opacity: 0.95;
         }
 
-        .cta .btn {
-            background-color: var(--primary-color); /* BOUTON BLEU FONCÉ */
-            color: white;
-        }
-
-        .cta .btn:hover {
-            background-color: var(--primary-dark);
-            color: white;
-        }
-
-        /* ===== FOOTER AMÉLIORÉ - BLEU FONCÉ ÉLÉGANT ===== */
+        /* ===== FOOTER AMÉLIORÉ - NOUVELLE COULEUR ===== */
         footer {
-            background-color: var(--primary-color); /* BLEU FONCÉ ÉLÉGANT (#2c3e50) */
+            background: var(--new-gradient-color);
             color: white;
             padding: 50px 0 20px;
             margin-top: 40px;
@@ -762,7 +782,6 @@
             overflow: hidden;
         }
 
-        /* Effet de dégradé animé en arrière-plan */
         footer::before {
             content: '';
             position: absolute;
@@ -770,7 +789,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+            background: linear-gradient(90deg, var(--new-color-solid), var(--accent-color), var(--new-color-solid));
             background-size: 200% 100%;
             animation: gradientMove 3s ease infinite;
         }
@@ -811,33 +830,14 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            color: white; /* LOGO EN BLANC */
+            color: white;
             text-decoration: none;
             transition: var(--transition);
         }
 
         .footer-logo:hover {
-            color: var(--accent-color); /* SURVOL BLEU VIF */
+            color: var(--accent-color);
             transform: translateY(-3px);
-        }
-
-        .footer-logo i {
-            color: white; /* ICÔNE EN BLANC */
-            font-size: 2.2rem;
-            transition: var(--transition);
-        }
-
-        .footer-logo:hover i {
-            color: var(--accent-color); /* SURVOL BLEU */
-        }
-
-        .footer-logo span {
-            color: white; /* "WEB" EN BLANC */
-            transition: var(--transition);
-        }
-
-        .footer-logo:hover span {
-            color: var(--accent-color); /* SURVOL BLEU */
         }
 
         .footer-about p {
@@ -879,7 +879,7 @@
 
         .newsletter-input:focus {
             outline: none;
-            border-color: var(--accent-color); /* BORDURE BLEUE */
+            border-color: var(--accent-color);
             background-color: rgba(255, 255, 255, 0.15);
         }
 
@@ -889,9 +889,9 @@
 
         .newsletter-btn {
             padding: 12px 20px;
-            background-color: var(--primary-dark); /* BOUTON BLEU PLUS FONCÉ */
+            background-color: rgba(255, 255, 255, 0.15);
             color: white;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: var(--border-radius);
             cursor: pointer;
             font-weight: 500;
@@ -901,7 +901,7 @@
         }
 
         .newsletter-btn:hover {
-            background-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
 
@@ -924,7 +924,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background-color: var(--accent-color); /* LIGNE BLEUE */
+            background-color: var(--accent-color);
         }
 
         .footer-links ul,
@@ -950,7 +950,7 @@
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: var(--accent-color); /* SURVOL BLEU */
+            color: var(--accent-color);
             padding-left: 5px;
         }
 
@@ -978,7 +978,7 @@
             left: 0;
             width: 40px;
             height: 2px;
-            background-color: var(--accent-color); /* LIGNE BLEUE */
+            background-color: var(--accent-color);
         }
 
         .contact-info {
@@ -997,7 +997,9 @@
         }
 
         .contact-item i {
-            color: var(--accent-color); /* ICÔNES BLEUES */
+            background: var(--new-gradient-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-size: 1.1rem;
             margin-top: 2px;
             flex-shrink: 0;
@@ -1011,7 +1013,7 @@
         }
 
         .contact-item a:hover {
-            color: var(--accent-color); /* SURVOL BLEU */
+            color: var(--accent-color);
         }
 
         /* Réseaux sociaux améliorés */
@@ -1044,7 +1046,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--accent-color); /* SURVOL BLEU */
+            background: var(--accent-color);
             border-radius: 50%;
             transform: scale(0);
             transition: var(--transition);
@@ -1083,7 +1085,7 @@
         }
 
         .copyright span {
-            color: var(--accent-color); /* "NORD-WEB" EN BLEU */
+            color: var(--accent-color);
             font-weight: 600;
         }
 
@@ -1100,7 +1102,7 @@
         }
 
         .footer-legal a:hover {
-            color: var(--accent-color); /* SURVOL BLEU */
+            color: var(--accent-color);
         }
 
         /* Bouton retour en haut */
@@ -1110,7 +1112,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background-color: var(--primary-color); /* BLEU FONCÉ */
+            background: var(--new-gradient-color);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -1118,7 +1120,7 @@
             justify-content: center;
             text-decoration: none;
             font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+            box-shadow: 0 4px 15px rgba(26, 82, 118, 0.3);
             transition: var(--transition);
             z-index: 999;
             opacity: 0;
@@ -1133,9 +1135,9 @@
         }
 
         .back-to-top:hover {
-            background-color: var(--primary-dark);
+            background: var(--new-gradient-color);
             transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
+            box-shadow: 0 6px 20px rgba(26, 82, 118, 0.4);
         }
 
         /* ===== RESPONSIVE ===== */
@@ -1359,8 +1361,9 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
+            <!-- Logo en image -->
             <a href="index.html" class="logo">
-                <i class="fas fa-code"></i> Nord<span>Web</span>
+                <img src="images/nordzeb2.png" alt="Nord-Web Logo" class="logo-img">
             </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1380,13 +1383,13 @@
         </div>
     </header>
 
-    <!-- Page Header avec image de fond -->
+    <!-- Page Header avec nouvelle couleur -->
     <section class="page-header">
         <div class="container">
             <h1>Notre Équipe de Passionnés</h1>
             <p>Découvrez les esprits créatifs et les experts techniques qui donnent vie à vos projets numériques. Notre équipe combine expertise technique et vision stratégique pour transformer vos idées en succès.</p>
             <div class="header-cta">
-                <a href="#founders" class="btn">Rencontrer notre équipe</a>
+                <a href="#founders" class="btn btn-new-color">Rencontrer notre équipe</a>
                 <a href="contact.html" class="btn btn-accent">Travailler avec nous</a>
             </div>
         </div>
@@ -1405,7 +1408,7 @@
                 <div class="founder-card">
                     <div class="founder-img">
                         <div class="founder-img-container">
-                            <img src="images/port.jpg" alt="Amadou BA">
+                            <img src="images/port.jpg" alt="Amadou BA" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
                         </div>
                         <div class="founder-badge">
                             <i class="fas fa-crown"></i> Fondateur
@@ -1445,7 +1448,7 @@
                 <div class="founder-card">
                     <div class="founder-img">
                         <div class="founder-img-container">
-                            <img src="images/lognord.jpeg" alt="Al Housseynou BA">
+                            <img src="images/lognord.jpeg" alt="Al Housseynou BA" onerror="this.src='https://images.unsplash.com/photo-1507591064344-4c6ce005-128?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
                         </div>
                         <div class="founder-badge">
                             <i class="fas fa-lightbulb"></i> Data Scientist
@@ -1605,25 +1608,26 @@
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA avec nouvelle couleur -->
     <section class="cta">
         <div class="container">
             <h2>Travaillons ensemble sur votre prochain projet</h2>
             <p>Rencontrez notre équipe et découvrez comment notre expertise peut transformer votre vision en succès numérique.</p>
-            <a href="contact.html" class="btn">Prendre rendez-vous</a>
+            <a href="contact.html" class="btn btn-new-color">Prendre rendez-vous</a>
             <a href="portfolio.html" class="btn btn-accent" style="margin-left: 10px;">Voir nos réalisations</a>
             <a href="services.html#security" class="btn btn-security" style="margin-left: 10px;">Solutions Sécurité</a>
         </div>
     </section>
 
-    <!-- Footer amélioré -->
+    <!-- Footer amélioré avec nouvelle couleur -->
     <footer>
         <div class="container footer-container">
             <div class="footer-content">
                 <!-- Section logo et description -->
                 <div class="footer-section footer-logo-section">
-                    <a href="index.html" class="footer-logo">
-                        <i class="fas fa-code"></i> Nord<span>Web</span>
+                    <!-- Logo en image dans le footer -->
+                    <a href="index.html">
+                        <img src="images/nordzeb2.png" alt="Nord-Web Logo" class="footer-logo-img">
                     </a>
                     <div class="footer-about">
                         <p>Solutions digitales innovantes créées à Saint-Louis par une équipe passionnée de développeurs et data scientists. Nous transformons vos idées en réalité numérique.</p>
@@ -1850,6 +1854,17 @@
                     const rate = scrolled * 0.5;
                     pageHeader.style.backgroundPosition = `center ${rate}px`;
                 }
+            });
+            
+            // Gestion des images manquantes
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    if (this.src.includes('logo-nordweb.png')) {
+                        this.src = 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';
+                        this.alt = 'Logo Nord-Web par défaut';
+                    }
+                });
             });
         });
     </script>
